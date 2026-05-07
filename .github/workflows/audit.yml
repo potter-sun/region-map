@@ -1,0 +1,52 @@
+name: Audit (drift detection)
+
+on:
+  schedule:
+    - cron: "0 1 * * 1"   # 周一 09:00 SGT (= UTC 01:00)
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "regions.json"
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Run audit (strict for PR, report-only for cron/dispatch)
+        id: audit
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set +e
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            python3 tools/audit_regions.py --strict
+          else
+            python3 tools/audit_regions.py --markdown > /tmp/report.md
+            cat /tmp/report.md
+          fi
+          echo "exit=$?" >> "$GITHUB_OUTPUT"
+
+      - name: Open / update weekly issue with audit report
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TITLE="Weekly region drift audit"
+          BODY=$(cat /tmp/report.md)
+          # Find an existing open issue with this title
+          EXISTING=$(gh issue list --search "$TITLE in:title is:open" --json number -q '.[0].number' --limit 1)
+          if [ -n "$EXISTING" ]; then
+            gh issue comment "$EXISTING" --body "$BODY"
+          else
+            gh issue create --title "$TITLE" --body "$BODY" --label audit
+          fi
