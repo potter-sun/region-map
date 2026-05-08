@@ -26,16 +26,39 @@ import json
 import shutil
 import subprocess
 import sys
+import time
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).parent.parent
 
+# GitHub search API: 30 req/min authenticated. Sleep 2.1s between calls to stay well under.
+SEARCH_THROTTLE_SEC = 2.1
+
+
+def _is_qualifier_only(query: str) -> str | None:
+    """If query has only `qualifier:value` tokens (no free-text search term),
+    return the repo to fall back to issue list API. Otherwise return None.
+    GitHub search API 422s on qualifier-only queries — list API is the workaround."""
+    tokens = query.split()
+    free_text = [t for t in tokens if ":" not in t]
+    if free_text:
+        return None
+    repo = next((t.split(":", 1)[1] for t in tokens if t.startswith("repo:")), None)
+    return repo
+
 
 def gh_search_count(query: str) -> int:
+    repo = _is_qualifier_only(query)
+    if repo:
+        cmd = ["gh", "issue", "list", "-R", repo, "--state", "open",
+               "--limit", "1000", "--json", "number"]
+        result = subprocess.run(cmd, check=True, capture_output=True, text=True)
+        return len(json.loads(result.stdout))
     cmd = ["gh", "api", "-X", "GET", "search/issues",
            "-f", f"q={query}", "-f", "per_page=1",
            "-q", ".total_count"]
     result = subprocess.run(cmd, check=True, capture_output=True, text=True)
+    time.sleep(SEARCH_THROTTLE_SEC)
     return int(result.stdout.strip())
 
 
