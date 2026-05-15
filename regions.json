@@ -136,7 +136,7 @@
       "product": "aevatar",
       "milestone": "A0",
       "owner": "eanzhao",
-      "issue_count": 9,
+      "issue_count": 16,
       "focus": true,
       "archived": false,
       "promoted_at": {
@@ -344,15 +344,15 @@
         "zh": "OAuth 2.0 / OIDC 鉴权"
       },
       "desc": {
-        "en": "End-to-end OAuth 2.0 / OIDC server with MFA, social login, DCR. Recent wizard bugs (#629/#651/#653) prevent mature claim.",
-        "zh": "完整 OAuth 2.0 / OIDC 服务端, 含 MFA / 社交登录 / DCR。近期 wizard bug (#629/#651/#653) 不满足 mature"
+        "en": "End-to-end OAuth 2.0 / OIDC server with MFA, social login, DCR. Earlier wizard bug cluster (#629/#651/#653) closed; current open bugs (#683 callback URL, #694 Lark generic error, #695 account-mismatch redirect, #735 single OAuth service per provider) keep it from mature.",
+        "zh": "完整 OAuth 2.0 / OIDC 服务端, 含 MFA / 社交登录 / DCR。早期 wizard bug 群 (#629/#651/#653) 已修, 当前未修 bug (#683 回调 URL / #694 Lark 通用错 / #695 账号错配跳转 / #735 单 provider 单 OAuth) 不满足 mature"
       },
       "closure": "public",
       "formal": "checked",
       "product": "nyxid",
       "milestone": "M0",
       "owner": "kaiweijw",
-      "issue_count": 1,
+      "issue_count": 5,
       "focus": false,
       "archived": false,
       "promoted_at": {
@@ -390,15 +390,15 @@
         "zh": "凭证注入"
       },
       "desc": {
-        "en": "Auto credential injection — header / bearer / query / basic auth modes",
-        "zh": "向代理请求自动注入凭证, 支持 header / bearer / query / basic 四种模式"
+        "en": "Auto credential injection — header / bearer / query / basic auth modes. Open follow-up #508 to unify HTTP and WebSocket injection under a single rule schema (from #493).",
+        "zh": "向代理请求自动注入凭证, 支持 header / bearer / query / basic 四种模式。未修 follow-up #508 — 用统一规则 schema 合并 HTTP 与 WebSocket 注入 (来自 #493)"
       },
       "closure": "public",
       "formal": "checked",
       "product": "nyxid",
       "milestone": "M0",
       "owner": "kaiweijw",
-      "issue_count": 1,
+      "issue_count": 2,
       "focus": false,
       "archived": false,
       "promoted_at": {
@@ -463,8 +463,8 @@
         "zh": "托管实例 (nyx.chrono-ai.fun)"
       },
       "desc": {
-        "en": "Production hosted NyxID. Recent bug cluster (#640/#643/#644) means not 30d incident-free.",
-        "zh": "nyx.chrono-ai.fun 上的生产托管实例。近期 bug 群 (#640/#643/#644) 不满足 30 天稳定"
+        "en": "Production hosted NyxID. Earlier quickstart bug cluster (#640/#643/#644) closed; current attention shifted to CLI Wizard / OAuth surface (#695, #706, #711, #734) — still not 30d incident-free.",
+        "zh": "nyx.chrono-ai.fun 上的生产托管实例。早期 quickstart bug 群 (#640/#643/#644) 已修, 注意力转向 CLI Wizard / OAuth 面 (#695, #706, #711, #734), 仍不满足 30 天稳定"
       },
       "closure": "public",
       "formal": "audited",
@@ -499,7 +499,7 @@
       "product": "nyxid",
       "milestone": "M0",
       "owner": "kaiweijw",
-      "issue_count": 1,
+      "issue_count": 0,
       "focus": false,
       "archived": false,
       "promoted_at": {
@@ -563,12 +563,12 @@
     },
     "NyxID-Invite-Code-System": {
       "label": {
-        "en": "Invite Code / Org Sharing",
-        "zh": "邀请码 / 组织共享"
+        "en": "Invite Codes + Org Model",
+        "zh": "邀请码 + 组织模型"
       },
       "desc": {
-        "en": "Invite code registration + org-level resource sharing (#641, #577 et al)",
-        "zh": "邀请码注册 + 组织级资源共享 (#641 / #577 等)"
+        "en": "Invite-code registration + full org model: org-owned services (#534, #536), org-aware ACL, multi-admin nodes (#553), org avatars (#545), invite-code persistence through landing/login/register (#702). 30+ Org-tagged issues closed across W18–W19. Open #546 NyxID App org approval test.",
+        "zh": "邀请码注册 + 完整组织模型: 组织拥有服务 (#534, #536), 组织感知 ACL, 多 admin 节点 (#553), 组织头像 (#545), 邀请码穿透 landing/login/register (#702)。W18-W19 关闭 30+ 个 Org 相关 issue。未修 #546 NyxID App 组织审批测试"
       },
       "closure": "public",
       "formal": "checked",
@@ -658,7 +658,161 @@
         "NyxID-M0-Milestone",
         "NyxID-Quickstart-NPM",
         "NyxID-Quickstart-Docker",
-        "NyxID-Landing-Page"
+        "NyxID-Landing-Page",
+        "NyxID-CLI-Wizard",
+        "NyxID-UX-Redesign",
+        "NyxID-Invite-Code-System"
+      ]
+    },
+    "NyxID-CLI-Wizard": {
+      "label": {
+        "en": "CLI Wizard (interactive service add)",
+        "zh": "CLI 向导 (交互式 service add)"
+      },
+      "desc": {
+        "en": "nyxid service add interactive wizard covering OAuth / device-code / bearer / catalog flows. Heavy investment W18-W20 (10+ bugs closed, e.g. #429 #430 #441 #448 #449 #506 #565 #647 #648 #710). 5 open hardening bugs (#695 OAuth account-mismatch, #706 expired device-code, #710 WSL auto-open, #711 service-creation timeout, #713 cross-OS regression test).",
+        "zh": "nyxid service add 交互式向导, 覆盖 OAuth / device-code / bearer / catalog 流程。W18-W20 高频投入 (10+ bug 修复, 含 #429 #430 #441 #448 #449 #506 #565 #647 #648 #710)。5 个未修硬化 bug (#695 OAuth 账号错配 / #706 device-code 过期 / #710 WSL 自动打开 / #711 service 创建超时 / #713 跨 OS 回归测试)"
+      },
+      "closure": "public",
+      "formal": "checked",
+      "product": "nyxid",
+      "milestone": "M1",
+      "owner": "ctkm-aelf",
+      "issue_count": 5,
+      "focus": true,
+      "archived": false,
+      "promoted_at": {
+        "public": "2026-04-15"
+      },
+      "deps": [
+        "NyxID-OAuth-flow"
+      ],
+      "gh_query": "is:issue is:open repo:ChronoAIProject/NyxID \"CLI Wizard\" in:title"
+    },
+    "NyxID-UX-Redesign": {
+      "label": {
+        "en": "UX / Information Architecture Redesign",
+        "zh": "UX / 信息架构重做"
+      },
+      "desc": {
+        "en": "Information-architecture redesign of dashboard, key detail, and agent isolation flows. Open: #684 (first-time AI service flow), #685 (key detail page progressive IA), #686 (agent isolation guided flow). Closed W20: #687 dashboard nav exposing too much, #688 consistency + responsive standards.",
+        "zh": "Dashboard / Key 详情 / Agent 隔离流程的信息架构重做。未修: #684 (首次 AI service 流程), #685 (Key 详情页渐进式 IA), #686 (Agent 隔离引导流程)。W20 已修: #687 Dashboard 导航过载, #688 一致性 + 响应式标准"
+      },
+      "closure": "obligation",
+      "formal": "none",
+      "product": "nyxid",
+      "milestone": "M1",
+      "owner": "dannick-aelf",
+      "issue_count": 3,
+      "focus": true,
+      "archived": false,
+      "promoted_at": {
+        "obligation": "2026-05-09"
+      },
+      "deps": [
+        "NyxID-Hosted-Instance"
+      ],
+      "gh_query": "is:issue is:open repo:ChronoAIProject/NyxID \"UX\" in:title"
+    },
+    "NyxID-Channel-Phase4": {
+      "label": {
+        "en": "Channel Phase 4 (bidirectional)",
+        "zh": "Channel Phase 4 (双向)"
+      },
+      "desc": {
+        "en": "Bidirectional device channels — DeviceAdapter + outbound transport (#411), and registering aevatar as a DownstreamService for Codex/Cursor inbound routing (#712). Extends NAT-Traversal beyond pure reverse-connect into full inbound/outbound bridging.",
+        "zh": "双向设备 channel — DeviceAdapter + outbound transport (#411), 以及把 aevatar 注册为 DownstreamService 给 Codex/Cursor 入站路由 (#712)。把 NAT 穿透从纯反连扩到全双向桥接"
+      },
+      "closure": "obligation",
+      "formal": "none",
+      "product": "nyxid",
+      "milestone": "M2",
+      "owner": "kaiweijw",
+      "issue_count": 2,
+      "focus": false,
+      "archived": false,
+      "promoted_at": {
+        "obligation": "2026-04-20"
+      },
+      "deps": [
+        "NyxID-NAT-Traversal"
+      ],
+      "gh_query": "is:issue is:open repo:ChronoAIProject/NyxID channel in:title"
+    },
+    "NyxID-Device-Code-Grant": {
+      "label": {
+        "en": "Device Code Grant (RFC 8628)",
+        "zh": "Device Code Grant (RFC 8628)"
+      },
+      "desc": {
+        "en": "OAuth 2.0 Device Authorization Grant for headless / IoT / 1-tap device onboarding. Parent epic #736 + 11 sub-issues (#737 DB schema, #738-#740 endpoints, #741 web bind page, #742 CLI command, #743 rate limit, #744 notifications, #745 docs, #746 factory provisioning tool, #747 web QR provisioning). All seeded 2026-05-13 under label `device-code-grant`.",
+        "zh": "OAuth 2.0 Device Authorization Grant, 用于 headless / IoT / 1-tap 设备 onboarding。父 epic #736 + 11 个子 issue (#737 DB schema, #738-#740 endpoints, #741 web bind 页, #742 CLI 命令, #743 限流, #744 通知, #745 文档, #746 出厂烧录工具, #747 web QR provisioning)。2026-05-13 全量建立, 标签 `device-code-grant`"
+      },
+      "closure": "seed",
+      "formal": "none",
+      "product": "nyxid",
+      "milestone": "M2",
+      "owner": "kaiweijw",
+      "issue_count": 12,
+      "focus": true,
+      "archived": false,
+      "promoted_at": {
+        "seed": "2026-05-13"
+      },
+      "deps": [
+        "NyxID-OAuth-flow"
+      ],
+      "gh_query": "is:issue is:open repo:ChronoAIProject/NyxID label:device-code-grant Device in:title"
+    },
+    "NyxID-Skill-Install-CLI": {
+      "label": {
+        "en": "Skill Install via NyxID CLI",
+        "zh": "通过 NyxID CLI 安装 Skill"
+      },
+      "desc": {
+        "en": "nyxid skill install — local install path for limited-access Ornn skills via NyxID CLI (#613, assigned chronoai-shining). Cross-product NyxID × Ornn surface: NyxID handles credentials/proxy, Ornn provides the skill artifact.",
+        "zh": "nyxid skill install — 通过 NyxID CLI 本地安装受限访问的 Ornn skill (#613, chronoai-shining 接手)。NyxID × Ornn 跨产品面: NyxID 管凭证 / proxy, Ornn 出 skill artifact"
+      },
+      "closure": "obligation",
+      "formal": "none",
+      "product": "nyxid",
+      "milestone": "M2",
+      "owner": "chronoai-shining",
+      "issue_count": 1,
+      "focus": false,
+      "archived": false,
+      "promoted_at": {
+        "obligation": "2026-05-04"
+      },
+      "deps": [
+        "NyxID-MCP-Wrap",
+        "Ornn-Skill-Lifecycle-Core"
+      ],
+      "gh_query": "is:issue is:open repo:ChronoAIProject/NyxID skill install in:title"
+    },
+    "NyxID-M2-Milestone": {
+      "label": {
+        "en": "NyxID M2 — Headless + Bidirectional + Cross-product",
+        "zh": "NyxID M2 — Headless + 双向 + 跨产品"
+      },
+      "desc": {
+        "en": "Aggregator: M2 expansion beyond first-WAU. Adds device-code grant for headless/IoT, bidirectional channels for Codex/Cursor inbound, and cross-product skill install. Tracked on board ChronoAIProject #3.",
+        "zh": "聚合节点: M2 在首批 WAU 之上扩展。新增 device-code (headless/IoT) / 双向 channel (Codex/Cursor 入站) / 跨产品 skill 安装。看板 ChronoAIProject #3"
+      },
+      "closure": "seed",
+      "formal": "none",
+      "product": "nyxid",
+      "milestone": "M2",
+      "owner": "kaiweijw",
+      "issue_count": 0,
+      "focus": false,
+      "archived": false,
+      "promoted_at": {},
+      "deps": [
+        "NyxID-M1-Milestone",
+        "NyxID-Device-Code-Grant",
+        "NyxID-Channel-Phase4",
+        "NyxID-Skill-Install-CLI"
       ]
     },
     "Ornn-API-V1-Refactor": {
@@ -897,7 +1051,7 @@
       "product": "ornn",
       "milestone": "Go-Live-Prep",
       "owner": "chronoai-shining",
-      "issue_count": 2,
+      "issue_count": 4,
       "focus": false,
       "archived": false,
       "promoted_at": {
