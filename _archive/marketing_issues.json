@@ -1,0 +1,130 @@
+{
+  "created": [
+    [
+      12,
+      "[Audit] HN account readiness",
+      "L0 \u2014 Pre-flight & Warmup"
+    ],
+    [
+      13,
+      "[Audit] Product Hunt maker + contact Hunter",
+      "L0 \u2014 Pre-flight & Warmup"
+    ],
+    [
+      14,
+      "[Audit] Reddit account + 3 sub histories",
+      "L0 \u2014 Pre-flight & Warmup"
+    ],
+    [
+      15,
+      "[Audit] X / Discord / \u5373\u523b / V2EX accounts",
+      "L0 \u2014 Pre-flight & Warmup"
+    ],
+    [
+      16,
+      "[Warmup] HN \u2014 10 substantive comments / 7 days",
+      "L0 \u2014 Pre-flight & Warmup"
+    ],
+    [
+      17,
+      "[Warmup] Reddit \u00d73 subs \u2014 5 comments each / 7 days",
+      "L0 \u2014 Pre-flight & Warmup"
+    ],
+    [
+      18,
+      "[Warmup] V2EX + \u5373\u523b \u2014 daily presence",
+      "L0 \u2014 Pre-flight & Warmup"
+    ],
+    [
+      19,
+      "[Prep] Push Ornn GitHub stars to \u2265 50 (Awesome Lists prereq)",
+      "L0 \u2014 Pre-flight & Warmup"
+    ],
+    [
+      20,
+      "[Prep] Fork 3 Awesome Lists + draft PR diffs",
+      "L0 \u2014 Pre-flight & Warmup"
+    ],
+    [
+      21,
+      "[Copy] HN Show HN \u2014 title + first-comment story",
+      "L1 \u2014 D-Day Launch"
+    ],
+    [
+      22,
+      "[Copy] Product Hunt \u2014 tagline + description + 4 images",
+      "L1 \u2014 D-Day Launch"
+    ],
+    [
+      23,
+      "[Copy] Reddit \u00d73 subs \u2014 channel-specific drafts",
+      "L1 \u2014 D-Day Launch"
+    ],
+    [
+      24,
+      "[Copy] X launch thread \u2014 10 tweets + 3 quote-tweet plans",
+      "L1 \u2014 D-Day Launch"
+    ],
+    [
+      25,
+      "[Copy] Discord / \u5373\u523b / V2EX posts",
+      "L1 \u2014 D-Day Launch"
+    ],
+    [
+      26,
+      "[Launch] HN Show HN \u2014 submit + 90-min monitor",
+      "L1 \u2014 D-Day Launch"
+    ],
+    [
+      27,
+      "[Launch] Product Hunt \u2014 00:01 PT Hunter post + 24h maker response",
+      "L1 \u2014 D-Day Launch"
+    ],
+    [
+      28,
+      "[Launch] Reddit \u00d73 subs \u2014 sequential posting (NOT cross-post)",
+      "L1 \u2014 D-Day Launch"
+    ],
+    [
+      29,
+      "[Launch] X thread + Discord + \u5373\u523b + V2EX",
+      "L1 \u2014 D-Day Launch"
+    ],
+    [
+      30,
+      "[Launch] Submit 3 Awesome List PRs",
+      "L1 \u2014 D-Day Launch"
+    ],
+    [
+      31,
+      "[Followup] HN T+24h boomerang comment",
+      "L2 \u2014 Post-Launch Followup"
+    ],
+    [
+      32,
+      "[Followup] Reddit weekly self-promotion thread participation",
+      "L2 \u2014 Post-Launch Followup"
+    ],
+    [
+      33,
+      "[Followup] X 3 milestone quote-tweets (T+24h / T+7d / T+30d)",
+      "L2 \u2014 Post-Launch Followup"
+    ],
+    [
+      34,
+      "[Followup] DM PH upvoters thank-you (T+0 \u2192 T+24h)",
+      "L2 \u2014 Post-Launch Followup"
+    ],
+    [
+      35,
+      "[Followup] D+7 retro post",
+      "L2 \u2014 Post-Launch Followup"
+    ],
+    [
+      36,
+      "[Followup] D+30 outcome + learnings post",
+      "L2 \u2014 Post-Launch Followup"
+    ]
+  ],
+  "failed": []
+}
