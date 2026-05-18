@@ -1,0 +1,66 @@
+name: Sync milestone issues into region desc
+
+# Pulls every GitHub milestone referenced from a region's `milestone_ref`
+# field and replaces the AUTO_GH_ISSUES block in that region's desc with
+# the live issue list. Commits the result back to the default branch.
+#
+# Triggers:
+#   - Hourly cron        — picks up new issues / closures with ≤1h lag
+#   - workflow_dispatch  — manual "sync now" from Actions tab
+#
+# Cross-repo / private-repo access:
+#   GITHUB_TOKEN is scoped to THIS repo only. Reading PUBLIC upstream repos
+#   (ChronoAIProject/Ornn) needs no auth — token works as-is.
+#   Reading PRIVATE upstream repos (ChronoAIProject/Ornn-Marketing) requires
+#   a PAT with `repo` scope stored as repo secret CROSS_REPO_PAT.
+#   If CROSS_REPO_PAT is absent, sync of private-repo regions logs a WARN
+#   and the rest of the regions still update.
+
+on:
+  schedule:
+    - cron: "5 * * * *"      # hourly at :05
+  workflow_dispatch:
+
+permissions:
+  contents: write             # need write so we can commit + push
+
+concurrency:
+  group: sync-milestone-issues
+  cancel-in-progress: false   # don't cancel an in-flight commit
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run sync script
+        env:
+          # PAT with repo scope for cross-repo / private-repo reads.
+          # Falls back to default token if CROSS_REPO_PAT not set.
+          GH_TOKEN: ${{ secrets.CROSS_REPO_PAT || secrets.GITHUB_TOKEN }}
+        run: |
+          python3 tools/sync_milestone_issues.py
+          python3 tools/validate_regions.py
+
+      - name: Commit and push if changed
+        run: |
+          CHANGED=$(git status --porcelain regions.json ornn-issues.json)
+          if [[ -z "$CHANGED" ]]; then
+            echo "no changes to commit"
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add regions.json ornn-issues.json
+          git commit -m "auto: sync milestone issues into region desc + issue graph
+
+          Triggered by: ${{ github.event_name }}
+          Run: ${{ github.run_id }}"
+          git push

@@ -3,3 +3,12 @@ _site/
 *.log
 **/*.quarto_ipynb
 **/__pycache__/
+
+/.quarto/
+
+# local single-file render artifacts (only _site/ should be committed if anything)
+visualization.html
+visualization_files/
+
+# claude code session config (not for sharing)
+.claude/

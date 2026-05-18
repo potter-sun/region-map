@@ -28,7 +28,10 @@
         "Aevatar-Console-Web-Member-Flows",
         "Aevatar-Virtual-Actors",
         "Aevatar-Agent-Framework",
-        "Aevatar-NyxID-Integration"
+        "Aevatar-NyxID-Integration",
+        "Aevatar-Channel-Multi-Adapter",
+        "Aevatar-Studio-Team-First",
+        "Aevatar-EventSourcing-Hardening"
       ],
       "gh_query": "is:issue is:open repo:aevatarAI/aevatar A0 in:title"
     },
@@ -79,9 +82,282 @@
       "promoted_at": {},
       "deps": [
         "Aevatar-A0-Milestone",
-        "Aevatar-CSharp-Scripting"
+        "Aevatar-CSharp-Scripting",
+        "Aevatar-M14-Milestone",
+        "Aevatar-Ornn-Skill-Platform",
+        "Aevatar-SessionStream-Abstraction"
       ],
       "gh_query": "is:issue is:open repo:aevatarAI/aevatar A1 in:title"
+    },
+    "Aevatar-Channel-Multi-Adapter": {
+      "label": {
+        "en": "Channel Multi-Adapter (Lark / Telegram / …)",
+        "zh": "多 Channel 适配器 (Lark / Telegram / …)"
+      },
+      "desc": {
+        "en": "RFC #254 + ADR 0008-0013: channel-agnostic abstraction (IChannelTransport / IChannelOutboundPort / IMessageComposer / ConversationReference) replacing the 53-file ChannelRuntime megamodule. Milestone #6 'Channel Runtime Foundation' tracks rollout.",
+        "zh": "RFC #254 + ADR 0008-0013: channel 无关抽象 (IChannelTransport / IChannelOutboundPort / IMessageComposer / ConversationReference), 替换 53 个文件的 ChannelRuntime 大模块。里程碑 #6 'Channel Runtime Foundation' 跟踪推进"
+      },
+      "closure": "scoped",
+      "formal": "checked",
+      "product": "aevatar",
+      "milestone": "A0",
+      "owner": "eanzhao",
+      "issue_count": 22,
+      "focus": true,
+      "archived": false,
+      "promoted_at": {
+        "scoped": "2026-04-20"
+      },
+      "deps": [
+        "Aevatar-Agent-Framework",
+        "Aevatar-Virtual-Actors"
+      ],
+      "gh_query": "is:issue is:open repo:aevatarAI/aevatar milestone:\"Channel Runtime Foundation\""
+    },
+    "Aevatar-Studio-Team-First": {
+      "label": {
+        "en": "Studio Team-First Console",
+        "zh": "Studio Team-First 控制台"
+      },
+      "desc": {
+        "en": "ADR 0017 + 17 design docs: surface Team as first-class backend aggregate under Scope. Member workbench, team directory, workspace wording. Milestones #2 / #3 / #8 / #10 / #11 / #12 actively shipping.",
+        "zh": "ADR 0017 + 17 篇设计文档: Team 作为 Scope 下一等聚合, Member workbench, Team Directory, Workspace 语义。里程碑 #2 / #3 / #8 / #10 / #11 / #12 持续在发"
+      },
+      "closure": "bridged",
+      "formal": "checked",
+      "product": "aevatar",
+      "milestone": "A0",
+      "owner": "eanzhao",
+      "issue_count": 8,
+      "focus": true,
+      "archived": false,
+      "promoted_at": {
+        "scoped": "2026-04-29",
+        "bridged": "2026-05-11"
+      },
+      "deps": [
+        "Aevatar-Testnet-Stability"
+      ],
+      "gh_query": "is:issue is:open repo:aevatarAI/aevatar label:\"team\" OR (Studio in:title OR Team in:title)"
+    },
+    "Aevatar-EventSourcing-Hardening": {
+      "label": {
+        "en": "EventSourcing / CQRS Hardening",
+        "zh": "EventSourcing / CQRS 加固"
+      },
+      "desc": {
+        "en": "Architecture-track work: unify async write/observation/read-model freshness (#594), standardize ES projection mappings (#533), reduce projection boilerplate (#591), resolve OCC pending-state leaks (#381). Symphony-team backlog.",
+        "zh": "架构线工作: 统一 async write/observation/read-model 新鲜度 (#594), 标准化 ES projection mapping (#533), 减少 projection 模板 (#591), 修复 OCC pending 残留 (#381)。Symphony 团队 backlog"
+      },
+      "closure": "seed",
+      "formal": "none",
+      "product": "aevatar",
+      "milestone": "A0",
+      "owner": "chronoai-shining",
+      "issue_count": 5,
+      "focus": false,
+      "archived": false,
+      "promoted_at": {},
+      "deps": [
+        "Aevatar-Agent-Framework"
+      ],
+      "gh_query": "is:issue is:open repo:aevatarAI/aevatar label:architecture"
+    },
+    "Aevatar-M14-Milestone": {
+      "label": {
+        "en": "Aevatar M14 — Responses API v1 Prototype",
+        "zh": "Aevatar M14 — Responses API v1 原型"
+      },
+      "desc": {
+        "en": "Aggregator: GitHub milestone #14 'Responses API v1 Minimal Prototype' — current focus. End state: user configures NyxID base URL + API key in Codex/Cursor/Opencode; request flows client -> NyxID -> Aevatar /v1/responses -> NyxID LLM -> client. Product RFC discussion #609.",
+        "zh": "聚合节点: GitHub milestone #14 'Responses API v1 Minimal Prototype' — 当前焦点。终态: 用户在 Codex/Cursor/Opencode 里配置 NyxID base URL + API key, 请求链路 client → NyxID → Aevatar /v1/responses → NyxID LLM → client。产品 RFC 讨论 #609"
+      },
+      "closure": "obligation",
+      "formal": "none",
+      "product": "aevatar",
+      "milestone": "M14",
+      "owner": "eanzhao",
+      "issue_count": 14,
+      "focus": true,
+      "archived": false,
+      "promoted_at": {},
+      "deps": [
+        "Aevatar-ChatRuntime-Harness",
+        "Aevatar-Responses-Ingress",
+        "Aevatar-Responses-Auth-Scope",
+        "Aevatar-Session-Continuation",
+        "Aevatar-Tool-Classification",
+        "Aevatar-NyxID-Integration"
+      ],
+      "gh_query": "is:issue is:open repo:aevatarAI/aevatar milestone:\"Responses API v1 Minimal Prototype\""
+    },
+    "Aevatar-ChatRuntime-Harness": {
+      "label": {
+        "en": "ChatRuntime → Harness Refactor (M14 blocker)",
+        "zh": "ChatRuntime → Harness 重构 (M14 blocker)"
+      },
+      "desc": {
+        "en": "M14 blocker: refactor ChatRuntime / ChannelLlmReplyInboxRuntime to match Harness boundary (#568). #608 is the umbrella refactor; #596 collapses ChatRuntime into actor-owned Agent Continuation (assigned eanzhao).",
+        "zh": "M14 blocker: 把 ChatRuntime / ChannelLlmReplyInboxRuntime 重构到 Harness boundary (#568)。#608 主重构 issue, #596 (eanzhao 已 assigned) 把 ChatRuntime 收敛为 actor-owned Agent Continuation"
+      },
+      "closure": "obligation",
+      "formal": "none",
+      "product": "aevatar",
+      "milestone": "M14",
+      "owner": "eanzhao",
+      "issue_count": 2,
+      "focus": true,
+      "archived": false,
+      "promoted_at": {},
+      "deps": [
+        "Aevatar-Agent-Framework",
+        "Aevatar-Virtual-Actors"
+      ],
+      "gh_query": "is:issue is:open repo:aevatarAI/aevatar ChatRuntime in:title OR Harness in:title"
+    },
+    "Aevatar-Responses-Ingress": {
+      "label": {
+        "en": "/v1/responses HTTP Ingress",
+        "zh": "/v1/responses HTTP 入口"
+      },
+      "desc": {
+        "en": "M14 pillar — HTTP layer: minimal /v1/responses endpoint on Aevatar Mainnet Host (#611), normalize Responses payloads into internal chat requests (#612), serialize Responses-compatible SSE output (#614), host-level tests + docs (#615).",
+        "zh": "M14 支柱 — HTTP 层: Aevatar Mainnet Host 上最小 /v1/responses 端点 (#611), Responses 载荷归一化到内部 chat request (#612), 兼容 Responses 协议的 SSE 输出序列化 (#614), host 级测试 + 文档 (#615)"
+      },
+      "closure": "obligation",
+      "formal": "none",
+      "product": "aevatar",
+      "milestone": "M14",
+      "owner": "eanzhao",
+      "issue_count": 4,
+      "focus": true,
+      "archived": false,
+      "promoted_at": {},
+      "deps": [
+        "Aevatar-ChatRuntime-Harness"
+      ],
+      "gh_query": "is:issue is:open repo:aevatarAI/aevatar responses in:title"
+    },
+    "Aevatar-Responses-Auth-Scope": {
+      "label": {
+        "en": "NyxID Auth Bridge + Scope Port",
+        "zh": "NyxID 鉴权桥 + Scope 端口"
+      },
+      "desc": {
+        "en": "M14 pillar — security: bridge NyxID request auth into the existing NyxIdLLMProvider (#613), add scope resolution port translating NyxID identity to aevatar scope (#621). §8 of RFC #609.",
+        "zh": "M14 支柱 — 安全层: 把 NyxID 请求鉴权接入现有 NyxIdLLMProvider (#613), 新增 scope 解析端口把 NyxID 身份翻译为 aevatar scope (#621)。对应 RFC #609 §8"
+      },
+      "closure": "obligation",
+      "formal": "none",
+      "product": "aevatar",
+      "milestone": "M14",
+      "owner": "eanzhao",
+      "issue_count": 2,
+      "focus": true,
+      "archived": false,
+      "promoted_at": {},
+      "deps": [
+        "Aevatar-NyxID-Integration",
+        "Aevatar-Responses-Ingress"
+      ],
+      "gh_query": "is:issue is:open repo:aevatarAI/aevatar scope in:title OR auth in:title"
+    },
+    "Aevatar-Session-Continuation": {
+      "label": {
+        "en": "Session Continuation (response.id state machine)",
+        "zh": "Session Continuation (response.id 状态机)"
+      },
+      "desc": {
+        "en": "M14 pillar — long-running state: run/session ownership actor for opaque response.id (#617), persist forwarded tool calls (#618), POST /v1/responses/{id}/cancel + TTL expiry (#619), resume re-auth + cross-origin resume guard (#620). §13 of RFC #609.",
+        "zh": "M14 支柱 — 长连接状态: opaque response.id 的 run/session ownership actor (#617), 持久化 forwarded tool call (#618), POST /v1/responses/{id}/cancel + TTL 过期 (#619), resume 重新鉴权 + 跨域 resume guard (#620)。对应 RFC #609 §13"
+      },
+      "closure": "obligation",
+      "formal": "none",
+      "product": "aevatar",
+      "milestone": "M14",
+      "owner": "eanzhao",
+      "issue_count": 4,
+      "focus": true,
+      "archived": false,
+      "promoted_at": {},
+      "deps": [
+        "Aevatar-Responses-Ingress",
+        "Aevatar-Virtual-Actors"
+      ],
+      "gh_query": "is:issue is:open repo:aevatarAI/aevatar session in:title OR response.id in:title"
+    },
+    "Aevatar-Tool-Classification": {
+      "label": {
+        "en": "Tool Classification (forward / substitute / additive)",
+        "zh": "工具分类层 (forward / substitute / additive)"
+      },
+      "desc": {
+        "en": "M14 pillar — agent capability: tool classification layer at /v1/responses boundary (#622), substitute TodoWrite + Task with agent-scoped / topology-aware versions (#623), substitute WebFetch + WebSearch with traced versions (#624). §5 of RFC #609.",
+        "zh": "M14 支柱 — agent 能力层: /v1/responses 边界的工具分类 (#622), 把 TodoWrite + Task 替换为 agent 范围 / 拓扑感知版本 (#623), 把 WebFetch + WebSearch 替换为带 trace 版本 (#624)。对应 RFC #609 §5"
+      },
+      "closure": "obligation",
+      "formal": "none",
+      "product": "aevatar",
+      "milestone": "M14",
+      "owner": "eanzhao",
+      "issue_count": 3,
+      "focus": true,
+      "archived": false,
+      "promoted_at": {},
+      "deps": [
+        "Aevatar-Responses-Ingress",
+        "Aevatar-Agent-Framework"
+      ],
+      "gh_query": "is:issue is:open repo:aevatarAI/aevatar Substitute in:title OR classification in:title"
+    },
+    "Aevatar-Ornn-Skill-Platform": {
+      "label": {
+        "en": "Day One → Ornn Skill Migration",
+        "zh": "Day One → Ornn skill 迁移"
+      },
+      "desc": {
+        "en": "Migrate hardcoded AgentBuilder templates (/daily, /social-media) from C# to Ornn skill YAML runtime (#367, #598). SkillRunner hardening (#439, #444-#450). PR #576 (Lark Ornn autoload) shipped 2026-05-07.",
+        "zh": "AgentBuilder 模板 (/daily, /social-media) 从硬编码 C# 迁移到 Ornn skill YAML 运行时 (#367, #598)。SkillRunner 加固 (#439, #444-#450)。PR #576 (Lark Ornn autoload) 2026-05-07 已合并"
+      },
+      "closure": "obligation",
+      "formal": "none",
+      "product": "aevatar",
+      "milestone": "A1",
+      "owner": "eanzhao",
+      "issue_count": 8,
+      "focus": false,
+      "archived": false,
+      "promoted_at": {},
+      "deps": [
+        "Aevatar-Workflow-YAML",
+        "Aevatar-CSharp-Scripting"
+      ],
+      "gh_query": "is:issue is:open repo:aevatarAI/aevatar Ornn in:title OR daily in:title OR SkillRunner in:title"
+    },
+    "Aevatar-SessionStream-Abstraction": {
+      "label": {
+        "en": "SessionStream Abstraction (RFC)",
+        "zh": "SessionStream 抽象 (RFC)"
+      },
+      "desc": {
+        "en": "RFC #560: unify external long-lived streams (WebSocket / WebRTC / SSE / polling) as actor-first SessionStreamGAgent. Co-assigned jason-aelf / louis4li / eanzhao; team-discussion phase, ADR not yet written.",
+        "zh": "RFC #560: 把外部长连接流 (WebSocket / WebRTC / SSE / polling) 统一为 actor 一等 SessionStreamGAgent。jason-aelf / louis4li / eanzhao 三人共同 assignee, 团队讨论阶段, ADR 尚未撰写"
+      },
+      "closure": "obligation",
+      "formal": "none",
+      "product": "aevatar",
+      "milestone": "A1",
+      "owner": "eanzhao",
+      "issue_count": 1,
+      "focus": false,
+      "archived": false,
+      "promoted_at": {},
+      "deps": [
+        "Aevatar-Agent-Framework",
+        "Aevatar-Voice-Stage-D"
+      ],
+      "gh_query": "is:issue is:open repo:aevatarAI/aevatar SessionStream in:title OR \"long connection\" in:title"
     },
     "Aevatar-Agent-Framework": {
       "label": {
@@ -113,18 +389,20 @@
         "zh": "C# 脚本运行时"
       },
       "desc": {
-        "en": "Dynamic C# script execution inside Virtual Actors for custom agent behavior",
-        "zh": "在 Virtual Actor 内动态执行 C# 脚本, 支持自定义 agent 行为"
+        "en": "Dynamic C# script execution inside Virtual Actors. Powering /daily + /social-media AgentBuilder templates in production. PR #515 (script lifecycle build surface) shipped 2026-04-29.",
+        "zh": "Virtual Actor 内动态执行 C# 脚本, 生产环境驱动 /daily + /social-media AgentBuilder 模板。PR #515 (script lifecycle build surface) 2026-04-29 已合并"
       },
-      "closure": "scoped",
-      "formal": "none",
+      "closure": "bridged",
+      "formal": "checked",
       "product": "aevatar",
-      "milestone": "A1",
+      "milestone": "A0",
       "owner": "eanzhao",
       "issue_count": 4,
       "focus": false,
       "archived": false,
-      "promoted_at": {},
+      "promoted_at": {
+        "bridged": "2026-04-29"
+      },
       "deps": [
         "Aevatar-Virtual-Actors"
       ],
@@ -156,10 +434,10 @@
         "zh": "Aevatar × NyxID 集成"
       },
       "desc": {
-        "en": "LLM / Tool / Auth Provider via NyxID, agent tool calls routed through NyxID proxy",
-        "zh": "通过 NyxID 提供 LLM / Tool / Auth Provider, agent 工具调用经 NyxID proxy 路由"
+        "en": "LLM / Tool / Auth Provider via NyxID, agent tool calls routed through NyxID proxy. PRs #561 / #570 / #571 (OAuth binding rebuild + self-heal) shipped early May. Recent bugs #538 / #543 / #549 (NyxIdSpecCatalog / OAuth rolling-deploy race) prevent mature.",
+        "zh": "通过 NyxID 提供 LLM / Tool / Auth Provider, agent 工具调用经 NyxID proxy 路由。PR #561 / #570 / #571 (OAuth binding rebuild + 自愈) 5 月初已合。近期 bug #538 / #543 / #549 (NyxIdSpecCatalog / OAuth 滚动部署竞争) 不满足 mature"
       },
-      "closure": "public",
+      "closure": "bridged",
       "formal": "checked",
       "product": "aevatar",
       "milestone": "A0",
@@ -168,7 +446,8 @@
       "focus": true,
       "archived": false,
       "promoted_at": {
-        "public": "2026-04-02"
+        "public": "2026-04-02",
+        "bridged": "2026-05-06"
       },
       "deps": [
         "NyxID-Hosted-Instance"
@@ -814,7 +1093,7 @@
       },
       "deps": [
         "NyxID-MCP-Wrap",
-        "Ornn-Skill-Lifecycle-Core"
+        "Ornn-M1-Skill-Lifecycle-Core"
       ],
       "gh_query": "is:issue is:open repo:ChronoAIProject/NyxID skill install in:title"
     },
@@ -842,309 +1121,6 @@
         "NyxID-Channel-Phase4",
         "NyxID-Skill-Install-CLI"
       ]
-    },
-    "Ornn-API-V1-Refactor": {
-      "label": {
-        "en": "API v1 Refactor (Epic 0-4)",
-        "zh": "API v1 重构 (Epic 0-4)"
-      },
-      "desc": {
-        "en": "Foundation refactor: convention freeze, architecture teardown, /api/v1 cut (breaking external contract), frontend modernization, ops/testing/observability. Refactor milestone fully closed (#64-#72, 8 issues).",
-        "zh": "基座重构: 约定冻结, 架构拆解, /api/v1 切分 (对外契约 breaking), 前端现代化, 运维/测试/观测。Refactor milestone 已全 closed (#64-#72, 8 个 issue)"
-      },
-      "closure": "bridged",
-      "formal": "checked",
-      "product": "ornn",
-      "milestone": "Refactor",
-      "owner": "chronoai-shining",
-      "issue_count": 0,
-      "focus": false,
-      "archived": false,
-      "promoted_at": {
-        "scoped": "2026-03-15",
-        "public": "2026-04-23",
-        "bridged": "2026-04-23"
-      },
-      "deps": [],
-      "gh_query": "is:issue is:open repo:ChronoAIProject/Ornn label:phase:1"
-    },
-    "Ornn-Skill-Lifecycle-Core": {
-      "label": {
-        "en": "Skill Lifecycle Core",
-        "zh": "Skill 全生命周期核心"
-      },
-      "desc": {
-        "en": "Agent-facing API surface: search / pull / install / execute / build / upload / share. End-to-end lifecycle (#24), MCP-native discovery (#28), skill versioning + history (#25, #181, #183), sandboxed execution. M1 22/22 closed, shipped in v0.2.0.",
-        "zh": "面向 agent 的 API 全面: 搜索/拉取/安装/执行/构建/上传/分享。端到端生命周期 (#24), MCP 原生发现 (#28), 版本化与历史 (#25, #181, #183), sandbox 执行。M1 22/22 closed, v0.2.0 上线"
-      },
-      "closure": "bridged",
-      "formal": "checked",
-      "product": "ornn",
-      "milestone": "M1",
-      "owner": "chronoai-shining",
-      "issue_count": 0,
-      "focus": false,
-      "archived": false,
-      "promoted_at": {
-        "seed": "2026-02-03",
-        "obligation": "2026-02-10",
-        "scoped": "2026-03-01",
-        "public": "2026-04-23",
-        "bridged": "2026-04-23"
-      },
-      "deps": [
-        "Ornn-API-V1-Refactor"
-      ],
-      "gh_query": "is:issue is:open repo:ChronoAIProject/Ornn milestone:\"M1 - Foundation\""
-    },
-    "Ornn-Build-Pipeline": {
-      "label": {
-        "en": "Skill Build Pipeline",
-        "zh": "Skill 构建流水线"
-      },
-      "desc": {
-        "en": "Generate skills from OpenAPI specs (#41), from source repos (#42), generation wizard with reference selection (#45). TypeScript + Python SDK (#54, #110). M2 9/9 closed.",
-        "zh": "从 OpenAPI spec 生成 skill (#41), 从源码仓库生成 (#42), 带参考引用的生成向导 (#45)。TypeScript + Python SDK (#54, #110)。M2 9/9 closed"
-      },
-      "closure": "bridged",
-      "formal": "checked",
-      "product": "ornn",
-      "milestone": "M2",
-      "owner": "chronoai-shining",
-      "issue_count": 0,
-      "focus": false,
-      "archived": false,
-      "promoted_at": {
-        "seed": "2026-02-15",
-        "obligation": "2026-03-01",
-        "scoped": "2026-03-20",
-        "public": "2026-04-23",
-        "bridged": "2026-04-23"
-      },
-      "deps": [
-        "Ornn-Skill-Lifecycle-Core"
-      ],
-      "gh_query": "is:issue is:open repo:ChronoAIProject/Ornn milestone:\"M2 - Build Experience\""
-    },
-    "Ornn-GitHub-Sync": {
-      "label": {
-        "en": "GitHub Sync (v0.5.0)",
-        "zh": "GitHub 同步 (v0.5.0)"
-      },
-      "desc": {
-        "en": "v0.5.0 marquee: single GitHub URL link + dry-run preview + manual sync (#234). Pull-from-GitHub baseline (#57) + frontend re-sync UI (#159).",
-        "zh": "v0.5.0 主打: 单一 GitHub URL link + dry-run 预览 + 手动 sync (#234)。GitHub pull 基础 (#57) + 前端 re-sync UI (#159)"
-      },
-      "closure": "bridged",
-      "formal": "checked",
-      "product": "ornn",
-      "milestone": "v0.5.0",
-      "owner": "chronoai-shining",
-      "issue_count": 0,
-      "focus": false,
-      "archived": false,
-      "promoted_at": {
-        "obligation": "2026-04-10",
-        "scoped": "2026-04-20",
-        "public": "2026-04-30",
-        "bridged": "2026-04-30"
-      },
-      "deps": [
-        "Ornn-Build-Pipeline"
-      ],
-      "gh_query": "is:issue is:open repo:ChronoAIProject/Ornn github in:title"
-    },
-    "Ornn-Audit-System": {
-      "label": {
-        "en": "Skill Audit System",
-        "zh": "Skill 审核系统"
-      },
-      "desc": {
-        "en": "LLM-based quality & security audit (#32), waiver/justification flow (#33, #96), audit-as-label pivot — share is unconditional, audit is a label (#197). Per-version audit history (#181, #188). M3 31/32 closed; lone open #106 is NyxID permission cleanup.",
-        "zh": "基于 LLM 的质量与安全审核 (#32), waiver/justification 流程 (#33, #96), audit-as-label 转向 — 分享无门槛, 审核作为标签 (#197)。Per-version 审核历史 (#181, #188)。M3 31/32 closed, 仅余 #106 NyxID 权限清理"
-      },
-      "closure": "bridged",
-      "formal": "checked",
-      "product": "ornn",
-      "milestone": "M3",
-      "owner": "chronoai-shining",
-      "issue_count": 1,
-      "focus": false,
-      "archived": false,
-      "promoted_at": {
-        "seed": "2026-02-15",
-        "obligation": "2026-03-05",
-        "scoped": "2026-03-25",
-        "public": "2026-04-23",
-        "bridged": "2026-04-30"
-      },
-      "deps": [
-        "Ornn-Skill-Lifecycle-Core"
-      ],
-      "gh_query": "is:issue is:open repo:ChronoAIProject/Ornn milestone:\"M3 - Trust & Quality\""
-    },
-    "Ornn-AgentSeal-Trust": {
-      "label": {
-        "en": "AgentSeal Third-party Trust",
-        "zh": "AgentSeal 第三方审计"
-      },
-      "desc": {
-        "en": "Third-party security scan on every published skill: 225+ adversarial probes, six-stage detection pipeline, SARIF output. Differentiated GTM: 'every public Ornn skill is AgentSeal-scanned' (#253).",
-        "zh": "对每个 public skill 跑第三方安全扫描: 225+ adversarial probes, 六阶段检测, SARIF 输出。差异化 GTM 卖点: 'every public Ornn skill is AgentSeal-scanned' (#253)"
-      },
-      "closure": "bridged",
-      "formal": "checked",
-      "product": "ornn",
-      "milestone": "Go-Live-Prep",
-      "owner": "chronoai-shining",
-      "issue_count": 0,
-      "focus": false,
-      "archived": false,
-      "promoted_at": {
-        "obligation": "2026-04-15",
-        "scoped": "2026-04-22",
-        "public": "2026-04-30",
-        "bridged": "2026-04-30"
-      },
-      "deps": [
-        "Ornn-Audit-System"
-      ],
-      "gh_query": "is:issue is:open repo:ChronoAIProject/Ornn AgentSeal in:title"
-    },
-    "Ornn-Analytics-PostHog": {
-      "label": {
-        "en": "Analytics (PostHog)",
-        "zh": "数据分析 (PostHog)"
-      },
-      "desc": {
-        "en": "PostHog-only platform analytics — DB-driven telemetry, custom audit infra removed (#271). Frontend pageview tracking + caller-type header with cookie-free consent (#246). Admin audit + analytics dashboard (#247). PostHog integration (#252).",
-        "zh": "全站统一到 PostHog — DB 驱动遥测, 移除自家 audit 基础设施 (#271)。前端浏览追踪 + caller-type header + cookie-free consent (#246)。Admin 审核 + 分析 dashboard (#247)。PostHog 集成 (#252)"
-      },
-      "closure": "bridged",
-      "formal": "checked",
-      "product": "ornn",
-      "milestone": "Go-Live-Prep",
-      "owner": "chronoai-shining",
-      "issue_count": 0,
-      "focus": false,
-      "archived": false,
-      "promoted_at": {
-        "obligation": "2026-04-12",
-        "scoped": "2026-04-20",
-        "public": "2026-04-30",
-        "bridged": "2026-04-30"
-      },
-      "deps": [
-        "Ornn-Skill-Lifecycle-Core"
-      ],
-      "gh_query": "is:issue is:open repo:ChronoAIProject/Ornn PostHog in:title"
-    },
-    "Ornn-Quota-Admin": {
-      "label": {
-        "en": "Quota & Admin Controls",
-        "zh": "配额与 admin 控制"
-      },
-      "desc": {
-        "en": "Per-user playground / skill-gen quota with admin-granted beta credits (#250). Admin model selection from Chrono LLM catalog + per-call user picker (#251). Per-provider model management (#270). Quota redesign + admin panel restructure (#268).",
-        "zh": "per-user playground / skill-gen 配额 + admin 发 beta credits (#250)。Admin 从 Chrono LLM 目录选模型 + 调用时用户切换 (#251)。Per-provider 模型管理 (#270)。配额重做 + admin 面板重构 (#268)"
-      },
-      "closure": "bridged",
-      "formal": "checked",
-      "product": "ornn",
-      "milestone": "Go-Live-Prep",
-      "owner": "chronoai-shining",
-      "issue_count": 0,
-      "focus": false,
-      "archived": false,
-      "promoted_at": {
-        "obligation": "2026-04-10",
-        "scoped": "2026-04-18",
-        "public": "2026-04-30",
-        "bridged": "2026-04-30"
-      },
-      "deps": [],
-      "gh_query": "is:issue is:open repo:ChronoAIProject/Ornn quota in:title"
-    },
-    "Ornn-NyxID-Integration": {
-      "label": {
-        "en": "NyxID Integration",
-        "zh": "NyxID 集成"
-      },
-      "desc": {
-        "en": "NyxID OAuth + service-registry + v0.4 breaking env-var split (SA vs OAuth user creds) + system-skills auto-generation from NyxID service catalog (#43, #44). Open bugs: #220 service slug mismatch, #218 share/audit leak, #106 permission catalog flip.",
-        "zh": "NyxID OAuth + service-registry + v0.4 breaking env 拆分 (SA 服务凭证 vs OAuth 用户凭证) + 从 NyxID 服务目录自动生成 system-skills (#43, #44)。未修 bug: #220 service slug 错位, #218 share/audit 泄漏, #106 权限 catalog flip"
-      },
-      "closure": "bridged",
-      "formal": "checked",
-      "product": "ornn",
-      "milestone": "Go-Live-Prep",
-      "owner": "chronoai-shining",
-      "issue_count": 4,
-      "focus": false,
-      "archived": false,
-      "promoted_at": {
-        "seed": "2026-02-08",
-        "obligation": "2026-02-20",
-        "scoped": "2026-03-10",
-        "public": "2026-04-23",
-        "bridged": "2026-04-30"
-      },
-      "deps": [
-        "NyxID-OAuth-flow"
-      ],
-      "gh_query": "is:issue is:open repo:ChronoAIProject/Ornn NyxID in:title"
-    },
-    "Ornn-Web-Frontend": {
-      "label": {
-        "en": "Ornn Web Frontend",
-        "zh": "Ornn Web 前端"
-      },
-      "desc": {
-        "en": "ornn.chrono-ai.fun — developer touch-point for the agent API: skill detail, docs, admin, landing. NOT a marketplace (positioning #199). Editorial Forge UI migration Phases A-F (#201-#213), landing redesign (#221), Forge Workshop v3 (#232), full i18n zh/en parity (#343-#348).",
-        "zh": "ornn.chrono-ai.fun — agent API 的 developer 触点: skill 详情 + docs + admin + landing。不是 marketplace (定位见 #199)。Editorial Forge UI 迁移 A-F 阶段 (#201-#213), landing 重做 (#221), Forge Workshop v3 (#232), 全量 i18n zh/en 对等 (#343-#348)"
-      },
-      "closure": "bridged",
-      "formal": "checked",
-      "product": "ornn",
-      "milestone": "Go-Live-Prep",
-      "owner": "chronoai-shining",
-      "issue_count": 0,
-      "focus": false,
-      "archived": false,
-      "promoted_at": {
-        "obligation": "2026-03-01",
-        "scoped": "2026-03-15",
-        "public": "2026-04-23",
-        "bridged": "2026-04-30"
-      },
-      "deps": [],
-      "gh_query": "is:issue is:open repo:ChronoAIProject/Ornn label:i18n"
-    },
-    "Ornn-Platform-Power": {
-      "label": {
-        "en": "Platform Power (M4)",
-        "zh": "平台力 (M4)"
-      },
-      "desc": {
-        "en": "Q2 attack target: skills that compose into workflows. Skill chaining (#35), webhook & event system for skill lifecycle (#36), templates & starter kits (#37). 0 closed / 3 open — pre-implementation.",
-        "zh": "Q2 攻坚目标: 把 skill 组合成 workflow。Skill chaining (#35), webhook & event 系统 (#36), 模板 & starter kit (#37)。0 closed / 3 open, 尚未实现"
-      },
-      "closure": "obligation",
-      "formal": "none",
-      "product": "ornn",
-      "milestone": "M4",
-      "owner": "chronoai-shining",
-      "issue_count": 3,
-      "focus": true,
-      "archived": false,
-      "promoted_at": {
-        "seed": "2026-02-15",
-        "obligation": "2026-04-30"
-      },
-      "deps": [
-        "Ornn-Skill-Lifecycle-Core"
-      ],
-      "gh_query": "is:issue is:open repo:ChronoAIProject/Ornn milestone:\"M4 - Platform Power\""
     },
     "Sisyphus-V3-Branch": {
       "label": {
@@ -1424,6 +1400,356 @@
       },
       "deps": [],
       "gh_query": "is:issue is:open repo:aevatarAI/godgpt affiliate in:title"
+    },
+    "Ornn-M0-Engineering-Foundation": {
+      "label": {
+        "en": "M0 — Engineering Foundation & Infra",
+        "zh": "M0 — 工程地基与基础设施"
+      },
+      "desc": {
+        "en": "Engineering foundation that the rest of the product stands on: convention freeze, /api/v1 contract, architecture teardown, nginx + runtime-config for ornn-web, K8s deploy + CD, env-var hygiene, MinIO/ingress, changeset-release pipeline, Dependabot + bun-audit CI, Vite upgrades, repo-health metadata. **Outcome**: a codebase + delivery pipeline that scales beyond one author.\n\n<!-- AUTO_GH_ISSUES:START -->\n**GitHub issues** — [M0 — Engineering Foundation & Infra](https://github.com/ChronoAIProject/Ornn/milestone/14) · 1 open / 32 closed\n\n_Open:_\n- [#399](https://github.com/ChronoAIProject/Ornn/issues/399) [Docs] Skill manuals reference removed endpoints — refresh `api-reference.md` against current API\n\n_Closed (most recent first):_\n- [#555](https://github.com/ChronoAIProject/Ornn/issues/555) ~~[CI/CD] Cut release v0.8.0 (admin broadcasts + launch-celebration popup + drawer polish)~~\n- [#519](https://github.com/ChronoAIProject/Ornn/issues/519) ~~[Misc] LaunchCelebrationPopup — explain the NyxID SSO flow next to the invite code~~\n- [#495](https://github.com/ChronoAIProject/Ornn/issues/495) ~~[CI/CD] Cut release v0.7.2 (bilingual announcements + contact page polish)~~\n- [#486](https://github.com/ChronoAIProject/Ornn/issues/486) ~~[CI/CD] Cut release v0.7.1 (web copy polish)~~\n- [#477](https://github.com/ChronoAIProject/Ornn/issues/477) ~~[CI/CD] Curate release notes for 2026-05-13 cut~~\n- [#435](https://github.com/ChronoAIProject/Ornn/issues/435) ~~[CI/CD] Restructure release notes — fixed template + per-release dated files~~\n- [#433](https://github.com/ChronoAIProject/Ornn/issues/433) ~~[CI/CD] Gate develop → main PRs on a properly-filled release-notes-next.md~~\n- [#431](https://github.com/ChronoAIProject/Ornn/issues/431) ~~[CI/CD] Release notes from in-repo file (Fixed / New Feature / Changed)~~\n- [#429](https://github.com/ChronoAIProject/Ornn/issues/429) ~~[CI/CD] changeset-release: GitHub Release body exceeds 125 000-char limit on big releases (v0.6.0 hit it)~~\n- [#402](https://github.com/ChronoAIProject/Ornn/issues/402) ~~[CI/CD] Whitelist Dependabot in require-review + exempt from changeset-check~~\n- [#400](https://github.com/ChronoAIProject/Ornn/issues/400) ~~[CI/CD] Upgrade vite 6 → 8 and @vitejs/plugin-react 4 → 6~~\n- [#387](https://github.com/ChronoAIProject/Ornn/issues/387) ~~[CI/CD] Wire bun audit gate to block high/critical advisories on PR~~\n- [#383](https://github.com/ChronoAIProject/Ornn/issues/383) ~~[CI/CD] Add Dependabot config + bun audit CI gate for supply-chain baseline~~\n- [#371](https://github.com/ChronoAIProject/Ornn/issues/371) ~~[Misc] PAT permission smoke test — safe to ignore~~\n- [#354](https://github.com/ChronoAIProject/Ornn/issues/354) ~~[Misc] Repo organization: move SDKs into sdk/, ALL-CAPS docs/ filenames, CLAUDE.md doc index~~\n- [#349](https://github.com/ChronoAIProject/Ornn/issues/349) ~~[Docs] Align README with CLAUDE.md, drop .ornn-skills, reorganize markdown layout~~\n- [#296](https://github.com/ChronoAIProject/Ornn/issues/296) ~~[Bug] ornn-web crashloops on first deploy — 15-derive-nyxid-api-host.envsh shipped non-executable~~\n- [#294](https://github.com/ChronoAIProject/Ornn/issues/294) ~~[Chore] Restructure .env.sample.ornn into sections; move NyxID SA creds to admin settings; consolidate ornn-web URLs to base+path~~\n- [#287](https://github.com/ChronoAIProject/Ornn/issues/287) ~~[Chore] Audit + clean up env-var surface — drop stale config keys, align names~~\n- [#273](https://github.com/ChronoAIProject/Ornn/issues/273) ~~[Docs] CLAUDE.md — codify commit-size rule (small self-contained > one big)~~\n- [#264](https://github.com/ChronoAIProject/Ornn/issues/264) ~~[Feature] Playground chat — message entrance animation + strengthen PR-issue linkage rule in CLAUDE.md~~\n- [#237](https://github.com/ChronoAIProject/Ornn/issues/237) ~~[CI/CD] changeset-release bot — replace default GITHUB_TOKEN with PAT/App token so bot-opened PRs trigger required workflows~~\n- [#217](https://github.com/ChronoAIProject/Ornn/issues/217) ~~[Bug] /health, /livez, /readyz, /api/v1/openapi.json not routed correctly — nginx/proxy intercepts them~~\n- [#199](https://github.com/ChronoAIProject/Ornn/issues/199) ~~[Docs] Encode \"agent-API not marketplace\" positioning into CLAUDE.md + landing page + docs index~~\n- [#167](https://github.com/ChronoAIProject/Ornn/issues/167) ~~[Infra] Local minio ingress + browser-reachable presigned URLs~~\n- _… and 7 more closed_\n<!-- AUTO_GH_ISSUES:END -->",
+        "zh": "工程地基, 后面所有产品工作都站在这上面: 约定冻结 / /api/v1 契约 / 架构拆解 / ornn-web nginx + runtime config / K8s 部署 + CD / 环境变量整顿 / MinIO+ingress / changeset-release 流水线 / Dependabot + bun-audit CI / Vite 升级 / 仓库 health metadata。**产出**: 代码库 + 交付管线能撑过单人作者阶段\n\n<!-- AUTO_GH_ISSUES:START -->\n**GitHub issues** — [M0 — Engineering Foundation & Infra](https://github.com/ChronoAIProject/Ornn/milestone/14) · 1 进行中 / 32 已关闭\n\n_进行中:_\n- [#399](https://github.com/ChronoAIProject/Ornn/issues/399) [Docs] Skill manuals reference removed endpoints — refresh `api-reference.md` against current API\n\n_已关闭 (most recent first):_\n- [#555](https://github.com/ChronoAIProject/Ornn/issues/555) ~~[CI/CD] Cut release v0.8.0 (admin broadcasts + launch-celebration popup + drawer polish)~~\n- [#519](https://github.com/ChronoAIProject/Ornn/issues/519) ~~[Misc] LaunchCelebrationPopup — explain the NyxID SSO flow next to the invite code~~\n- [#495](https://github.com/ChronoAIProject/Ornn/issues/495) ~~[CI/CD] Cut release v0.7.2 (bilingual announcements + contact page polish)~~\n- [#486](https://github.com/ChronoAIProject/Ornn/issues/486) ~~[CI/CD] Cut release v0.7.1 (web copy polish)~~\n- [#477](https://github.com/ChronoAIProject/Ornn/issues/477) ~~[CI/CD] Curate release notes for 2026-05-13 cut~~\n- [#435](https://github.com/ChronoAIProject/Ornn/issues/435) ~~[CI/CD] Restructure release notes — fixed template + per-release dated files~~\n- [#433](https://github.com/ChronoAIProject/Ornn/issues/433) ~~[CI/CD] Gate develop → main PRs on a properly-filled release-notes-next.md~~\n- [#431](https://github.com/ChronoAIProject/Ornn/issues/431) ~~[CI/CD] Release notes from in-repo file (Fixed / New Feature / Changed)~~\n- [#429](https://github.com/ChronoAIProject/Ornn/issues/429) ~~[CI/CD] changeset-release: GitHub Release body exceeds 125 000-char limit on big releases (v0.6.0 hit it)~~\n- [#402](https://github.com/ChronoAIProject/Ornn/issues/402) ~~[CI/CD] Whitelist Dependabot in require-review + exempt from changeset-check~~\n- [#400](https://github.com/ChronoAIProject/Ornn/issues/400) ~~[CI/CD] Upgrade vite 6 → 8 and @vitejs/plugin-react 4 → 6~~\n- [#387](https://github.com/ChronoAIProject/Ornn/issues/387) ~~[CI/CD] Wire bun audit gate to block high/critical advisories on PR~~\n- [#383](https://github.com/ChronoAIProject/Ornn/issues/383) ~~[CI/CD] Add Dependabot config + bun audit CI gate for supply-chain baseline~~\n- [#371](https://github.com/ChronoAIProject/Ornn/issues/371) ~~[Misc] PAT permission smoke test — safe to ignore~~\n- [#354](https://github.com/ChronoAIProject/Ornn/issues/354) ~~[Misc] Repo organization: move SDKs into sdk/, ALL-CAPS docs/ filenames, CLAUDE.md doc index~~\n- [#349](https://github.com/ChronoAIProject/Ornn/issues/349) ~~[Docs] Align README with CLAUDE.md, drop .ornn-skills, reorganize markdown layout~~\n- [#296](https://github.com/ChronoAIProject/Ornn/issues/296) ~~[Bug] ornn-web crashloops on first deploy — 15-derive-nyxid-api-host.envsh shipped non-executable~~\n- [#294](https://github.com/ChronoAIProject/Ornn/issues/294) ~~[Chore] Restructure .env.sample.ornn into sections; move NyxID SA creds to admin settings; consolidate ornn-web URLs to base+path~~\n- [#287](https://github.com/ChronoAIProject/Ornn/issues/287) ~~[Chore] Audit + clean up env-var surface — drop stale config keys, align names~~\n- [#273](https://github.com/ChronoAIProject/Ornn/issues/273) ~~[Docs] CLAUDE.md — codify commit-size rule (small self-contained > one big)~~\n- [#264](https://github.com/ChronoAIProject/Ornn/issues/264) ~~[Feature] Playground chat — message entrance animation + strengthen PR-issue linkage rule in CLAUDE.md~~\n- [#237](https://github.com/ChronoAIProject/Ornn/issues/237) ~~[CI/CD] changeset-release bot — replace default GITHUB_TOKEN with PAT/App token so bot-opened PRs trigger required workflows~~\n- [#217](https://github.com/ChronoAIProject/Ornn/issues/217) ~~[Bug] /health, /livez, /readyz, /api/v1/openapi.json not routed correctly — nginx/proxy intercepts them~~\n- [#199](https://github.com/ChronoAIProject/Ornn/issues/199) ~~[Docs] Encode \"agent-API not marketplace\" positioning into CLAUDE.md + landing page + docs index~~\n- [#167](https://github.com/ChronoAIProject/Ornn/issues/167) ~~[Infra] Local minio ingress + browser-reachable presigned URLs~~\n- _… and 7 more closed_\n<!-- AUTO_GH_ISSUES:END -->"
+      },
+      "milestone_ref": {
+        "repo": "ChronoAIProject/Ornn",
+        "milestone": "M0 — Engineering Foundation & Infra"
+      },
+      "closure": "mature",
+      "formal": "checked",
+      "product": "ornn",
+      "milestone": "M0",
+      "owner": "chronoai-shining",
+      "issue_count": 1,
+      "focus": false,
+      "archived": false,
+      "promoted_at": {
+        "mature": "2026-04-23"
+      },
+      "deps": [],
+      "gh_query": "is:issue is:open repo:ChronoAIProject/Ornn milestone:\"M0 — Engineering Foundation & Infra\""
+    },
+    "Ornn-M1-Skill-Lifecycle-Core": {
+      "label": {
+        "en": "M1 — Skill Lifecycle Core",
+        "zh": "M1 — Skill 全生命周期核心"
+      },
+      "desc": {
+        "en": "Agent-facing skill lifecycle: search → pull → install → execute → build → upload → share. MCP-native discovery, versioning + version history, sandboxed execution (Playground), local dev with hot reload, NyxID-services pages, system-skills auto-generation, organization-scope visibility. **Outcome**: any AI agent can do the full lifecycle through one API surface.\n\n<!-- AUTO_GH_ISSUES:START -->\n**GitHub issues** — [M1 — Skill Lifecycle Core](https://github.com/ChronoAIProject/Ornn/milestone/15) · 7 open / 29 closed\n\n_Open:_\n- [#565](https://github.com/ChronoAIProject/Ornn/issues/565) [Bug] [Skill Edit] Owner updating an existing skill package is blocked by CORS\n- [#564](https://github.com/ChronoAIProject/Ornn/issues/564) [Bug] [Playground] Missing skill still opens an interactive Playground page after API returns 404\n- [#531](https://github.com/ChronoAIProject/Ornn/issues/531) [Bug] [Playground Sandbox] Installed CLI state is not preserved across tool calls\n- [#530](https://github.com/ChronoAIProject/Ornn/issues/530) [Bug] [Playground Sandbox] nyxid skill tool execution returns 500 internal_error\n- [#529](https://github.com/ChronoAIProject/Ornn/issues/529) [Bug] [GitHub Import] Skip validation still fails on Ornn frontmatter validation\n- [#528](https://github.com/ChronoAIProject/Ornn/issues/528) [Bug] [Skill Creation] Saving AI-generated or guided skills fails with CORS error\n- [#243](https://github.com/ChronoAIProject/Ornn/issues/243) [Feature] Service-binding agent prompt — encourage agents to promote repeated service operations into a reusable Ornn skill bound to that service\n\n_Closed (most recent first):_\n- [#562](https://github.com/ChronoAIProject/Ornn/issues/562) ~~[Bug] [Playground] nyxid LIST CAPABILITIES response is delayed and follow-up command is not executed~~\n- [#72](https://github.com/ChronoAIProject/Ornn/issues/72) ~~[CI/CD] Epic 4: Ops, testing, observability~~\n- [#71](https://github.com/ChronoAIProject/Ornn/issues/71) ~~[Feature] Epic 3: Frontend modernization~~\n- [#70](https://github.com/ChronoAIProject/Ornn/issues/70) ~~[Feature] Epic 2 prep: NyxID permission catalog rollout (cross-team)~~\n- [#69](https://github.com/ChronoAIProject/Ornn/issues/69) ~~[Feature] Epic 2 prep: Reserved-verb DB audit~~\n- [#68](https://github.com/ChronoAIProject/Ornn/issues/68) ~~[Feature] Epic 2: /api/v1/ cut (breaking external contract)~~\n- [#67](https://github.com/ChronoAIProject/Ornn/issues/67) ~~Epic 1 [first step]: Topic domain teardown~~\n- [#66](https://github.com/ChronoAIProject/Ornn/issues/66) ~~Epic 1: Architecture refactor (no external API change)~~\n- [#65](https://github.com/ChronoAIProject/Ornn/issues/65) ~~Epic 0: Convention freeze (foundations)~~\n- [#64](https://github.com/ChronoAIProject/Ornn/issues/64) ~~[Feature] API endpoint standardization & refactor (prep for Ornn Manual v1)~~\n- [#56](https://github.com/ChronoAIProject/Ornn/issues/56) ~~Skill Topics: group skills under named topics, with API CRUD~~\n- [#44](https://github.com/ChronoAIProject/Ornn/issues/44) ~~[M1] NyxID Services pages: My Services + Admin Services with skill generation~~\n- [#43](https://github.com/ChronoAIProject/Ornn/issues/43) ~~[M1] System Skills: auto-generate skills from NyxID service catalog~~\n- [#40](https://github.com/ChronoAIProject/Ornn/issues/40) ~~[Docs] Move docs to frontend static build, remove /api/docs backend routes~~\n- [#28](https://github.com/ChronoAIProject/Ornn/issues/28) ~~[M1] MCP-native skill discovery~~\n- [#27](https://github.com/ChronoAIProject/Ornn/issues/27) ~~[M1] Local dev server with hot-reload for skill authoring~~\n- [#25](https://github.com/ChronoAIProject/Ornn/issues/25) ~~[M1] Skill versioning & version history~~\n- [#24](https://github.com/ChronoAIProject/Ornn/issues/24) ~~[Feature] End-to-end skill lifecycle: build -> search -> pull -> execute~~\n- [#23](https://github.com/ChronoAIProject/Ornn/issues/23) ~~[M1] API route refactor: merge /api/web + /api/agent into unified /api~~\n- [#12](https://github.com/ChronoAIProject/Ornn/issues/12) ~~feat: daily-briefing skill — 移植 /daily 逻辑为 Ornn skill~~\n- [#11](https://github.com/ChronoAIProject/Ornn/issues/11) ~~feat: Skill Registry API — supply skill definitions + metadata to Aevatar~~\n- [#9](https://github.com/ChronoAIProject/Ornn/issues/9) ~~[CI/CD] CI/CD pipeline — 自动测试 + 部署~~\n- [#8](https://github.com/ChronoAIProject/Ornn/issues/8) ~~feat: Organization scope skills — 支持公司/团队级共享 skills~~\n- [#7](https://github.com/ChronoAIProject/Ornn/issues/7) ~~Skill page should provide a copyable install URL for LLMs~~\n- [#6](https://github.com/ChronoAIProject/Ornn/issues/6) ~~[Bug] Ornn authoring is not usable from the Nyx CLI / proxy path and the required auth boundary is unclear~~\n- _… and 4 more closed_\n<!-- AUTO_GH_ISSUES:END -->",
+        "zh": "面向 agent 的 skill 全生命周期: 搜索 → 拉取 → 安装 → 执行 → 构建 → 上传 → 分享。MCP 原生发现 / 版本化 / 版本历史 / sandbox 执行 (Playground) / 本地热重载 / NyxID services 页 / system skills 自动生成 / 组织级可见性。**产出**: 任何 AI agent 都能通过一个 API surface 完成全生命周期\n\n<!-- AUTO_GH_ISSUES:START -->\n**GitHub issues** — [M1 — Skill Lifecycle Core](https://github.com/ChronoAIProject/Ornn/milestone/15) · 7 进行中 / 29 已关闭\n\n_进行中:_\n- [#565](https://github.com/ChronoAIProject/Ornn/issues/565) [Bug] [Skill Edit] Owner updating an existing skill package is blocked by CORS\n- [#564](https://github.com/ChronoAIProject/Ornn/issues/564) [Bug] [Playground] Missing skill still opens an interactive Playground page after API returns 404\n- [#531](https://github.com/ChronoAIProject/Ornn/issues/531) [Bug] [Playground Sandbox] Installed CLI state is not preserved across tool calls\n- [#530](https://github.com/ChronoAIProject/Ornn/issues/530) [Bug] [Playground Sandbox] nyxid skill tool execution returns 500 internal_error\n- [#529](https://github.com/ChronoAIProject/Ornn/issues/529) [Bug] [GitHub Import] Skip validation still fails on Ornn frontmatter validation\n- [#528](https://github.com/ChronoAIProject/Ornn/issues/528) [Bug] [Skill Creation] Saving AI-generated or guided skills fails with CORS error\n- [#243](https://github.com/ChronoAIProject/Ornn/issues/243) [Feature] Service-binding agent prompt — encourage agents to promote repeated service operations into a reusable Ornn skill bound to that service\n\n_已关闭 (most recent first):_\n- [#562](https://github.com/ChronoAIProject/Ornn/issues/562) ~~[Bug] [Playground] nyxid LIST CAPABILITIES response is delayed and follow-up command is not executed~~\n- [#72](https://github.com/ChronoAIProject/Ornn/issues/72) ~~[CI/CD] Epic 4: Ops, testing, observability~~\n- [#71](https://github.com/ChronoAIProject/Ornn/issues/71) ~~[Feature] Epic 3: Frontend modernization~~\n- [#70](https://github.com/ChronoAIProject/Ornn/issues/70) ~~[Feature] Epic 2 prep: NyxID permission catalog rollout (cross-team)~~\n- [#69](https://github.com/ChronoAIProject/Ornn/issues/69) ~~[Feature] Epic 2 prep: Reserved-verb DB audit~~\n- [#68](https://github.com/ChronoAIProject/Ornn/issues/68) ~~[Feature] Epic 2: /api/v1/ cut (breaking external contract)~~\n- [#67](https://github.com/ChronoAIProject/Ornn/issues/67) ~~Epic 1 [first step]: Topic domain teardown~~\n- [#66](https://github.com/ChronoAIProject/Ornn/issues/66) ~~Epic 1: Architecture refactor (no external API change)~~\n- [#65](https://github.com/ChronoAIProject/Ornn/issues/65) ~~Epic 0: Convention freeze (foundations)~~\n- [#64](https://github.com/ChronoAIProject/Ornn/issues/64) ~~[Feature] API endpoint standardization & refactor (prep for Ornn Manual v1)~~\n- [#56](https://github.com/ChronoAIProject/Ornn/issues/56) ~~Skill Topics: group skills under named topics, with API CRUD~~\n- [#44](https://github.com/ChronoAIProject/Ornn/issues/44) ~~[M1] NyxID Services pages: My Services + Admin Services with skill generation~~\n- [#43](https://github.com/ChronoAIProject/Ornn/issues/43) ~~[M1] System Skills: auto-generate skills from NyxID service catalog~~\n- [#40](https://github.com/ChronoAIProject/Ornn/issues/40) ~~[Docs] Move docs to frontend static build, remove /api/docs backend routes~~\n- [#28](https://github.com/ChronoAIProject/Ornn/issues/28) ~~[M1] MCP-native skill discovery~~\n- [#27](https://github.com/ChronoAIProject/Ornn/issues/27) ~~[M1] Local dev server with hot-reload for skill authoring~~\n- [#25](https://github.com/ChronoAIProject/Ornn/issues/25) ~~[M1] Skill versioning & version history~~\n- [#24](https://github.com/ChronoAIProject/Ornn/issues/24) ~~[Feature] End-to-end skill lifecycle: build -> search -> pull -> execute~~\n- [#23](https://github.com/ChronoAIProject/Ornn/issues/23) ~~[M1] API route refactor: merge /api/web + /api/agent into unified /api~~\n- [#12](https://github.com/ChronoAIProject/Ornn/issues/12) ~~feat: daily-briefing skill — 移植 /daily 逻辑为 Ornn skill~~\n- [#11](https://github.com/ChronoAIProject/Ornn/issues/11) ~~feat: Skill Registry API — supply skill definitions + metadata to Aevatar~~\n- [#9](https://github.com/ChronoAIProject/Ornn/issues/9) ~~[CI/CD] CI/CD pipeline — 自动测试 + 部署~~\n- [#8](https://github.com/ChronoAIProject/Ornn/issues/8) ~~feat: Organization scope skills — 支持公司/团队级共享 skills~~\n- [#7](https://github.com/ChronoAIProject/Ornn/issues/7) ~~Skill page should provide a copyable install URL for LLMs~~\n- [#6](https://github.com/ChronoAIProject/Ornn/issues/6) ~~[Bug] Ornn authoring is not usable from the Nyx CLI / proxy path and the required auth boundary is unclear~~\n- _… and 4 more closed_\n<!-- AUTO_GH_ISSUES:END -->"
+      },
+      "milestone_ref": {
+        "repo": "ChronoAIProject/Ornn",
+        "milestone": "M1 — Skill Lifecycle Core"
+      },
+      "closure": "mature",
+      "formal": "checked",
+      "product": "ornn",
+      "milestone": "M1",
+      "owner": "chronoai-shining",
+      "issue_count": 7,
+      "focus": false,
+      "archived": false,
+      "promoted_at": {
+        "bridged": "2026-04-23",
+        "mature": "2026-05-01"
+      },
+      "deps": [
+        "Ornn-M0-Engineering-Foundation"
+      ],
+      "gh_query": "is:issue is:open repo:ChronoAIProject/Ornn milestone:\"M1 — Skill Lifecycle Core\""
+    },
+    "Ornn-M2-Build-Experience": {
+      "label": {
+        "en": "M2 — Build Experience",
+        "zh": "M2 — 构建体验"
+      },
+      "desc": {
+        "en": "Generate skills from nothing or from any API spec. Dual-mode build (local + remote LLM), OpenAPI-to-skill, generation wizard with reference selection, GitHub-folder import (pull skills from a repo path), TypeScript SDK, Python SDK, testcontainers-backed integration tests. **Outcome**: skill authoring takes minutes; first-class support for \"import existing API\".\n\n<!-- AUTO_GH_ISSUES:START -->\n**GitHub issues** — [M2 — Build Experience](https://github.com/ChronoAIProject/Ornn/milestone/16) · 0 open / 10 closed\n\n_Closed (most recent first):_\n- [#110](https://github.com/ChronoAIProject/Ornn/issues/110) ~~[Feature] Ornn Python SDK~~\n- [#102](https://github.com/ChronoAIProject/Ornn/issues/102) ~~[CI/CD] Integration test layer with testcontainers-backed Mongo~~\n- [#57](https://github.com/ChronoAIProject/Ornn/issues/57) ~~[Feature] Pull skills from GitHub: one-way sync from a GitHub repo/path into Ornn~~\n- [#54](https://github.com/ChronoAIProject/Ornn/issues/54) ~~[M2] Ship TypeScript and Python SDKs for skill operations~~\n- [#45](https://github.com/ChronoAIProject/Ornn/issues/45) ~~[M2] Skill generation wizard with reference selection and progress UI~~\n- [#42](https://github.com/ChronoAIProject/Ornn/issues/42) ~~[Feature] Generate skills from source code repos~~\n- [#41](https://github.com/ChronoAIProject/Ornn/issues/41) ~~[M2] Generate skills from OpenAPI specs~~\n- [#31](https://github.com/ChronoAIProject/Ornn/issues/31) ~~[Feature] Ornn SDK: TypeScript + Python client libraries~~\n- [#30](https://github.com/ChronoAIProject/Ornn/issues/30) ~~[Feature] REST API skill generation from OpenAPI specs / source code~~\n- [#29](https://github.com/ChronoAIProject/Ornn/issues/29) ~~[Feature] Dual-mode skill build: local boundaries + remote generation~~\n<!-- AUTO_GH_ISSUES:END -->",
+        "zh": "从 0 生成 skill 或从任何 API spec 生成 skill。双模构建 (本地 + 远程 LLM) / OpenAPI 转 skill / 带参考引用的生成向导 / GitHub 文件夹导入 / TypeScript SDK / Python SDK / testcontainers 驱动的集成测试。**产出**: skill 编写从小时级降到分钟级, 头等支持\"导入已有 API\"\n\n<!-- AUTO_GH_ISSUES:START -->\n**GitHub issues** — [M2 — Build Experience](https://github.com/ChronoAIProject/Ornn/milestone/16) · 0 进行中 / 10 已关闭\n\n_已关闭 (most recent first):_\n- [#110](https://github.com/ChronoAIProject/Ornn/issues/110) ~~[Feature] Ornn Python SDK~~\n- [#102](https://github.com/ChronoAIProject/Ornn/issues/102) ~~[CI/CD] Integration test layer with testcontainers-backed Mongo~~\n- [#57](https://github.com/ChronoAIProject/Ornn/issues/57) ~~[Feature] Pull skills from GitHub: one-way sync from a GitHub repo/path into Ornn~~\n- [#54](https://github.com/ChronoAIProject/Ornn/issues/54) ~~[M2] Ship TypeScript and Python SDKs for skill operations~~\n- [#45](https://github.com/ChronoAIProject/Ornn/issues/45) ~~[M2] Skill generation wizard with reference selection and progress UI~~\n- [#42](https://github.com/ChronoAIProject/Ornn/issues/42) ~~[Feature] Generate skills from source code repos~~\n- [#41](https://github.com/ChronoAIProject/Ornn/issues/41) ~~[M2] Generate skills from OpenAPI specs~~\n- [#31](https://github.com/ChronoAIProject/Ornn/issues/31) ~~[Feature] Ornn SDK: TypeScript + Python client libraries~~\n- [#30](https://github.com/ChronoAIProject/Ornn/issues/30) ~~[Feature] REST API skill generation from OpenAPI specs / source code~~\n- [#29](https://github.com/ChronoAIProject/Ornn/issues/29) ~~[Feature] Dual-mode skill build: local boundaries + remote generation~~\n<!-- AUTO_GH_ISSUES:END -->"
+      },
+      "milestone_ref": {
+        "repo": "ChronoAIProject/Ornn",
+        "milestone": "M2 — Build Experience"
+      },
+      "closure": "mature",
+      "formal": "checked",
+      "product": "ornn",
+      "milestone": "M2",
+      "owner": "chronoai-shining",
+      "issue_count": 0,
+      "focus": false,
+      "archived": false,
+      "promoted_at": {
+        "bridged": "2026-04-23",
+        "mature": "2026-05-01"
+      },
+      "deps": [
+        "Ornn-M1-Skill-Lifecycle-Core"
+      ],
+      "gh_query": "is:issue is:open repo:ChronoAIProject/Ornn milestone:\"M2 — Build Experience\""
+    },
+    "Ornn-M3-Trust-Quality": {
+      "label": {
+        "en": "M3 — Trust & Quality",
+        "zh": "M3 — 信任与质量"
+      },
+      "desc": {
+        "en": "LLM-based skill audit + waiver flow + per-version audit history + share workflows + in-product notifications + analytics dashboards. Audit-as-label pivot (share is unconditional, audit is a badge). Frontend UIs for audit/shares/notifications/analytics/github-sync. **Outcome**: every published skill carries trust + usage signals users can see and act on.\n\n<!-- AUTO_GH_ISSUES:START -->\n**GitHub issues** — [M3 — Trust & Quality](https://github.com/ChronoAIProject/Ornn/milestone/17) · 3 open / 33 closed\n\n_Open:_\n- [#566](https://github.com/ChronoAIProject/Ornn/issues/566) [Bug] [Registry] Anonymous users cannot load public and system skills because public Registry APIs return 401\n- [#254](https://github.com/ChronoAIProject/Ornn/issues/254) [Bug] backfill-skill-author-display-names.ts uses $last for activity labels — same root cause as #238 runtime aggregator\n- [#106](https://github.com/ChronoAIProject/Ornn/issues/106) [Feature] NyxID permission catalog flip — post-NyxID-rename\n\n_Closed (most recent first):_\n- [#271](https://github.com/ChronoAIProject/Ornn/issues/271) ~~[Feature] PostHog-only platform analytics — wire DB-driven telemetry, remove custom audit infrastructure~~\n- [#247](https://github.com/ChronoAIProject/Ornn/issues/247) ~~[Feature] Admin audit + analytics dashboard — pageviews, API audit, caller-type breakdown~~\n- [#246](https://github.com/ChronoAIProject/Ornn/issues/246) ~~[Feature] Frontend pageview tracking + caller-type header — cookie-free analytics with consent~~\n- [#244](https://github.com/ChronoAIProject/Ornn/issues/244) ~~[Feature] Skill auditing — Gen Agent Trust Hub integration~~\n- [#218](https://github.com/ChronoAIProject/Ornn/issues/218) ~~[Bug] Legacy share/audit-gated data leaks through /notifications and /admin/activities after PR #198~~\n- [#197](https://github.com/ChronoAIProject/Ornn/issues/197) ~~[Feature] Pivot share/audit relationship — share is unconditional, audit is a label~~\n- [#188](https://github.com/ChronoAIProject/Ornn/issues/188) ~~[Feature] Per-version audit badges + share semantics (scheme B)~~\n- [#187](https://github.com/ChronoAIProject/Ornn/issues/187) ~~[Feature] SkillDetailPage layout rework + usage charts with time range~~\n- [#186](https://github.com/ChronoAIProject/Ornn/issues/186) ~~[Bug] Reviewer cannot approve or reject a share request from the review page~~\n- [#185](https://github.com/ChronoAIProject/Ornn/issues/185) ~~[Bug] Review queue page missing top-left back nav~~\n- [#184](https://github.com/ChronoAIProject/Ornn/issues/184) ~~[Bug] My sharing requests page missing top-left back nav~~\n- [#183](https://github.com/ChronoAIProject/Ornn/issues/183) ~~[Feature] Delete non-latest skill versions~~\n- [#182](https://github.com/ChronoAIProject/Ornn/issues/182) ~~[Feature] Skill JSON pull tracking + time-bucket aggregation~~\n- [#181](https://github.com/ChronoAIProject/Ornn/issues/181) ~~[Feature] Per-version audit history + analytics filter~~\n- [#172](https://github.com/ChronoAIProject/Ornn/issues/172) ~~[Feature] Fold audit-gated share initiation into PermissionsModal (single entry point)~~\n- [#161](https://github.com/ChronoAIProject/Ornn/issues/161) ~~[Feature] Frontend UI for skill analytics (per-skill card on SkillDetailPage)~~\n- [#160](https://github.com/ChronoAIProject/Ornn/issues/160) ~~[Feature] Frontend UI for audit-gated sharing workflow (share modal + justification + review queue + admin review)~~\n- [#159](https://github.com/ChronoAIProject/Ornn/issues/159) ~~[Feature] Frontend UI for GitHub skill import + 'Refresh from GitHub' re-sync~~\n- [#158](https://github.com/ChronoAIProject/Ornn/issues/158) ~~[Feature] Frontend UI for skill audit findings (SkillDetailPage banner + admin rerun)~~\n- [#157](https://github.com/ChronoAIProject/Ornn/issues/157) ~~[Feature] Frontend UI for in-product notifications (bell + /notifications page + unread badge + mark-read)~~\n- [#156](https://github.com/ChronoAIProject/Ornn/issues/156) ~~[Feature] Phase-3 frontend catch-up — audit / shares / notifications / analytics / github-sync UI~~\n- [#104](https://github.com/ChronoAIProject/Ornn/issues/104) ~~[Feature] Resource-grouped page layout~~\n- [#103](https://github.com/ChronoAIProject/Ornn/issues/103) ~~[Feature] RR7 data router migration~~\n- [#98](https://github.com/ChronoAIProject/Ornn/issues/98) ~~[Feature] In-Ornn notification center for audit + share-review events~~\n- [#97](https://github.com/ChronoAIProject/Ornn/issues/97) ~~[Feature] Target-based review routing for failed-audit shares (org admin / recipient / Ornn admin)~~\n- _… and 8 more closed_\n<!-- AUTO_GH_ISSUES:END -->",
+        "zh": "LLM 驱动的 skill 审核 + waiver 流程 + per-version 审核历史 + 分享工作流 + 站内通知 + 分析 dashboard。Audit-as-label 转向 (分享无门槛, 审核是 badge)。审核/分享/通知/分析/github-sync 的前端 UI。**产出**: 每个 public skill 都带 trust + usage 信号, 用户可见可决策\n\n<!-- AUTO_GH_ISSUES:START -->\n**GitHub issues** — [M3 — Trust & Quality](https://github.com/ChronoAIProject/Ornn/milestone/17) · 3 进行中 / 33 已关闭\n\n_进行中:_\n- [#566](https://github.com/ChronoAIProject/Ornn/issues/566) [Bug] [Registry] Anonymous users cannot load public and system skills because public Registry APIs return 401\n- [#254](https://github.com/ChronoAIProject/Ornn/issues/254) [Bug] backfill-skill-author-display-names.ts uses $last for activity labels — same root cause as #238 runtime aggregator\n- [#106](https://github.com/ChronoAIProject/Ornn/issues/106) [Feature] NyxID permission catalog flip — post-NyxID-rename\n\n_已关闭 (most recent first):_\n- [#271](https://github.com/ChronoAIProject/Ornn/issues/271) ~~[Feature] PostHog-only platform analytics — wire DB-driven telemetry, remove custom audit infrastructure~~\n- [#247](https://github.com/ChronoAIProject/Ornn/issues/247) ~~[Feature] Admin audit + analytics dashboard — pageviews, API audit, caller-type breakdown~~\n- [#246](https://github.com/ChronoAIProject/Ornn/issues/246) ~~[Feature] Frontend pageview tracking + caller-type header — cookie-free analytics with consent~~\n- [#244](https://github.com/ChronoAIProject/Ornn/issues/244) ~~[Feature] Skill auditing — Gen Agent Trust Hub integration~~\n- [#218](https://github.com/ChronoAIProject/Ornn/issues/218) ~~[Bug] Legacy share/audit-gated data leaks through /notifications and /admin/activities after PR #198~~\n- [#197](https://github.com/ChronoAIProject/Ornn/issues/197) ~~[Feature] Pivot share/audit relationship — share is unconditional, audit is a label~~\n- [#188](https://github.com/ChronoAIProject/Ornn/issues/188) ~~[Feature] Per-version audit badges + share semantics (scheme B)~~\n- [#187](https://github.com/ChronoAIProject/Ornn/issues/187) ~~[Feature] SkillDetailPage layout rework + usage charts with time range~~\n- [#186](https://github.com/ChronoAIProject/Ornn/issues/186) ~~[Bug] Reviewer cannot approve or reject a share request from the review page~~\n- [#185](https://github.com/ChronoAIProject/Ornn/issues/185) ~~[Bug] Review queue page missing top-left back nav~~\n- [#184](https://github.com/ChronoAIProject/Ornn/issues/184) ~~[Bug] My sharing requests page missing top-left back nav~~\n- [#183](https://github.com/ChronoAIProject/Ornn/issues/183) ~~[Feature] Delete non-latest skill versions~~\n- [#182](https://github.com/ChronoAIProject/Ornn/issues/182) ~~[Feature] Skill JSON pull tracking + time-bucket aggregation~~\n- [#181](https://github.com/ChronoAIProject/Ornn/issues/181) ~~[Feature] Per-version audit history + analytics filter~~\n- [#172](https://github.com/ChronoAIProject/Ornn/issues/172) ~~[Feature] Fold audit-gated share initiation into PermissionsModal (single entry point)~~\n- [#161](https://github.com/ChronoAIProject/Ornn/issues/161) ~~[Feature] Frontend UI for skill analytics (per-skill card on SkillDetailPage)~~\n- [#160](https://github.com/ChronoAIProject/Ornn/issues/160) ~~[Feature] Frontend UI for audit-gated sharing workflow (share modal + justification + review queue + admin review)~~\n- [#159](https://github.com/ChronoAIProject/Ornn/issues/159) ~~[Feature] Frontend UI for GitHub skill import + 'Refresh from GitHub' re-sync~~\n- [#158](https://github.com/ChronoAIProject/Ornn/issues/158) ~~[Feature] Frontend UI for skill audit findings (SkillDetailPage banner + admin rerun)~~\n- [#157](https://github.com/ChronoAIProject/Ornn/issues/157) ~~[Feature] Frontend UI for in-product notifications (bell + /notifications page + unread badge + mark-read)~~\n- [#156](https://github.com/ChronoAIProject/Ornn/issues/156) ~~[Feature] Phase-3 frontend catch-up — audit / shares / notifications / analytics / github-sync UI~~\n- [#104](https://github.com/ChronoAIProject/Ornn/issues/104) ~~[Feature] Resource-grouped page layout~~\n- [#103](https://github.com/ChronoAIProject/Ornn/issues/103) ~~[Feature] RR7 data router migration~~\n- [#98](https://github.com/ChronoAIProject/Ornn/issues/98) ~~[Feature] In-Ornn notification center for audit + share-review events~~\n- [#97](https://github.com/ChronoAIProject/Ornn/issues/97) ~~[Feature] Target-based review routing for failed-audit shares (org admin / recipient / Ornn admin)~~\n- _… and 8 more closed_\n<!-- AUTO_GH_ISSUES:END -->"
+      },
+      "milestone_ref": {
+        "repo": "ChronoAIProject/Ornn",
+        "milestone": "M3 — Trust & Quality"
+      },
+      "closure": "bridged",
+      "formal": "checked",
+      "product": "ornn",
+      "milestone": "M3",
+      "owner": "chronoai-shining",
+      "issue_count": 3,
+      "focus": false,
+      "archived": false,
+      "promoted_at": {
+        "bridged": "2026-04-30"
+      },
+      "deps": [
+        "Ornn-M1-Skill-Lifecycle-Core"
+      ],
+      "gh_query": "is:issue is:open repo:ChronoAIProject/Ornn milestone:\"M3 — Trust & Quality\""
+    },
+    "Ornn-M4-Go-Live-Prep": {
+      "label": {
+        "en": "M4 — Go Live Prep",
+        "zh": "M4 — 上线准备"
+      },
+      "desc": {
+        "en": "Make Ornn publicly usable. Per-user quota with admin redemption codes, admin model selection from Chrono LLM catalog, AgentSeal security scan on every public skill, PostHog analytics, GitHub auto-mirror of public skills to `ornn-skills`, unified agent manuals (CLI + HTTP), full i18n (zh + en parity), Editorial Forge UI migration, landing/legal/contact/News pages, launch-celebration popup, admin broadcasts, release engineering for v0.4 → v0.8. **Outcome**: a launch-ready hosted instance at ornn.chrono-ai.fun.\n\n<!-- AUTO_GH_ISSUES:START -->\n**GitHub issues** — [M4 — Go Live Prep](https://github.com/ChronoAIProject/Ornn/milestone/18) · 6 open / 106 closed\n\n_Open:_\n- [#507](https://github.com/ChronoAIProject/Ornn/issues/507) [Bug] Recipients tooltip on BroadcastsPage unreadable for many recipients\n- [#506](https://github.com/ChronoAIProject/Ornn/issues/506) [Misc] Decide whether admins can be broadcast recipients (UserEmailPicker role scope)\n- [#505](https://github.com/ChronoAIProject/Ornn/issues/505) [Feature] Admin user-id-to-email lookup endpoint for picker resolution\n- [#286](https://github.com/ChronoAIProject/Ornn/issues/286) [Misc] Migrate residual neon-input class to semantic input tokens\n- [#220](https://github.com/ChronoAIProject/Ornn/issues/220) [Bug] NyxID service registry: 'ornn' slug had wrong upstream + identity-mode mismatch with 'ornn-api' slug\n- [#22](https://github.com/ChronoAIProject/Ornn/issues/22) [Misc] Owner 自主目标: 定义 Ornn O1 路径 + 开发者触达计划\n\n_Closed (most recent first):_\n- [#572](https://github.com/ChronoAIProject/Ornn/issues/572) ~~[Docs] Surface Ornn official website link in README~~\n- [#560](https://github.com/ChronoAIProject/Ornn/issues/560) ~~[Docs] Refresh ornn-agent-manual-cli skill to v1.2 against develop API~~\n- [#553](https://github.com/ChronoAIProject/Ornn/issues/553) ~~[Feature] Pin launch-celebration content to top of /news page~~\n- [#551](https://github.com/ChronoAIProject/Ornn/issues/551) ~~[Misc] Playground Package drawer absorbs Skill drawer; gen-page pulses on new iterations; drawer-width / scroll polish~~\n- [#549](https://github.com/ChronoAIProject/Ornn/issues/549) ~~[Misc] Redemption-code note masking — replace ambiguous ellipsis with **** so users don't think text is truncated~~\n- [#547](https://github.com/ChronoAIProject/Ornn/issues/547) ~~[Misc] Skill package preview + chat drawers — flatten layout, pin actions, fix navbar overlap~~\n- [#532](https://github.com/ChronoAIProject/Ornn/issues/532) ~~[Bug] Quota credit notifications can't be opened — dead clicks on /notifications and bell~~\n- [#526](https://github.com/ChronoAIProject/Ornn/issues/526) ~~[Misc] LaunchCelebrationPopup — polish (offer-tile flow + caption consistency)~~\n- [#524](https://github.com/ChronoAIProject/Ornn/issues/524) ~~[Misc] LaunchCelebrationPopup — add fulfillment note (24h delivery, where to redeem, support link)~~\n- [#522](https://github.com/ChronoAIProject/Ornn/issues/522) ~~[Bug] Playground / skill-gen rail tab labels render upside-down for CJK~~\n- [#517](https://github.com/ChronoAIProject/Ornn/issues/517) ~~[Bug] LaunchCelebrationPopup — letterpress plate paints OVER card surface, breaks light mode~~\n- [#515](https://github.com/ChronoAIProject/Ornn/issues/515) ~~[Bug] LaunchCelebrationPopup — light-theme broken, design not launch-worthy~~\n- [#513](https://github.com/ChronoAIProject/Ornn/issues/513) ~~[Bug] LaunchCelebrationPopup — low contrast on ember surface, GitHub link invisible~~\n- [#511](https://github.com/ChronoAIProject/Ornn/issues/511) ~~[Feature] Landing-page launch-celebration popup (hardcoded, every-visit)~~\n- [#509](https://github.com/ChronoAIProject/Ornn/issues/509) ~~[Bug] Clicking broadcast notification triggers update-depth loop (React error #185)~~\n- [#503](https://github.com/ChronoAIProject/Ornn/issues/503) ~~[Bug] Playground + Generative skill builder — i18n gaps in hero, starters, drawer, quota chip, model picker~~\n- [#502](https://github.com/ChronoAIProject/Ornn/issues/502) ~~[Feature] Targeted broadcasts + click-to-popup markdown viewer~~\n- [#500](https://github.com/ChronoAIProject/Ornn/issues/500) ~~[Feature] Admin broadcast notifications — author/edit/delete inbox messages for all users~~\n- [#493](https://github.com/ChronoAIProject/Ornn/issues/493) ~~[Feature] Bilingual announcements (EN + ZH)~~\n- [#491](https://github.com/ChronoAIProject/Ornn/issues/491) ~~[Bug] Contact page — Discussion category cards inconsistent height in same row~~\n- [#484](https://github.com/ChronoAIProject/Ornn/issues/484) ~~[Misc] Contact page — route between Discussions, Issues/PRs, and support email~~\n- [#482](https://github.com/ChronoAIProject/Ornn/issues/482) ~~[Misc] Cookie consent banner — drop PostHog vendor name from body copy~~\n- [#475](https://github.com/ChronoAIProject/Ornn/issues/475) ~~[Feature] Surface last-run status of the scheduled mirror reconcile~~\n- [#437](https://github.com/ChronoAIProject/Ornn/issues/437) ~~[Feature] In-process mirror reconcile scheduler with admin-configurable schedule~~\n- [#418](https://github.com/ChronoAIProject/Ornn/issues/418) ~~[Bug] Install card stretches too wide on desktop — cap its max-width~~\n- _… and 81 more closed_\n<!-- AUTO_GH_ISSUES:END -->",
+        "zh": "让 Ornn 对外可用。per-user 配额 + admin 兑换码 / admin 从 Chrono LLM 目录选模型 / 每个 public skill 都过 AgentSeal 安全扫描 / PostHog 分析 / public skill 自动镜像到 `ornn-skills` 仓库 / 统一 agent manual (CLI + HTTP) / 完整 i18n (zh+en 对等) / Editorial Forge UI 迁移 / 落地+法务+联系+News 页 / launch celebration popup / admin 广播 / v0.4 → v0.8 的发布工程。**产出**: ornn.chrono-ai.fun 上一个 launch-ready 的托管实例\n\n<!-- AUTO_GH_ISSUES:START -->\n**GitHub issues** — [M4 — Go Live Prep](https://github.com/ChronoAIProject/Ornn/milestone/18) · 6 进行中 / 106 已关闭\n\n_进行中:_\n- [#507](https://github.com/ChronoAIProject/Ornn/issues/507) [Bug] Recipients tooltip on BroadcastsPage unreadable for many recipients\n- [#506](https://github.com/ChronoAIProject/Ornn/issues/506) [Misc] Decide whether admins can be broadcast recipients (UserEmailPicker role scope)\n- [#505](https://github.com/ChronoAIProject/Ornn/issues/505) [Feature] Admin user-id-to-email lookup endpoint for picker resolution\n- [#286](https://github.com/ChronoAIProject/Ornn/issues/286) [Misc] Migrate residual neon-input class to semantic input tokens\n- [#220](https://github.com/ChronoAIProject/Ornn/issues/220) [Bug] NyxID service registry: 'ornn' slug had wrong upstream + identity-mode mismatch with 'ornn-api' slug\n- [#22](https://github.com/ChronoAIProject/Ornn/issues/22) [Misc] Owner 自主目标: 定义 Ornn O1 路径 + 开发者触达计划\n\n_已关闭 (most recent first):_\n- [#572](https://github.com/ChronoAIProject/Ornn/issues/572) ~~[Docs] Surface Ornn official website link in README~~\n- [#560](https://github.com/ChronoAIProject/Ornn/issues/560) ~~[Docs] Refresh ornn-agent-manual-cli skill to v1.2 against develop API~~\n- [#553](https://github.com/ChronoAIProject/Ornn/issues/553) ~~[Feature] Pin launch-celebration content to top of /news page~~\n- [#551](https://github.com/ChronoAIProject/Ornn/issues/551) ~~[Misc] Playground Package drawer absorbs Skill drawer; gen-page pulses on new iterations; drawer-width / scroll polish~~\n- [#549](https://github.com/ChronoAIProject/Ornn/issues/549) ~~[Misc] Redemption-code note masking — replace ambiguous ellipsis with **** so users don't think text is truncated~~\n- [#547](https://github.com/ChronoAIProject/Ornn/issues/547) ~~[Misc] Skill package preview + chat drawers — flatten layout, pin actions, fix navbar overlap~~\n- [#532](https://github.com/ChronoAIProject/Ornn/issues/532) ~~[Bug] Quota credit notifications can't be opened — dead clicks on /notifications and bell~~\n- [#526](https://github.com/ChronoAIProject/Ornn/issues/526) ~~[Misc] LaunchCelebrationPopup — polish (offer-tile flow + caption consistency)~~\n- [#524](https://github.com/ChronoAIProject/Ornn/issues/524) ~~[Misc] LaunchCelebrationPopup — add fulfillment note (24h delivery, where to redeem, support link)~~\n- [#522](https://github.com/ChronoAIProject/Ornn/issues/522) ~~[Bug] Playground / skill-gen rail tab labels render upside-down for CJK~~\n- [#517](https://github.com/ChronoAIProject/Ornn/issues/517) ~~[Bug] LaunchCelebrationPopup — letterpress plate paints OVER card surface, breaks light mode~~\n- [#515](https://github.com/ChronoAIProject/Ornn/issues/515) ~~[Bug] LaunchCelebrationPopup — light-theme broken, design not launch-worthy~~\n- [#513](https://github.com/ChronoAIProject/Ornn/issues/513) ~~[Bug] LaunchCelebrationPopup — low contrast on ember surface, GitHub link invisible~~\n- [#511](https://github.com/ChronoAIProject/Ornn/issues/511) ~~[Feature] Landing-page launch-celebration popup (hardcoded, every-visit)~~\n- [#509](https://github.com/ChronoAIProject/Ornn/issues/509) ~~[Bug] Clicking broadcast notification triggers update-depth loop (React error #185)~~\n- [#503](https://github.com/ChronoAIProject/Ornn/issues/503) ~~[Bug] Playground + Generative skill builder — i18n gaps in hero, starters, drawer, quota chip, model picker~~\n- [#502](https://github.com/ChronoAIProject/Ornn/issues/502) ~~[Feature] Targeted broadcasts + click-to-popup markdown viewer~~\n- [#500](https://github.com/ChronoAIProject/Ornn/issues/500) ~~[Feature] Admin broadcast notifications — author/edit/delete inbox messages for all users~~\n- [#493](https://github.com/ChronoAIProject/Ornn/issues/493) ~~[Feature] Bilingual announcements (EN + ZH)~~\n- [#491](https://github.com/ChronoAIProject/Ornn/issues/491) ~~[Bug] Contact page — Discussion category cards inconsistent height in same row~~\n- [#484](https://github.com/ChronoAIProject/Ornn/issues/484) ~~[Misc] Contact page — route between Discussions, Issues/PRs, and support email~~\n- [#482](https://github.com/ChronoAIProject/Ornn/issues/482) ~~[Misc] Cookie consent banner — drop PostHog vendor name from body copy~~\n- [#475](https://github.com/ChronoAIProject/Ornn/issues/475) ~~[Feature] Surface last-run status of the scheduled mirror reconcile~~\n- [#437](https://github.com/ChronoAIProject/Ornn/issues/437) ~~[Feature] In-process mirror reconcile scheduler with admin-configurable schedule~~\n- [#418](https://github.com/ChronoAIProject/Ornn/issues/418) ~~[Bug] Install card stretches too wide on desktop — cap its max-width~~\n- _… and 81 more closed_\n<!-- AUTO_GH_ISSUES:END -->"
+      },
+      "milestone_ref": {
+        "repo": "ChronoAIProject/Ornn",
+        "milestone": "M4 — Go Live Prep"
+      },
+      "closure": "mature",
+      "formal": "audited",
+      "product": "ornn",
+      "milestone": "M4",
+      "owner": "chronoai-shining",
+      "issue_count": 6,
+      "focus": false,
+      "archived": false,
+      "promoted_at": {
+        "bridged": "2026-05-13",
+        "mature": "2026-05-14"
+      },
+      "deps": [
+        "Ornn-M1-Skill-Lifecycle-Core",
+        "Ornn-M3-Trust-Quality"
+      ],
+      "gh_query": "is:issue is:open repo:ChronoAIProject/Ornn milestone:\"M4 — Go Live Prep\""
+    },
+    "Ornn-M5-QA-Pre-Launch": {
+      "label": {
+        "en": "M5 — QA Pre-Launch Gate",
+        "zh": "M5 — QA 上线准出"
+      },
+      "desc": {
+        "en": "Manual functional QA against ornn.chrono-ai.fun before public launch. Twelve module-level test trackers (login+permissions, skill creation+GitHub import, format validation, playground+sandbox, security checks, registry+detail, owner skill mgmt, admin dashboard+quota+codes, CLI+agent+NyxID proxy, notifications, admin skill mgmt+config, static pages). Explicit go-live exit criteria. Discovered bugs become standalone issues filed against the feature milestone they affect. **Outcome**: green checklist confirming every user-facing flow works end-to-end.\n\n<!-- AUTO_GH_ISSUES:START -->\n**GitHub issues** — [M5 — QA Pre-Launch Gate](https://github.com/ChronoAIProject/Ornn/milestone/19) · 13 open / 0 closed\n\n_Open:_\n- [#546](https://github.com/ChronoAIProject/Ornn/issues/546) [QA] 安全、权限与敏感信息处理测试\n- [#545](https://github.com/ChronoAIProject/Ornn/issues/545) [QA] CLI、Agent 与 NyxID proxy 功能测试\n- [#544](https://github.com/ChronoAIProject/Ornn/issues/544) [QA] 管理员 skill 管理、公告与平台配置功能测试\n- [#543](https://github.com/ChronoAIProject/Ornn/issues/543) [QA] 管理员 Dashboard、用户、配额与兑换码功能测试\n- [#542](https://github.com/ChronoAIProject/Ornn/issues/542) [QA] 用户侧 skill 管理、版本、权限、审计与 GitHub 同步功能测试\n- [#541](https://github.com/ChronoAIProject/Ornn/issues/541) [QA] 通知中心功能测试\n- [#540](https://github.com/ChronoAIProject/Ornn/issues/540) [QA] Playground 与 sandbox 功能测试\n- [#539](https://github.com/ChronoAIProject/Ornn/issues/539) [QA] Skill 包类型与格式校验功能测试\n- [#538](https://github.com/ChronoAIProject/Ornn/issues/538) [QA] Skill 创建与 GitHub 导入功能测试\n- [#537](https://github.com/ChronoAIProject/Ornn/issues/537) [QA] Skill Registry 与详情页功能测试\n- [#536](https://github.com/ChronoAIProject/Ornn/issues/536) [QA] 静态页面与公开导航功能测试\n- [#535](https://github.com/ChronoAIProject/Ornn/issues/535) [QA] 登录与权限控制功能测试\n- [#534](https://github.com/ChronoAIProject/Ornn/issues/534) [QA] Ornn 功能测试进度跟踪\n\n<!-- AUTO_GH_ISSUES:END -->",
+        "zh": "上线前对 ornn.chrono-ai.fun 跑功能 QA。12 个模块测试 (登录+权限, skill 创建+GitHub 导入, 格式校验, playground+sandbox, 安全检查, registry+详情, owner 管理, admin Dashboard+配额+兑换码, CLI+agent+NyxID proxy, 通知, admin 配置, 静态页面)。有明确上线准出标准。发现 bug 独立成 issue, 挂到对应 feature milestone 上。**产出**: 所有面向用户的流程都跑通的 green checklist\n\n<!-- AUTO_GH_ISSUES:START -->\n**GitHub issues** — [M5 — QA Pre-Launch Gate](https://github.com/ChronoAIProject/Ornn/milestone/19) · 13 进行中 / 0 已关闭\n\n_进行中:_\n- [#546](https://github.com/ChronoAIProject/Ornn/issues/546) [QA] 安全、权限与敏感信息处理测试\n- [#545](https://github.com/ChronoAIProject/Ornn/issues/545) [QA] CLI、Agent 与 NyxID proxy 功能测试\n- [#544](https://github.com/ChronoAIProject/Ornn/issues/544) [QA] 管理员 skill 管理、公告与平台配置功能测试\n- [#543](https://github.com/ChronoAIProject/Ornn/issues/543) [QA] 管理员 Dashboard、用户、配额与兑换码功能测试\n- [#542](https://github.com/ChronoAIProject/Ornn/issues/542) [QA] 用户侧 skill 管理、版本、权限、审计与 GitHub 同步功能测试\n- [#541](https://github.com/ChronoAIProject/Ornn/issues/541) [QA] 通知中心功能测试\n- [#540](https://github.com/ChronoAIProject/Ornn/issues/540) [QA] Playground 与 sandbox 功能测试\n- [#539](https://github.com/ChronoAIProject/Ornn/issues/539) [QA] Skill 包类型与格式校验功能测试\n- [#538](https://github.com/ChronoAIProject/Ornn/issues/538) [QA] Skill 创建与 GitHub 导入功能测试\n- [#537](https://github.com/ChronoAIProject/Ornn/issues/537) [QA] Skill Registry 与详情页功能测试\n- [#536](https://github.com/ChronoAIProject/Ornn/issues/536) [QA] 静态页面与公开导航功能测试\n- [#535](https://github.com/ChronoAIProject/Ornn/issues/535) [QA] 登录与权限控制功能测试\n- [#534](https://github.com/ChronoAIProject/Ornn/issues/534) [QA] Ornn 功能测试进度跟踪\n\n<!-- AUTO_GH_ISSUES:END -->"
+      },
+      "milestone_ref": {
+        "repo": "ChronoAIProject/Ornn",
+        "milestone": "M5 — QA Pre-Launch Gate"
+      },
+      "closure": "obligation",
+      "formal": "sop",
+      "product": "ornn",
+      "milestone": "M5",
+      "owner": "chronoai-shining",
+      "issue_count": 13,
+      "focus": true,
+      "archived": false,
+      "promoted_at": {
+        "obligation": "2026-05-14"
+      },
+      "deps": [
+        "Ornn-M4-Go-Live-Prep"
+      ],
+      "gh_query": "is:issue is:open repo:ChronoAIProject/Ornn milestone:\"M5 — QA Pre-Launch Gate\""
+    },
+    "Ornn-M6-Code-Review-Hardening": {
+      "label": {
+        "en": "M6 — Code Review Hardening",
+        "zh": "M6 — 代码审计收尾"
+      },
+      "desc": {
+        "en": "Resolve all findings from the 2026-05-13 automated code-review pass across five axes: Security (auth/secrets/SSRF/sandbox), Vulnerability (dep audit, ZIP slip, regex DoS, Zod-less LLM parsing), Coding Standards (TS strictness, god-file decomposition, test coverage), Industry Standards (RFC 7807, cursor pagination, integrity hash, dist-tags, Idempotency-Key), OSS Readiness (docker-compose, examples/, SDK npm+PyPI publish, public demo). **Outcome**: 36 findings closed; project clears the \"is this safe to point HN at?\" bar.\n\n<!-- AUTO_GH_ISSUES:START -->\n**GitHub issues** — [M6 — Code Review Hardening](https://github.com/ChronoAIProject/Ornn/milestone/20) · 38 open / 0 closed\n\n_Open:_\n- [#567](https://github.com/ChronoAIProject/Ornn/issues/567) Enforce skill visibility checks on JSON package endpoint\n- [#563](https://github.com/ChronoAIProject/Ornn/issues/563) [Bug] [Permissions] Non-owner account can access and run another account's private skill through Playground URL\n- [#474](https://github.com/ChronoAIProject/Ornn/issues/474) [Docs] API stability commitment + breaking-change & deprecation policy\n- [#473](https://github.com/ChronoAIProject/Ornn/issues/473) [Bug] SDK publish status — TS SDK has private:true, clarify npm/PyPI publication strategy\n- [#472](https://github.com/ChronoAIProject/Ornn/issues/472) [Docs] Positioning / comparison table vs MCP servers + Smithery + npm in README\n- [#471](https://github.com/ChronoAIProject/Ornn/issues/471) [CI/CD] Codecov integration + coverage badge + stated coverage target\n- [#470](https://github.com/ChronoAIProject/Ornn/issues/470) [Docs] SDK quickstart (5-line copy-paste) in main README\n- [#469](https://github.com/ChronoAIProject/Ornn/issues/469) [Docs] examples/ directory with 2-3 minimal starter skills (TS + Python)\n- [#468](https://github.com/ChronoAIProject/Ornn/issues/468) [Misc] Add npm/PyPI keywords + GitHub repo topics for discoverability\n- [#467](https://github.com/ChronoAIProject/Ornn/issues/467) [Feature] Public hosted demo / playground for try-before-install\n- [#466](https://github.com/ChronoAIProject/Ornn/issues/466) [Feature] docker-compose.yml for one-command local dev — replace K8s-only onboarding\n- [#465](https://github.com/ChronoAIProject/Ornn/issues/465) [Feature] SDK ergonomics — auto-pagination iterator + exponential-backoff retry wrapper\n- [#464](https://github.com/ChronoAIProject/Ornn/issues/464) [Feature] Publish versioned JSON Schema for SKILL.md frontmatter\n- [#463](https://github.com/ChronoAIProject/Ornn/issues/463) [Feature] Dist-tags (latest / stable / next) for skill version resolution\n- [#462](https://github.com/ChronoAIProject/Ornn/issues/462) [CI/CD] OpenAPI contract tests — assert every route appears in spec with declared errors\n- [#461](https://github.com/ChronoAIProject/Ornn/issues/461) [Feature] Surface integrity hash (sha256-base64) on skill version manifest like npm\n- [#460](https://github.com/ChronoAIProject/Ornn/issues/460) [Feature] RFC 9239 rate-limit response headers (RateLimit-Limit/Remaining/Retry-After)\n- [#459](https://github.com/ChronoAIProject/Ornn/issues/459) [Feature] Idempotency-Key middleware (24h cache) per CONVENTIONS.md §3.4\n- [#458](https://github.com/ChronoAIProject/Ornn/issues/458) [Bug] POST create endpoints return 200 OK without Location header (should be 201 Created)\n- [#457](https://github.com/ChronoAIProject/Ornn/issues/457) [Feature] Cursor-based pagination for list endpoints (drop offset page/pageSize/total)\n- [#456](https://github.com/ChronoAIProject/Ornn/issues/456) [Bug] Error responses violate RFC 7807 — implementation uses { data, error } envelope instead of problem+json\n- [#454](https://github.com/ChronoAIProject/Ornn/issues/454) [Feature] Backfill unit tests for 7 untested domain services + 8 repositories\n- [#453](https://github.com/ChronoAIProject/Ornn/issues/453) [Misc] Decompose god-files: SkillDetailPage (1133L), DocsPage (857L), PlaygroundPage (802L)\n- [#452](https://github.com/ChronoAIProject/Ornn/issues/452) [Misc] Replace hardcoded hex colors in landing pages with design tokens\n- [#451](https://github.com/ChronoAIProject/Ornn/issues/451) [Bug] Array index as React key in skeleton/grid components — list reorder bugs\n- [#450](https://github.com/ChronoAIProject/Ornn/issues/450) [Misc] Enable stricter TS flags: noUncheckedIndexedAccess, noImplicitOverride, exactOptionalPropertyTypes\n- [#449](https://github.com/ChronoAIProject/Ornn/issues/449) [Misc] Type playground chat events with Zod discriminated union (drop \"as any\")\n- [#448](https://github.com/ChronoAIProject/Ornn/issues/448) [Misc] Eliminate \"as any\" on MongoDB _id — introduce toObjectId(guid) helper\n- [#447](https://github.com/ChronoAIProject/Ornn/issues/447) [Misc] Migration scripts — replace Number(env) with validated parseInt + fail-fast\n- [#446](https://github.com/ChronoAIProject/Ornn/issues/446) [Misc] Admin search MongoDB regex — add maxTimeMS + ensure name/description indexes\n- [#445](https://github.com/ChronoAIProject/Ornn/issues/445) [CI/CD] Lock + audit Python SDK dependencies (lockfile + pip-audit in CI)\n- [#444](https://github.com/ChronoAIProject/Ornn/issues/444) [Bug] LLM re-ranker output parsed without Zod schema (cast as Array)\n- [#443](https://github.com/ChronoAIProject/Ornn/issues/443) [Misc] ZIP validator — add total-uncompressed-size cap + explicit zip-slip check\n- [#442](https://github.com/ChronoAIProject/Ornn/issues/442) [Bug] AgentSeal subprocess: validate python/script paths at boot + unref child after kill\n- [#441](https://github.com/ChronoAIProject/Ornn/issues/441) [Misc] Validate GitHub App private key shape on mirror config write\n- [#440](https://github.com/ChronoAIProject/Ornn/issues/440) [Misc] Tighten Mermaid SVG rendering — replace dangerouslySetInnerHTML with iframe sandbox\n- [#439](https://github.com/ChronoAIProject/Ornn/issues/439) [Feature] Rate limiting on /skill-search (semantic mode) + auth/upload endpoints\n- [#438](https://github.com/ChronoAIProject/Ornn/issues/438) [Bug] Some routes bypass validateBody middleware — raw c.req.json() reads break RFC 7807 errors\n\n<!-- AUTO_GH_ISSUES:END -->",
+        "zh": "解决 2026-05-13 一轮自动代码审计的所有 finding, 5 个维度: Security (auth/secrets/SSRF/sandbox), Vulnerability (依赖审计 / ZIP slip / regex DoS / Zod 缺失), Coding Standards (TS 严格 / god-file 拆分 / 测试覆盖), Industry Standards (RFC 7807 / cursor 分页 / integrity hash / dist-tags / Idempotency-Key), OSS Readiness (docker-compose / examples / SDK 上 npm+PyPI / 公开 demo)。**产出**: 36 个 finding 全部关闭, 项目过得了 \"敢拿去 HN show\" 这关\n\n<!-- AUTO_GH_ISSUES:START -->\n**GitHub issues** — [M6 — Code Review Hardening](https://github.com/ChronoAIProject/Ornn/milestone/20) · 38 进行中 / 0 已关闭\n\n_进行中:_\n- [#567](https://github.com/ChronoAIProject/Ornn/issues/567) Enforce skill visibility checks on JSON package endpoint\n- [#563](https://github.com/ChronoAIProject/Ornn/issues/563) [Bug] [Permissions] Non-owner account can access and run another account's private skill through Playground URL\n- [#474](https://github.com/ChronoAIProject/Ornn/issues/474) [Docs] API stability commitment + breaking-change & deprecation policy\n- [#473](https://github.com/ChronoAIProject/Ornn/issues/473) [Bug] SDK publish status — TS SDK has private:true, clarify npm/PyPI publication strategy\n- [#472](https://github.com/ChronoAIProject/Ornn/issues/472) [Docs] Positioning / comparison table vs MCP servers + Smithery + npm in README\n- [#471](https://github.com/ChronoAIProject/Ornn/issues/471) [CI/CD] Codecov integration + coverage badge + stated coverage target\n- [#470](https://github.com/ChronoAIProject/Ornn/issues/470) [Docs] SDK quickstart (5-line copy-paste) in main README\n- [#469](https://github.com/ChronoAIProject/Ornn/issues/469) [Docs] examples/ directory with 2-3 minimal starter skills (TS + Python)\n- [#468](https://github.com/ChronoAIProject/Ornn/issues/468) [Misc] Add npm/PyPI keywords + GitHub repo topics for discoverability\n- [#467](https://github.com/ChronoAIProject/Ornn/issues/467) [Feature] Public hosted demo / playground for try-before-install\n- [#466](https://github.com/ChronoAIProject/Ornn/issues/466) [Feature] docker-compose.yml for one-command local dev — replace K8s-only onboarding\n- [#465](https://github.com/ChronoAIProject/Ornn/issues/465) [Feature] SDK ergonomics — auto-pagination iterator + exponential-backoff retry wrapper\n- [#464](https://github.com/ChronoAIProject/Ornn/issues/464) [Feature] Publish versioned JSON Schema for SKILL.md frontmatter\n- [#463](https://github.com/ChronoAIProject/Ornn/issues/463) [Feature] Dist-tags (latest / stable / next) for skill version resolution\n- [#462](https://github.com/ChronoAIProject/Ornn/issues/462) [CI/CD] OpenAPI contract tests — assert every route appears in spec with declared errors\n- [#461](https://github.com/ChronoAIProject/Ornn/issues/461) [Feature] Surface integrity hash (sha256-base64) on skill version manifest like npm\n- [#460](https://github.com/ChronoAIProject/Ornn/issues/460) [Feature] RFC 9239 rate-limit response headers (RateLimit-Limit/Remaining/Retry-After)\n- [#459](https://github.com/ChronoAIProject/Ornn/issues/459) [Feature] Idempotency-Key middleware (24h cache) per CONVENTIONS.md §3.4\n- [#458](https://github.com/ChronoAIProject/Ornn/issues/458) [Bug] POST create endpoints return 200 OK without Location header (should be 201 Created)\n- [#457](https://github.com/ChronoAIProject/Ornn/issues/457) [Feature] Cursor-based pagination for list endpoints (drop offset page/pageSize/total)\n- [#456](https://github.com/ChronoAIProject/Ornn/issues/456) [Bug] Error responses violate RFC 7807 — implementation uses { data, error } envelope instead of problem+json\n- [#454](https://github.com/ChronoAIProject/Ornn/issues/454) [Feature] Backfill unit tests for 7 untested domain services + 8 repositories\n- [#453](https://github.com/ChronoAIProject/Ornn/issues/453) [Misc] Decompose god-files: SkillDetailPage (1133L), DocsPage (857L), PlaygroundPage (802L)\n- [#452](https://github.com/ChronoAIProject/Ornn/issues/452) [Misc] Replace hardcoded hex colors in landing pages with design tokens\n- [#451](https://github.com/ChronoAIProject/Ornn/issues/451) [Bug] Array index as React key in skeleton/grid components — list reorder bugs\n- [#450](https://github.com/ChronoAIProject/Ornn/issues/450) [Misc] Enable stricter TS flags: noUncheckedIndexedAccess, noImplicitOverride, exactOptionalPropertyTypes\n- [#449](https://github.com/ChronoAIProject/Ornn/issues/449) [Misc] Type playground chat events with Zod discriminated union (drop \"as any\")\n- [#448](https://github.com/ChronoAIProject/Ornn/issues/448) [Misc] Eliminate \"as any\" on MongoDB _id — introduce toObjectId(guid) helper\n- [#447](https://github.com/ChronoAIProject/Ornn/issues/447) [Misc] Migration scripts — replace Number(env) with validated parseInt + fail-fast\n- [#446](https://github.com/ChronoAIProject/Ornn/issues/446) [Misc] Admin search MongoDB regex — add maxTimeMS + ensure name/description indexes\n- [#445](https://github.com/ChronoAIProject/Ornn/issues/445) [CI/CD] Lock + audit Python SDK dependencies (lockfile + pip-audit in CI)\n- [#444](https://github.com/ChronoAIProject/Ornn/issues/444) [Bug] LLM re-ranker output parsed without Zod schema (cast as Array)\n- [#443](https://github.com/ChronoAIProject/Ornn/issues/443) [Misc] ZIP validator — add total-uncompressed-size cap + explicit zip-slip check\n- [#442](https://github.com/ChronoAIProject/Ornn/issues/442) [Bug] AgentSeal subprocess: validate python/script paths at boot + unref child after kill\n- [#441](https://github.com/ChronoAIProject/Ornn/issues/441) [Misc] Validate GitHub App private key shape on mirror config write\n- [#440](https://github.com/ChronoAIProject/Ornn/issues/440) [Misc] Tighten Mermaid SVG rendering — replace dangerouslySetInnerHTML with iframe sandbox\n- [#439](https://github.com/ChronoAIProject/Ornn/issues/439) [Feature] Rate limiting on /skill-search (semantic mode) + auth/upload endpoints\n- [#438](https://github.com/ChronoAIProject/Ornn/issues/438) [Bug] Some routes bypass validateBody middleware — raw c.req.json() reads break RFC 7807 errors\n\n<!-- AUTO_GH_ISSUES:END -->"
+      },
+      "milestone_ref": {
+        "repo": "ChronoAIProject/Ornn",
+        "milestone": "M6 — Code Review Hardening"
+      },
+      "closure": "obligation",
+      "formal": "checked",
+      "product": "ornn",
+      "milestone": "M6",
+      "owner": "chronoai-shining",
+      "issue_count": 38,
+      "focus": true,
+      "archived": false,
+      "promoted_at": {
+        "obligation": "2026-05-13"
+      },
+      "deps": [
+        "Ornn-M4-Go-Live-Prep"
+      ],
+      "gh_query": "is:issue is:open repo:ChronoAIProject/Ornn milestone:\"M6 — Code Review Hardening\""
+    },
+    "Ornn-M7-Platform-Power": {
+      "label": {
+        "en": "M7 — Platform Power",
+        "zh": "M7 — 平台力"
+      },
+      "desc": {
+        "en": "Skills compose into workflows. Skill chaining (declarative pipelines), webhook + event system for skill-lifecycle events, templates & starter kits for common patterns. Deferred behind QA + Code Review hardening — comes after the launch gate. **Outcome**: a skill is no longer a leaf; it is a composable building block.\n\n<!-- AUTO_GH_ISSUES:START -->\n**GitHub issues** — [M7 — Platform Power](https://github.com/ChronoAIProject/Ornn/milestone/21) · 3 open / 0 closed\n\n_Open:_\n- [#37](https://github.com/ChronoAIProject/Ornn/issues/37) [Feature] Skill templates & starter kits\n- [#36](https://github.com/ChronoAIProject/Ornn/issues/36) [Feature] Webhook & event system for skill lifecycle\n- [#35](https://github.com/ChronoAIProject/Ornn/issues/35) [Feature] Skill composition & chaining\n\n<!-- AUTO_GH_ISSUES:END -->",
+        "zh": "Skill 能组合成 workflow。Skill chaining (声明式 pipeline) / webhook + event 系统 (skill 生命周期事件) / 模板 & starter kit。排在 QA + Code Review 收尾之后, 在 launch gate 之后才启动。**产出**: skill 不再是叶子节点, 是可组合的积木\n\n<!-- AUTO_GH_ISSUES:START -->\n**GitHub issues** — [M7 — Platform Power](https://github.com/ChronoAIProject/Ornn/milestone/21) · 3 进行中 / 0 已关闭\n\n_进行中:_\n- [#37](https://github.com/ChronoAIProject/Ornn/issues/37) [Feature] Skill templates & starter kits\n- [#36](https://github.com/ChronoAIProject/Ornn/issues/36) [Feature] Webhook & event system for skill lifecycle\n- [#35](https://github.com/ChronoAIProject/Ornn/issues/35) [Feature] Skill composition & chaining\n\n<!-- AUTO_GH_ISSUES:END -->"
+      },
+      "milestone_ref": {
+        "repo": "ChronoAIProject/Ornn",
+        "milestone": "M7 — Platform Power"
+      },
+      "closure": "seed",
+      "formal": "none",
+      "product": "ornn",
+      "milestone": "M7",
+      "owner": "chronoai-shining",
+      "issue_count": 3,
+      "focus": false,
+      "archived": false,
+      "promoted_at": {
+        "seed": "2026-04-14"
+      },
+      "deps": [
+        "Ornn-M5-QA-Pre-Launch",
+        "Ornn-M6-Code-Review-Hardening"
+      ],
+      "gh_query": "is:issue is:open repo:ChronoAIProject/Ornn milestone:\"M7 — Platform Power\""
+    },
+    "Ornn-M8-Community-Engagement": {
+      "label": {
+        "en": "M8 — Community Engagement",
+        "zh": "M8 — 社区互动"
+      },
+      "desc": {
+        "en": "Social engagement layer on the skill registry: in-product skill ratings, text reviews, likes/upvotes, per-skill discussion threads, author reputation/profile, activity feed. Replaces the abandoned marketplace direction (#38 billing / #39 curated archived here as historical). Activates after launch when there are real external users. **Outcome**: skill discovery driven by community signal, not just admin curation.\n\n<!-- AUTO_GH_ISSUES:START -->\n**GitHub issues** — [M8 — Community Engagement](https://github.com/ChronoAIProject/Ornn/milestone/22) · 0 open / 2 closed\n\n_Closed (most recent first):_\n- [#39](https://github.com/ChronoAIProject/Ornn/issues/39) ~~[Feature] Featured & curated skill collections~~\n- [#38](https://github.com/ChronoAIProject/Ornn/issues/38) ~~[Feature] Usage-based billing & author revenue share~~\n<!-- AUTO_GH_ISSUES:END -->",
+        "zh": "Skill registry 上的社区互动层: 站内 skill 评分 / 文字评价 / 点赞 / per-skill 讨论 / 作者 reputation / 活动 feed。替代已放弃的 marketplace 方向 (#38 billing / #39 curated 作为历史归档在此)。launch 之后有真实外部用户才能跑起来。**产出**: skill 发现由社区信号驱动, 不只靠 admin curation\n\n<!-- AUTO_GH_ISSUES:START -->\n**GitHub issues** — [M8 — Community Engagement](https://github.com/ChronoAIProject/Ornn/milestone/22) · 0 进行中 / 2 已关闭\n\n_已关闭 (most recent first):_\n- [#39](https://github.com/ChronoAIProject/Ornn/issues/39) ~~[Feature] Featured & curated skill collections~~\n- [#38](https://github.com/ChronoAIProject/Ornn/issues/38) ~~[Feature] Usage-based billing & author revenue share~~\n<!-- AUTO_GH_ISSUES:END -->"
+      },
+      "milestone_ref": {
+        "repo": "ChronoAIProject/Ornn",
+        "milestone": "M8 — Community Engagement"
+      },
+      "closure": "seed",
+      "formal": "none",
+      "product": "ornn",
+      "milestone": "M8",
+      "owner": "chronoai-shining",
+      "issue_count": 0,
+      "focus": false,
+      "archived": false,
+      "promoted_at": {
+        "seed": "2026-05-18"
+      },
+      "deps": [
+        "Ornn-Marketing-L1-Launch"
+      ],
+      "gh_query": "is:issue is:open repo:ChronoAIProject/Ornn milestone:\"M8 — Community Engagement\""
+    },
+    "Ornn-Marketing-L0-Prelaunch-Warmup": {
+      "label": {
+        "en": "L0 — Pre-flight & Warmup",
+        "zh": "L0 — 上线前准备 & 账号 warmup"
+      },
+      "desc": {
+        "en": "Pre-launch preparation (T-14 → T-7). Account audits across HN/PH/Reddit/X/Discord/即刻/V2EX, channel-specific warmup to clear age+karma+history filters, PH Hunter contact, GitHub stars ≥50 push (Awesome Lists prereq), Awesome List forks + PR drafts. Account warmup is the only non-compressible calendar item — D-Day cannot ship until all checks here are ✅. **Outcome**: every channel's preconditions in marketing.md are met before D-Day.\n\n<!-- AUTO_GH_ISSUES:START -->\n**GitHub issues** — [L0 — Pre-flight & Warmup](https://github.com/ChronoAIProject/Ornn-Marketing/milestone/1) · 9 open / 0 closed\n\n_Open:_\n- [#20](https://github.com/ChronoAIProject/Ornn-Marketing/issues/20) [Prep] Fork 3 Awesome Lists + draft PR diffs\n- [#19](https://github.com/ChronoAIProject/Ornn-Marketing/issues/19) [Prep] Push Ornn GitHub stars to ≥ 50 (Awesome Lists prereq)\n- [#18](https://github.com/ChronoAIProject/Ornn-Marketing/issues/18) [Warmup] V2EX + 即刻 — daily presence\n- [#17](https://github.com/ChronoAIProject/Ornn-Marketing/issues/17) [Warmup] Reddit ×3 subs — 5 comments each / 7 days\n- [#16](https://github.com/ChronoAIProject/Ornn-Marketing/issues/16) [Warmup] HN — 10 substantive comments / 7 days\n- [#15](https://github.com/ChronoAIProject/Ornn-Marketing/issues/15) [Audit] X / Discord / 即刻 / V2EX accounts\n- [#14](https://github.com/ChronoAIProject/Ornn-Marketing/issues/14) [Audit] Reddit account + 3 sub histories\n- [#13](https://github.com/ChronoAIProject/Ornn-Marketing/issues/13) [Audit] Product Hunt maker + contact Hunter\n- [#12](https://github.com/ChronoAIProject/Ornn-Marketing/issues/12) [Audit] HN account readiness\n\n<!-- AUTO_GH_ISSUES:END -->",
+        "zh": "Launch 前准备 (T-14 → T-7)。HN/PH/Reddit/X/Discord/即刻/V2EX 账号审计 / 每个渠道独立 warmup 过年龄+karma+历史过滤 / PH Hunter 联系 / GitHub stars 推到 ≥50 (Awesome Lists 前置) / Awesome List fork + PR draft。账号 warmup 是唯一不可压缩的日历时间, 所有 ✅ 之前 D-Day 发不了。**产出**: marketing.md 里每个渠道的前置条件都满足\n\n<!-- AUTO_GH_ISSUES:START -->\n**GitHub issues** — [L0 — Pre-flight & Warmup](https://github.com/ChronoAIProject/Ornn-Marketing/milestone/1) · 9 进行中 / 0 已关闭\n\n_进行中:_\n- [#20](https://github.com/ChronoAIProject/Ornn-Marketing/issues/20) [Prep] Fork 3 Awesome Lists + draft PR diffs\n- [#19](https://github.com/ChronoAIProject/Ornn-Marketing/issues/19) [Prep] Push Ornn GitHub stars to ≥ 50 (Awesome Lists prereq)\n- [#18](https://github.com/ChronoAIProject/Ornn-Marketing/issues/18) [Warmup] V2EX + 即刻 — daily presence\n- [#17](https://github.com/ChronoAIProject/Ornn-Marketing/issues/17) [Warmup] Reddit ×3 subs — 5 comments each / 7 days\n- [#16](https://github.com/ChronoAIProject/Ornn-Marketing/issues/16) [Warmup] HN — 10 substantive comments / 7 days\n- [#15](https://github.com/ChronoAIProject/Ornn-Marketing/issues/15) [Audit] X / Discord / 即刻 / V2EX accounts\n- [#14](https://github.com/ChronoAIProject/Ornn-Marketing/issues/14) [Audit] Reddit account + 3 sub histories\n- [#13](https://github.com/ChronoAIProject/Ornn-Marketing/issues/13) [Audit] Product Hunt maker + contact Hunter\n- [#12](https://github.com/ChronoAIProject/Ornn-Marketing/issues/12) [Audit] HN account readiness\n\n<!-- AUTO_GH_ISSUES:END -->"
+      },
+      "milestone_ref": {
+        "repo": "ChronoAIProject/Ornn-Marketing",
+        "milestone": "L0 — Pre-flight & Warmup"
+      },
+      "closure": "obligation",
+      "formal": "sop",
+      "product": "ornn",
+      "milestone": "L0",
+      "owner": "chronoai-shining",
+      "issue_count": 9,
+      "focus": true,
+      "archived": false,
+      "promoted_at": {
+        "obligation": "2026-05-18"
+      },
+      "deps": [
+        "Ornn-M4-Go-Live-Prep"
+      ]
+    },
+    "Ornn-Marketing-L1-Launch": {
+      "label": {
+        "en": "L1 — D-Day Launch",
+        "zh": "L1 — D-Day 发布"
+      },
+      "desc": {
+        "en": "Single coordinated launch day across 10 channels per marketing.md §1–§10. Each channel has a hard time window (HN Tue/Wed/Thu 09:00 ET, PH 00:01 PT). All copy is channel-specific (HN engineer-tone, PH gift-hook, Reddit problem-first, V2EX 求拍砖, 即刻 茶水间, Discord community). Same-day Awesome List PRs go in. **Outcome**: 10 launch posts live, first 90-min monitoring done on every primary channel.\n\n<!-- AUTO_GH_ISSUES:START -->\n**GitHub issues** — [L1 — D-Day Launch](https://github.com/ChronoAIProject/Ornn-Marketing/milestone/2) · 10 open / 0 closed\n\n_Open:_\n- [#30](https://github.com/ChronoAIProject/Ornn-Marketing/issues/30) [Launch] Submit 3 Awesome List PRs\n- [#29](https://github.com/ChronoAIProject/Ornn-Marketing/issues/29) [Launch] X thread + Discord + 即刻 + V2EX\n- [#28](https://github.com/ChronoAIProject/Ornn-Marketing/issues/28) [Launch] Reddit ×3 subs — sequential posting (NOT cross-post)\n- [#27](https://github.com/ChronoAIProject/Ornn-Marketing/issues/27) [Launch] Product Hunt — 00:01 PT Hunter post + 24h maker response\n- [#26](https://github.com/ChronoAIProject/Ornn-Marketing/issues/26) [Launch] HN Show HN — submit + 90-min monitor\n- [#25](https://github.com/ChronoAIProject/Ornn-Marketing/issues/25) [Copy] Discord / 即刻 / V2EX posts\n- [#24](https://github.com/ChronoAIProject/Ornn-Marketing/issues/24) [Copy] X launch thread — 10 tweets + 3 quote-tweet plans\n- [#23](https://github.com/ChronoAIProject/Ornn-Marketing/issues/23) [Copy] Reddit ×3 subs — channel-specific drafts\n- [#22](https://github.com/ChronoAIProject/Ornn-Marketing/issues/22) [Copy] Product Hunt — tagline + description + 4 images\n- [#21](https://github.com/ChronoAIProject/Ornn-Marketing/issues/21) [Copy] HN Show HN — title + first-comment story\n\n<!-- AUTO_GH_ISSUES:END -->",
+        "zh": "marketing.md §1–§10 描述的单日 10 渠道协同发布。每个渠道有硬时间窗口 (HN 周二/三/四 09:00 ET, PH 00:01 PT)。文案逐渠道差异化 (HN 工程师腔, PH 福利钩子, Reddit 痛点先行, V2EX 求拍砖, 即刻 茶水间, Discord 社区)。同日提交 Awesome List PR。**产出**: 10 个 launch 帖全上线, 主要渠道前 90 分钟在线 monitor 完成\n\n<!-- AUTO_GH_ISSUES:START -->\n**GitHub issues** — [L1 — D-Day Launch](https://github.com/ChronoAIProject/Ornn-Marketing/milestone/2) · 10 进行中 / 0 已关闭\n\n_进行中:_\n- [#30](https://github.com/ChronoAIProject/Ornn-Marketing/issues/30) [Launch] Submit 3 Awesome List PRs\n- [#29](https://github.com/ChronoAIProject/Ornn-Marketing/issues/29) [Launch] X thread + Discord + 即刻 + V2EX\n- [#28](https://github.com/ChronoAIProject/Ornn-Marketing/issues/28) [Launch] Reddit ×3 subs — sequential posting (NOT cross-post)\n- [#27](https://github.com/ChronoAIProject/Ornn-Marketing/issues/27) [Launch] Product Hunt — 00:01 PT Hunter post + 24h maker response\n- [#26](https://github.com/ChronoAIProject/Ornn-Marketing/issues/26) [Launch] HN Show HN — submit + 90-min monitor\n- [#25](https://github.com/ChronoAIProject/Ornn-Marketing/issues/25) [Copy] Discord / 即刻 / V2EX posts\n- [#24](https://github.com/ChronoAIProject/Ornn-Marketing/issues/24) [Copy] X launch thread — 10 tweets + 3 quote-tweet plans\n- [#23](https://github.com/ChronoAIProject/Ornn-Marketing/issues/23) [Copy] Reddit ×3 subs — channel-specific drafts\n- [#22](https://github.com/ChronoAIProject/Ornn-Marketing/issues/22) [Copy] Product Hunt — tagline + description + 4 images\n- [#21](https://github.com/ChronoAIProject/Ornn-Marketing/issues/21) [Copy] HN Show HN — title + first-comment story\n\n<!-- AUTO_GH_ISSUES:END -->"
+      },
+      "milestone_ref": {
+        "repo": "ChronoAIProject/Ornn-Marketing",
+        "milestone": "L1 — D-Day Launch"
+      },
+      "closure": "seed",
+      "formal": "sop",
+      "product": "ornn",
+      "milestone": "L1",
+      "owner": "chronoai-shining",
+      "issue_count": 10,
+      "focus": true,
+      "archived": false,
+      "promoted_at": {
+        "seed": "2026-05-18"
+      },
+      "deps": [
+        "Ornn-Marketing-L0-Prelaunch-Warmup",
+        "Ornn-M5-QA-Pre-Launch",
+        "Ornn-M6-Code-Review-Hardening"
+      ]
+    },
+    "Ornn-Marketing-L2-Postlaunch": {
+      "label": {
+        "en": "L2 — Post-Launch Followup",
+        "zh": "L2 — 上线后跟进"
+      },
+      "desc": {
+        "en": "Long-tail engagement D+1 → D+30. HN T+24h boomerang comment, Reddit weekly self-promotion threads, X 3 quote-tweets at milestones (24h / 7d / 30d), DM PH upvoters thank-you, D+7 retro, D+30 outcome post. **Outcome**: launch momentum extended into sustained discovery; learnings captured for the next push.\n\n<!-- AUTO_GH_ISSUES:START -->\n**GitHub issues** — [L2 — Post-Launch Followup](https://github.com/ChronoAIProject/Ornn-Marketing/milestone/3) · 6 open / 0 closed\n\n_Open:_\n- [#36](https://github.com/ChronoAIProject/Ornn-Marketing/issues/36) [Followup] D+30 outcome + learnings post\n- [#35](https://github.com/ChronoAIProject/Ornn-Marketing/issues/35) [Followup] D+7 retro post\n- [#34](https://github.com/ChronoAIProject/Ornn-Marketing/issues/34) [Followup] DM PH upvoters thank-you (T+0 → T+24h)\n- [#33](https://github.com/ChronoAIProject/Ornn-Marketing/issues/33) [Followup] X 3 milestone quote-tweets (T+24h / T+7d / T+30d)\n- [#32](https://github.com/ChronoAIProject/Ornn-Marketing/issues/32) [Followup] Reddit weekly self-promotion thread participation\n- [#31](https://github.com/ChronoAIProject/Ornn-Marketing/issues/31) [Followup] HN T+24h boomerang comment\n\n<!-- AUTO_GH_ISSUES:END -->",
+        "zh": "D+1 → D+30 的长尾运营。HN T+24h boomerang 评论 / Reddit 每周自推 thread / X 3 个里程碑 quote-tweet (24h / 7d / 30d) / DM PH upvoter thank-you / D+7 retro / D+30 outcome post。**产出**: launch 势能延伸为持续 discovery, 学到的东西沉淀为公开 artifact 给下一波\n\n<!-- AUTO_GH_ISSUES:START -->\n**GitHub issues** — [L2 — Post-Launch Followup](https://github.com/ChronoAIProject/Ornn-Marketing/milestone/3) · 6 进行中 / 0 已关闭\n\n_进行中:_\n- [#36](https://github.com/ChronoAIProject/Ornn-Marketing/issues/36) [Followup] D+30 outcome + learnings post\n- [#35](https://github.com/ChronoAIProject/Ornn-Marketing/issues/35) [Followup] D+7 retro post\n- [#34](https://github.com/ChronoAIProject/Ornn-Marketing/issues/34) [Followup] DM PH upvoters thank-you (T+0 → T+24h)\n- [#33](https://github.com/ChronoAIProject/Ornn-Marketing/issues/33) [Followup] X 3 milestone quote-tweets (T+24h / T+7d / T+30d)\n- [#32](https://github.com/ChronoAIProject/Ornn-Marketing/issues/32) [Followup] Reddit weekly self-promotion thread participation\n- [#31](https://github.com/ChronoAIProject/Ornn-Marketing/issues/31) [Followup] HN T+24h boomerang comment\n\n<!-- AUTO_GH_ISSUES:END -->"
+      },
+      "milestone_ref": {
+        "repo": "ChronoAIProject/Ornn-Marketing",
+        "milestone": "L2 — Post-Launch Followup"
+      },
+      "closure": "seed",
+      "formal": "sop",
+      "product": "ornn",
+      "milestone": "L2",
+      "owner": "chronoai-shining",
+      "issue_count": 6,
+      "focus": false,
+      "archived": false,
+      "promoted_at": {
+        "seed": "2026-05-18"
+      },
+      "deps": [
+        "Ornn-Marketing-L1-Launch"
+      ]
     }
   }
 }

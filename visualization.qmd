@@ -84,7 +84,10 @@ format:
     position: absolute;
     top: 12px; left: 12px;
     display: flex; flex-direction: column; gap: 4px;
-    z-index: 10;
+    /* cytoscape-expand-collapse paints a cue canvas at z-index: 999
+       inside #cy-wrap. The zoom buttons must sit above it or clicks
+       get swallowed by the canvas. */
+    z-index: 1000;
   }
   .zoom-controls button {
     width: 32px; height: 32px;
@@ -211,6 +214,7 @@ format:
 <script src="https://unpkg.com/cytoscape@3.30.2/dist/cytoscape.min.js"></script>
 <script src="https://unpkg.com/dagre@0.8.5/dist/dagre.min.js"></script>
 <script src="https://unpkg.com/cytoscape-dagre@2.5.0/cytoscape-dagre.js"></script>
+<script src="https://unpkg.com/cytoscape-expand-collapse@4.1.1/cytoscape-expand-collapse.js"></script>
 
 <script>
 const I18N = {
@@ -250,6 +254,8 @@ const I18N = {
 
 let LANG = "en";  // overridden in loadData() from config.ui.default_lang
 let CONFIG = null, REGIONS_DOC = null, CY = null;
+let ORNN_ISSUES = null;   // { synced_at, regions: { <region_key>: { milestone, issues: { <num>: {...} } } } }
+let EC_API = null;         // cytoscape-expand-collapse handle
 let FOCUS_SET = new Set();
 let CLOSURE_BY_KEY = {};   // built from config.closure_tiers
 let FORMAL_BY_KEY = {};    // built from config.formal_levels
@@ -257,12 +263,17 @@ let PRODUCT_BY_KEY = {};   // built from config.products
 
 async function loadData() {
   const v = "?v=" + Date.now();
-  const [cfg, regionsDoc] = await Promise.all([
+  const [cfg, regionsDoc, issuesDoc] = await Promise.all([
     fetch("config.json" + v, { cache: "no-store" }).then(r => r.json()),
     fetch("regions.json" + v, { cache: "no-store" }).then(r => r.json()),
+    // ornn-issues.json may not exist on first build; tolerate missing
+    fetch("ornn-issues.json" + v, { cache: "no-store" })
+      .then(r => r.ok ? r.json() : null)
+      .catch(() => null),
   ]);
   CONFIG = cfg;
   REGIONS_DOC = regionsDoc;
+  ORNN_ISSUES = issuesDoc;
   LANG = cfg.ui.default_lang || "en";
 
   // Index lookups for O(1) access
@@ -282,6 +293,7 @@ function buildCytoscapeElements() {
   const nodes = [];
   const edges = [];
   const regions = REGIONS_DOC.regions;
+  const issuesByRegion = (ORNN_ISSUES && ORNN_ISSUES.regions) || {};
 
   for (const [id, r] of Object.entries(regions)) {
     nodes.push({
@@ -297,6 +309,7 @@ function buildCytoscapeElements() {
         issue_count: r.issue_count || 0,
         focus: r.focus === true,
         archived: r.archived === true,
+        is_region: true,
       }
     });
     for (const dep of (r.deps || [])) {
@@ -305,6 +318,66 @@ function buildCytoscapeElements() {
       edges.push({
         data: { source: depKey, target: id, weight }
       });
+    }
+
+    // Add issue child nodes for regions with a milestone_ref → ornn-issues.json entry.
+    // Only OPEN issues become visual children — closed issues live in the side-panel
+    // history list to keep M4 (112 issues, 106 closed) from becoming a giant bubble.
+    const regionIssueData = issuesByRegion[id];
+    if (regionIssueData && regionIssueData.issues) {
+      for (const [num, issue] of Object.entries(regionIssueData.issues)) {
+        if (issue.state !== "OPEN") continue;
+        const childId = `issue:${id}:${num}`;
+        nodes.push({
+          data: {
+            id: childId,
+            parent: id,
+            issue_number: parseInt(num, 10),
+            issue_title: issue.title,
+            issue_state: issue.state,
+            issue_url: issue.url,
+            issue_labels: issue.labels || [],
+            region_key: id,
+            label: `#${num}`,
+            is_issue: true,
+          }
+        });
+      }
+      // Add issue→issue edges within this region (only when both endpoints exist as OPEN children)
+      const openSet = new Set(
+        Object.entries(regionIssueData.issues)
+          .filter(([_, i]) => i.state === "OPEN")
+          .map(([n]) => parseInt(n, 10))
+      );
+      for (const [num, issue] of Object.entries(regionIssueData.issues)) {
+        if (issue.state !== "OPEN") continue;
+        const srcNum = parseInt(num, 10);
+        const srcId = `issue:${id}:${srcNum}`;
+        // blocked_by N → edge from N to this (N must block-by-completion finish first)
+        for (const blocker of (issue.deps?.blocked_by || [])) {
+          if (openSet.has(blocker)) {
+            edges.push({
+              data: { source: `issue:${id}:${blocker}`, target: srcId, edge_type: "blocks" }
+            });
+          }
+        }
+        // blocks N → edge from this to N
+        for (const blocked of (issue.deps?.blocks || [])) {
+          if (openSet.has(blocked)) {
+            edges.push({
+              data: { source: srcId, target: `issue:${id}:${blocked}`, edge_type: "blocks" }
+            });
+          }
+        }
+        // tracks N → edge from this (umbrella) to N (child)
+        for (const tracked of (issue.deps?.tracks || [])) {
+          if (openSet.has(tracked)) {
+            edges.push({
+              data: { source: srcId, target: `issue:${id}:${tracked}`, edge_type: "tracks" }
+            });
+          }
+        }
+      }
     }
   }
 
@@ -487,7 +560,11 @@ function escapeHtml(value) {
 function renderCy() {
   CY = cytoscape({
     container: document.getElementById("cy"),
-    elements: buildCytoscapeElements(),
+    // Use the flat-array form: cytoscape's {nodes,edges} object form has a
+    // bug where compound children (issue nodes with `parent:` set) are
+    // silently dropped at construction time. Flattening to [...nodes,
+    // ...edges] preserves them. Confirmed locally 2026-05-18.
+    elements: (() => { const e = buildCytoscapeElements(); return [...e.nodes, ...e.edges]; })(),
     style: [
       {
         selector: "node",
@@ -544,20 +621,79 @@ function renderCy() {
       // Using a Cytoscape selector keeps this declarative; refreshNodeVisuals
       // writes the boolean `archived` data field that this selector tests.
       { selector: "node[?archived]", style: { "opacity": CONFIG.archive_rule.opacity ?? 0.35 } },
+
+      // === Compound issue children (Ornn only) ===
+      // Issue nodes live inside their milestone region as cytoscape compound children.
+      // Only OPEN issues become visual nodes — closed issues stay in the side-panel history.
+      {
+        selector: "node[?is_issue]",
+        style: {
+          "shape": "ellipse",
+          "background-color": "#3498db",
+          "background-opacity": 0.92,
+          "border-width": 1.5,
+          "border-color": "#1f5377",
+          "width": 24,
+          "height": 24,
+          "label": "data(label)",
+          "font-size": "10px",
+          "font-weight": 700,
+          "color": "#fff",
+          "text-valign": "center",
+          "text-halign": "center",
+          "text-outline-color": "transparent",
+          "text-outline-width": 0,
+          "text-background-opacity": 0,
+          "text-margin-y": 0,
+        }
+      },
+      // Compound parent rendering when expanded (issues visible inside)
+      {
+        selector: "node:parent",
+        style: {
+          "background-opacity": 0.06,
+          "background-color": "data(color)",
+          "border-style": "dashed",
+          "border-width": 2,
+          "padding": 18,
+          "text-valign": "top",
+          "text-halign": "center",
+          "text-margin-y": -4,
+        }
+      },
+      // Issue→issue "blocks" edge: red, solid arrow (this issue blocks completion of target)
+      {
+        selector: "edge[edge_type = 'blocks']",
+        style: {
+          "line-color": "#e74c3c",
+          "target-arrow-color": "#e74c3c",
+          "target-arrow-shape": "triangle",
+          "width": 1.5,
+          "curve-style": "bezier",
+          "arrow-scale": 0.85,
+          "opacity": 0.85,
+        }
+      },
+      // Issue→issue "tracks" edge: dashed grey (umbrella → child checklist item)
+      {
+        selector: "edge[edge_type = 'tracks']",
+        style: {
+          "line-color": "#95a5a6",
+          "line-style": "dashed",
+          "target-arrow-color": "#95a5a6",
+          "target-arrow-shape": "tee",
+          "width": 1,
+          "curve-style": "bezier",
+          "arrow-scale": 0.7,
+          "opacity": 0.7,
+        }
+      },
     ],
     layout: {
-      name: "dagre",
-      // 35 nodes (NyxID + Aevatar). LR shows primitives (left) → derived
-      // (right). Spacing tuned for legibility: nodeSep generous so labels
-      // (text-valign: bottom) don't crash into the next node's circle.
-      rankDir: "LR",
-      nodeSep: 50,
-      rankSep: 180,
-      edgeSep: 14,
-      ranker: "network-simplex",
-      padding: 24,
-      fit: true,
-      animate: false,
+      // No initial layout — dagre would put issue children in one column
+      // because they have no inter-compound edges. We collapse all
+      // compounds first (below), then run dagre on the outer structure.
+      name: "preset",
     },
     // Disable wheel/pinch zoom (per request); pan-drag remains for nudging
     // so the dropdown's centered jump can be fine-tuned without the user
@@ -573,7 +709,97 @@ function renderCy() {
   });
   setupZoomControls();
 
-  CY.on("tap", "node", evt => showNodeDetail(evt.target.id()));
+  // Initialize cytoscape-expand-collapse for Ornn milestone regions that
+  // contain issue children. Default state: all compounds collapsed (looks
+  // like the previous flat map). User clicks the +/- cue on a parent to
+  // expand and see issues + their dep edges.
+  try {
+    EC_API = CY.expandCollapse({
+      // No auto-layout on expand/collapse — re-running dagre across the
+      // whole graph causes everything to jump. We position children
+      // manually with a grid layout right after each expand (see tap
+      // handler below).
+      layoutBy: null,
+      fisheye: false,
+      animate: true,
+      animationDuration: 200,
+      undoable: false,
+      cueEnabled: true,
+      expandCollapseCuePosition: "top-left",
+      expandCollapseCueSize: 14,
+      expandCollapseCueLineSize: 9,
+    });
+    // Collapse every compound on init so the default view matches the old
+    // milestone-only layout. Users expand on demand.
+    const compoundNodes = CY.nodes().filter(n => n.isParent());
+    if (compoundNodes.length > 0 && EC_API.collapse) {
+      EC_API.collapse(compoundNodes);
+    }
+  } catch (e) {
+    console.warn("expand-collapse init failed (compound rendering disabled):", e);
+  }
+
+  // Now run the real dagre layout. Compounds are collapsed → dagre only
+  // sees the outer 57-node structure, not 153 (which would stack issue
+  // children in a useless column because they have no inter-edges).
+  CY.layout({
+    name: "dagre",
+    rankDir: "LR",
+    nodeSep: 50,
+    rankSep: 180,
+    edgeSep: 14,
+    ranker: "network-simplex",
+    padding: 24,
+    fit: true,
+    animate: false,
+  }).run();
+
+  // Helper: arrange a compound's children in a grid around the parent's
+  // current position. Called after EC_API.expand() so the children don't
+  // pile up at one point.
+  window.__layoutCompoundChildren = function (parent) {
+    const children = parent.children();
+    if (children.length === 0) return;
+    const cols = Math.ceil(Math.sqrt(children.length * 1.6));  // wider than tall
+    const cellW = 50;
+    const cellH = 50;
+    const center = parent.position();
+    // Start from top-left of the grid centered on the parent's original spot
+    const rows = Math.ceil(children.length / cols);
+    const startX = center.x - (cols - 1) * cellW / 2;
+    const startY = center.y - (rows - 1) * cellH / 2;
+    children.forEach((c, i) => {
+      const row = Math.floor(i / cols);
+      const col = i % cols;
+      c.position({ x: startX + col * cellW, y: startY + row * cellH });
+    });
+  };
+
+  CY.on("tap", "node", evt => {
+    const node = evt.target;
+    if (node.data("is_issue")) {
+      showIssueDetail(node);
+      return;
+    }
+    // Region node: show detail panel as before.
+    showNodeDetail(node.id());
+    // If this region has issue children (collapsed or expanded), also
+    // toggle compound state on the same tap. The +/- hover cue from
+    // expand-collapse is easy to miss; click-to-toggle makes it discoverable.
+    if (EC_API && (EC_API.isExpandable(node) || EC_API.isCollapsible(node))) {
+      try {
+        if (EC_API.isExpandable(node)) {
+          EC_API.expand(node);
+          // Position the now-visible children in a grid so they don't pile up
+          if (window.__layoutCompoundChildren) {
+            window.__layoutCompoundChildren(node);
+          }
+        } else if (EC_API.isCollapsible(node)) {
+          EC_API.collapse(node);
+        }
+      } catch (e) { /* ignore */ }
+    }
+  });
   CY.on("tap", evt => {
     if (evt.target === CY) {
       const el = document.getElementById("detail-content");
@@ -582,7 +808,7 @@ function renderCy() {
       CY.nodes().unselect();
       // Restore the global fit when the user taps an empty area.
       CY.animate(
-        { fit: { eles: CY.elements(), padding: 16 } },
+        { fit: { eles: CY.elements(":visible"), padding: 16 } },
         { duration: 350, easing: "ease-out" }
       );
     }
@@ -590,7 +816,89 @@ function renderCy() {
   // Global view: fit all nodes in the viewport. With the bigger font and
   // outline below, labels stay legible even when fit-zoomed. The dropdown
   // is the primary nav for jumping between specific regions.
-  CY.fit(undefined, 16);
+  CY.fit(CY.elements(":visible"), 16);
+}
+
+// Show issue detail in the side panel
+function showIssueDetail(node) {
+  const el = document.getElementById("detail-content");
+  if (!el) return;
+  const num = node.data("issue_number");
+  const title = node.data("issue_title");
+  const state = node.data("issue_state");
+  const url = node.data("issue_url");
+  const labels = node.data("issue_labels") || [];
+  const regionKey = node.data("region_key");
+  const region = REGIONS_DOC && REGIONS_DOC.regions[regionKey];
+
+  // Pull deps from the underlying issue data (not the cytoscape edges,
+  // because those are filtered to only-OPEN endpoints — we want to also
+  // mention closed-issue refs in the panel).
+  const issueData = ORNN_ISSUES && ORNN_ISSUES.regions[regionKey] &&
+    ORNN_ISSUES.regions[regionKey].issues[String(num)];
+  const deps = (issueData && issueData.deps) || {};
+
+  const stateBadge = state === "OPEN"
+    ? '<span style="background:#27ae60;color:#fff;padding:1px 8px;border-radius:3px;font-size:0.75rem;font-weight:600">OPEN</span>'
+    : '<span style="background:#95a5a6;color:#fff;padding:1px 8px;border-radius:3px;font-size:0.75rem;font-weight:600">CLOSED</span>';
+
+  const labelChips = labels.length
+    ? labels.map(l => `<span style="background:#ecf0f1;color:#34495e;padding:1px 6px;border-radius:3px;font-size:0.72rem;margin-right:3px">${escapeHtml(l)}</span>`).join("")
+    : '<span style="color:#aaa;font-style:italic">no labels</span>';
+
+  const renderDepList = (nums) =>
+    nums && nums.length
+      ? nums.map(n => `<a href="#" onclick="event.preventDefault();jumpToIssue('${regionKey}',${n})">#${n}</a>`).join(", ")
+      : '<span style="color:#aaa">none</span>';
+
+  const regionLabel = region
+    ? (LANG === "zh" ? region.label.zh : region.label.en)
+    : regionKey;
+
+  el.innerHTML = `
+    <div class="term-name">#${num}</div>
+    <div class="term-other">${stateBadge}</div>
+    <div class="term-desc" style="margin-top:0.7rem;font-size:0.95rem">${escapeHtml(title)}</div>
+    <div style="margin-top:0.7rem;font-size:0.82rem">
+      <strong>${LANG === "zh" ? "所属 milestone" : "Milestone"}:</strong>
+      <a href="#" onclick="event.preventDefault();showNodeDetail('${regionKey}')">${escapeHtml(regionLabel)}</a>
+    </div>
+    <div style="margin-top:0.4rem;font-size:0.82rem">
+      <strong>${LANG === "zh" ? "标签" : "Labels"}:</strong> ${labelChips}
+    </div>
+    <div class="term-deps" style="margin-top:0.7rem">
+      ${deps.tracks && deps.tracks.length ? `<div><strong>${LANG === "zh" ? "包含 (tracks)" : "Tracks"}:</strong> ${renderDepList(deps.tracks)}</div>` : ""}
+      ${deps.tracked_by && deps.tracked_by.length ? `<div><strong>${LANG === "zh" ? "被包含 (tracked by)" : "Tracked by"}:</strong> ${renderDepList(deps.tracked_by)}</div>` : ""}
+      ${deps.blocks && deps.blocks.length ? `<div><strong>${LANG === "zh" ? "阻塞 (blocks)" : "Blocks"}:</strong> ${renderDepList(deps.blocks)}</div>` : ""}
+      ${deps.blocked_by && deps.blocked_by.length ? `<div><strong>${LANG === "zh" ? "被阻塞 (blocked by)" : "Blocked by"}:</strong> ${renderDepList(deps.blocked_by)}</div>` : ""}
+    </div>
+    <div style="margin-top:0.9rem;font-size:0.82rem">
+      <a href="${escapeHtml(url)}" target="_blank" rel="noopener" style="color:#2c3e50">${LANG === "zh" ? "→ 在 GitHub 打开" : "→ Open on GitHub"}</a>
+    </div>
+  `;
+}
+
+// Jump to another issue (used by dep links in the panel)
+function jumpToIssue(regionKey, issueNum) {
+  if (!CY) return;
+  const childId = `issue:${regionKey}:${issueNum}`;
+  const node = CY.getElementById(childId);
+  if (node && node.length) {
+    // Make sure parent is expanded
+    const parent = node.parent();
+    if (parent.length && parent.data("is_region") && EC_API) {
+      try { EC_API.expand(parent); } catch (e) { /* ignore */ }
+    }
+    showIssueDetail(node);
+    CY.animate({ center: { eles: node }, zoom: Math.max(CY.zoom(), 1.0) }, { duration: 250 });
+  } else {
+    // Issue might be closed (not in graph) — open GitHub directly
+    const data = ORNN_ISSUES && ORNN_ISSUES.regions[regionKey] &&
+      ORNN_ISSUES.regions[regionKey].issues[String(issueNum)];
+    if (data && data.url) {
+      window.open(data.url, "_blank");
+    }
+  }
 }
 
 function setupZoomControls() {
@@ -649,16 +957,26 @@ function highlightSubgraph(id) {
   }
   const keep = new Set([...upSet, ...downSet]);
 
-  CY.nodes().forEach(n => { if (!keep.has(n.id())) n.addClass("faded"); });
+  // Helper: is a node kept by this highlight? Issue children inherit their parent's status.
+  const isKept = n => {
+    if (keep.has(n.id())) return true;
+    const parent = n.parent();
+    return parent.length > 0 && keep.has(parent.first().id());
+  };
+
+  CY.nodes().forEach(n => { if (!isKept(n)) n.addClass("faded"); });
   CY.edges().forEach(e => {
-    const s = e.data("source"), tgt = e.data("target");
-    if (keep.has(s) && keep.has(tgt)) e.addClass("highlight");
+    const sn = CY.getElementById(e.data("source"));
+    const tn = CY.getElementById(e.data("target"));
+    if (sn.length && tn.length && isKept(sn) && isKept(tn)) e.addClass("highlight");
     else e.addClass("faded");
   });
 
   const focusEles = CY.elements().filter(el => {
-    if (el.isNode()) return keep.has(el.id());
-    return keep.has(el.data("source")) && keep.has(el.data("target"));
+    if (el.isNode()) return isKept(el);
+    const sn = CY.getElementById(el.data("source"));
+    const tn = CY.getElementById(el.data("target"));
+    return sn.length && tn.length && isKept(sn) && isKept(tn);
   });
   CY.animate(
     { fit: { eles: focusEles, padding: 60 } },
@@ -705,13 +1023,48 @@ function showNodeDetail(id) {
   const otherLang = lang === "en" ? "zh" : "en";
   const primaryLabel = (r.label && r.label[lang]) || (r.label && r.label.en) || id;
   const otherLabel = (r.label && r.label[otherLang]) || "";
-  const primaryDesc = (r.desc && r.desc[lang]) || "";
+  // Strip the AUTO_GH_ISSUES marker block from rendered desc — the panel
+  // renders that data programmatically below (see issuesSection) so it
+  // gets proper HTML instead of raw markdown.
+  const rawDesc = (r.desc && r.desc[lang]) || "";
+  const primaryDesc = rawDesc.replace(/<!--\s*AUTO_GH_ISSUES:START\s*-->[\s\S]*?<!--\s*AUTO_GH_ISSUES:END\s*-->/g, "").trim();
 
   const linkRegion = k => {
     const rr = REGIONS_DOC.regions[k];
     const lbl = (rr && rr.label && rr.label[lang]) || (rr && rr.label && rr.label.en) || k;
     return `<a onclick="showNodeDetail(${JSON.stringify(k)})">${escapeHtml(lbl)}</a>`;
   };
+
+  // Issue list pulled from ORNN_ISSUES for regions with milestone_ref
+  const issuesData = ORNN_ISSUES && ORNN_ISSUES.regions && ORNN_ISSUES.regions[id];
+  let issuesSection = "";
+  if (issuesData && issuesData.issues) {
+    const ms = issuesData.milestone;
+    const issues = Object.values(issuesData.issues);
+    const open = issues.filter(i => i.state === "OPEN").sort((a, b) => b.number - a.number);
+    const closed = issues.filter(i => i.state === "CLOSED").sort((a, b) => b.number - a.number);
+    const renderIssue = (i, dim) => {
+      const num = i.number;
+      const t = escapeHtml(i.title);
+      const opacity = dim ? 'style="opacity:0.55"' : "";
+      const strike = dim ? "text-decoration:line-through;" : "";
+      return `<li ${opacity}><a href="#" onclick="event.preventDefault();jumpToIssue('${id}',${num})" style="${strike}">#${num}</a> ${t}</li>`;
+    };
+    const openLabel = lang === "zh" ? "进行中" : "Open";
+    const closedLabel = lang === "zh" ? "已关闭" : "Closed";
+    const expandHint = lang === "zh" ? "(再次点击 milestone 可折叠/展开图上的 issue 节点)" : "(click the milestone again to toggle issue nodes on the map)";
+    issuesSection = `
+      <div class="term-issues" style="margin-top:0.9rem;padding-top:0.6rem;border-top:1px solid #eee;font-size:0.85rem">
+        <div style="font-weight:600;color:#444;margin-bottom:0.3rem">
+          <a href="${escapeHtml(ms.url)}" target="_blank" rel="noopener" style="color:#2c3e50">GitHub: ${escapeHtml(ms.title)}</a>
+          <span style="color:#888;font-weight:400">— ${open.length} ${openLabel} / ${closed.length} ${closedLabel}</span>
+        </div>
+        ${open.length ? `<details open><summary style="cursor:pointer;color:#27ae60;font-weight:500">${openLabel} (${open.length})</summary><ul style="margin:0.3rem 0 0.5rem 0.8rem;padding-left:0.6rem;line-height:1.5">${open.map(i => renderIssue(i, false)).join("")}</ul></details>` : ""}
+        ${closed.length ? `<details><summary style="cursor:pointer;color:#7f8c8d">${closedLabel} (${closed.length})</summary><ul style="margin:0.3rem 0 0.5rem 0.8rem;padding-left:0.6rem;line-height:1.5">${closed.slice(0, 30).map(i => renderIssue(i, true)).join("")}${closed.length > 30 ? `<li style="color:#aaa;font-style:italic">… and ${closed.length - 30} more</li>` : ""}</ul></details>` : ""}
+        <div style="color:#aaa;font-size:0.75rem;margin-top:0.3rem">${expandHint}</div>
+      </div>
+    `;
+  }
 
   detailEl.innerHTML = `
     <div class="term-name">${escapeHtml(primaryLabel)}${
@@ -733,6 +1086,7 @@ function showNodeDetail(id) {
     ${timeline ? `<div class="term-timeline"><strong>${t("detail_timeline")}</strong> ${escapeHtml(timeline)}</div>` : ""}
     ${upstream.length ? `<div class="term-deps"><strong>${t("detail_upstream")}</strong> ${upstream.map(linkRegion).join(" ")}</div>` : ""}
     ${downstream.length ? `<div class="term-deps"><strong>${t("detail_downstream")}</strong> ${downstream.map(linkRegion).join(" ")}</div>` : ""}
+    ${issuesSection}
   `;
 }
 

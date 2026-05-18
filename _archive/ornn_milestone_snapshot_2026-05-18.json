@@ -1,0 +1,3489 @@
+{
+  "snapshot_at": "2026-05-18T06:35:27.524785Z",
+  "repo": "ChronoAIProject/Ornn",
+  "reason": "Pre-refactor snapshot before deleting all milestones (per user instruction 2026-05-18)",
+  "milestone_count": 13,
+  "issue_count": 283,
+  "milestones": [
+    {
+      "number": 1,
+      "title": "M1 - Foundation",
+      "state": "closed",
+      "description": "The only platform where agents can build, find, and run skills in one place. API unification, e2e lifecycle, versioning, sandboxed execution.",
+      "open_issues": 0,
+      "closed_issues": 33,
+      "due_on": "2026-04-24T00:00:00Z",
+      "closed_at": "2026-04-23T05:55:38Z",
+      "created_at": "2026-04-14T06:20:11Z"
+    },
+    {
+      "number": 2,
+      "title": "M2 - Build Experience",
+      "state": "closed",
+      "description": "Generate skills from nothing, or from any API spec. Dual-mode build, OpenAPI-to-skill, CLI/SDK.",
+      "open_issues": 0,
+      "closed_issues": 14,
+      "due_on": "2026-05-05T00:00:00Z",
+      "closed_at": "2026-04-23T06:49:56Z",
+      "created_at": "2026-04-14T06:20:11Z"
+    },
+    {
+      "number": 3,
+      "title": "M3 - Trust & Quality",
+      "state": "open",
+      "description": "The only registry where you know a skill is safe before running it. LLM-based audit, waiver system, analytics, reputation.",
+      "open_issues": 1,
+      "closed_issues": 37,
+      "due_on": "2026-05-12T00:00:00Z",
+      "closed_at": null,
+      "created_at": "2026-04-14T06:20:12Z"
+    },
+    {
+      "number": 4,
+      "title": "M4 - Platform Power",
+      "state": "open",
+      "description": "Skills that compose into workflows. Skill chaining, webhooks, templates, network effects.",
+      "open_issues": 8,
+      "closed_issues": 0,
+      "due_on": "2026-05-22T00:00:00Z",
+      "closed_at": null,
+      "created_at": "2026-04-14T06:20:12Z"
+    },
+    {
+      "number": 5,
+      "title": "M5 - Marketplace",
+      "state": "closed",
+      "description": "Developers get paid for building skills. Usage billing, revenue share, org sharing, curation.",
+      "open_issues": 0,
+      "closed_issues": 3,
+      "due_on": "2026-05-29T00:00:00Z",
+      "closed_at": "2026-05-12T05:52:48Z",
+      "created_at": "2026-04-14T06:20:13Z"
+    },
+    {
+      "number": 6,
+      "title": "Refactor",
+      "state": "closed",
+      "description": "API v1 standardization + architecture refactor \u2014 tracks Epic 0 through Epic 4 (issue #64).",
+      "open_issues": 0,
+      "closed_issues": 8,
+      "due_on": "2026-04-22T00:00:00Z",
+      "closed_at": "2026-04-22T08:53:26Z",
+      "created_at": "2026-04-22T07:46:39Z"
+    },
+    {
+      "number": 7,
+      "title": "Go Live Preparation",
+      "state": "closed",
+      "description": "Pre-launch foundations: per-user quota system + admin model selection. Targeting Friday 2026-05-08.",
+      "open_issues": 0,
+      "closed_issues": 14,
+      "due_on": "2026-05-08T00:00:00Z",
+      "closed_at": "2026-05-13T05:49:00Z",
+      "created_at": "2026-05-05T04:59:18Z"
+    },
+    {
+      "number": 8,
+      "title": "i18n Coverage",
+      "state": "open",
+      "description": "Close out i18n gaps across ornn-web \u2014 every page, component, and bubbled error surface goes through t() (zh + en parity).",
+      "open_issues": 0,
+      "closed_issues": 0,
+      "due_on": "2026-05-24T00:00:00Z",
+      "closed_at": null,
+      "created_at": "2026-05-11T03:35:43Z"
+    },
+    {
+      "number": 9,
+      "title": "Review \u00b7 Security",
+      "state": "open",
+      "description": "Findings from automated security review \u2014 auth, secrets, input validation, SSRF, sandbox",
+      "open_issues": 5,
+      "closed_issues": 0,
+      "due_on": "2026-05-22T00:00:00Z",
+      "closed_at": null,
+      "created_at": "2026-05-13T04:07:44Z"
+    },
+    {
+      "number": 10,
+      "title": "Review \u00b7 Vulnerability",
+      "state": "open",
+      "description": "Findings from automated vulnerability + dependency review \u2014 zip handling, regex, env-var, SDK deps",
+      "open_issues": 5,
+      "closed_issues": 0,
+      "due_on": "2026-05-29T00:00:00Z",
+      "closed_at": null,
+      "created_at": "2026-05-13T04:07:44Z"
+    },
+    {
+      "number": 11,
+      "title": "Review \u00b7 Coding Standards",
+      "state": "open",
+      "description": "Findings from automated coding-standards review \u2014 TS strictness, conventions, tests, file size",
+      "open_issues": 7,
+      "closed_issues": 0,
+      "due_on": "2026-06-05T00:00:00Z",
+      "closed_at": null,
+      "created_at": "2026-05-13T04:07:45Z"
+    },
+    {
+      "number": 12,
+      "title": "Review \u00b7 Industry Standards",
+      "state": "open",
+      "description": "Findings from automated industry-standard conformance review \u2014 RFC 7807, pagination, dist-tags, npm-style integrity",
+      "open_issues": 10,
+      "closed_issues": 0,
+      "due_on": "2026-06-12T00:00:00Z",
+      "closed_at": null,
+      "created_at": "2026-05-13T04:07:45Z"
+    },
+    {
+      "number": 13,
+      "title": "Review \u00b7 OSS Readiness",
+      "state": "open",
+      "description": "Findings from automated OSS-popularity review \u2014 docker-compose, demo, examples, marketing, SDK publish",
+      "open_issues": 9,
+      "closed_issues": 0,
+      "due_on": "2026-06-19T00:00:00Z",
+      "closed_at": null,
+      "created_at": "2026-05-13T04:07:46Z"
+    }
+  ],
+  "issues": [
+    {
+      "number": 1,
+      "title": "[Bug] Inconsistent skill_build validation: invalid messages payloads bypass validation and error semantics are mixed",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [],
+      "createdAt": "2026-03-18T08:32:42Z",
+      "closedAt": "2026-04-07T20:41:28Z"
+    },
+    {
+      "number": 2,
+      "title": "[Bug] skill_build does not validate unknown model and may silently fallback",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [],
+      "createdAt": "2026-03-18T09:59:29Z",
+      "closedAt": "2026-04-07T20:41:32Z"
+    },
+    {
+      "number": 3,
+      "title": "[Feature] Skill Audit & Community",
+      "state": "CLOSED",
+      "milestone": "M3 - Trust & Quality",
+      "labels": [
+        "enhancement",
+        "phase:3",
+        "security"
+      ],
+      "createdAt": "2026-03-26T06:30:33Z",
+      "closedAt": "2026-04-23T07:25:43Z"
+    },
+    {
+      "number": 4,
+      "title": "Skill-Only API",
+      "state": "CLOSED",
+      "milestone": "M1 - Foundation",
+      "labels": [
+        "enhancement",
+        "phase:1",
+        "api"
+      ],
+      "createdAt": "2026-03-26T06:31:19Z",
+      "closedAt": "2026-04-20T03:34:21Z"
+    },
+    {
+      "number": 5,
+      "title": "Skill upload issue",
+      "state": "CLOSED",
+      "milestone": "M1 - Foundation",
+      "labels": [
+        "bug",
+        "phase:1"
+      ],
+      "createdAt": "2026-03-26T07:11:32Z",
+      "closedAt": "2026-04-20T03:30:53Z"
+    },
+    {
+      "number": 6,
+      "title": "[Bug] Ornn authoring is not usable from the Nyx CLI / proxy path and the required auth boundary is unclear",
+      "state": "CLOSED",
+      "milestone": "M1 - Foundation",
+      "labels": [
+        "bug",
+        "phase:1"
+      ],
+      "createdAt": "2026-03-31T16:55:45Z",
+      "closedAt": "2026-04-20T03:14:06Z"
+    },
+    {
+      "number": 7,
+      "title": "Skill page should provide a copyable install URL for LLMs",
+      "state": "CLOSED",
+      "milestone": "M1 - Foundation",
+      "labels": [
+        "phase:1",
+        "dx"
+      ],
+      "createdAt": "2026-04-03T13:36:15Z",
+      "closedAt": "2026-04-20T06:07:51Z"
+    },
+    {
+      "number": 8,
+      "title": "feat: Organization scope skills \u2014 \u652f\u6301\u516c\u53f8/\u56e2\u961f\u7ea7\u5171\u4eab skills",
+      "state": "CLOSED",
+      "milestone": "M5 - Marketplace",
+      "labels": [
+        "phase:5"
+      ],
+      "createdAt": "2026-04-03T13:42:15Z",
+      "closedAt": "2026-04-22T04:46:57Z"
+    },
+    {
+      "number": 9,
+      "title": "[CI/CD] CI/CD pipeline \u2014 \u81ea\u52a8\u6d4b\u8bd5 + \u90e8\u7f72",
+      "state": "CLOSED",
+      "milestone": "M1 - Foundation",
+      "labels": [
+        "phase:1",
+        "infra"
+      ],
+      "createdAt": "2026-04-03T14:10:28Z",
+      "closedAt": "2026-04-23T05:53:41Z"
+    },
+    {
+      "number": 11,
+      "title": "feat: Skill Registry API \u2014 supply skill definitions + metadata to Aevatar",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [],
+      "createdAt": "2026-04-06T08:18:19Z",
+      "closedAt": "2026-04-06T08:20:47Z"
+    },
+    {
+      "number": 12,
+      "title": "feat: daily-briefing skill \u2014 \u79fb\u690d /daily \u903b\u8f91\u4e3a Ornn skill",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [],
+      "createdAt": "2026-04-06T08:18:30Z",
+      "closedAt": "2026-04-06T08:20:49Z"
+    },
+    {
+      "number": 22,
+      "title": "[Misc] Owner \u81ea\u4e3b\u76ee\u6807: \u5b9a\u4e49 Ornn O1 \u8def\u5f84 + \u5f00\u53d1\u8005\u89e6\u8fbe\u8ba1\u5212",
+      "state": "OPEN",
+      "milestone": null,
+      "labels": [
+        "phase:1",
+        "dx"
+      ],
+      "createdAt": "2026-04-13T14:57:11Z",
+      "closedAt": null
+    },
+    {
+      "number": 23,
+      "title": "[M1] API route refactor: merge /api/web + /api/agent into unified /api",
+      "state": "CLOSED",
+      "milestone": "M1 - Foundation",
+      "labels": [
+        "phase:1",
+        "api"
+      ],
+      "createdAt": "2026-04-14T06:20:52Z",
+      "closedAt": "2026-04-20T03:28:49Z"
+    },
+    {
+      "number": 24,
+      "title": "[Feature] End-to-end skill lifecycle: build -> search -> pull -> execute",
+      "state": "CLOSED",
+      "milestone": "M1 - Foundation",
+      "labels": [
+        "phase:1",
+        "api"
+      ],
+      "createdAt": "2026-04-14T06:21:04Z",
+      "closedAt": "2026-04-23T05:54:15Z"
+    },
+    {
+      "number": 25,
+      "title": "[M1] Skill versioning & version history",
+      "state": "CLOSED",
+      "milestone": "M1 - Foundation",
+      "labels": [
+        "phase:1",
+        "api"
+      ],
+      "createdAt": "2026-04-14T06:21:15Z",
+      "closedAt": "2026-04-20T07:11:34Z"
+    },
+    {
+      "number": 26,
+      "title": "[Feature] Skill diff & changelog on version updates",
+      "state": "CLOSED",
+      "milestone": "M3 - Trust & Quality",
+      "labels": [
+        "phase:3",
+        "dx"
+      ],
+      "createdAt": "2026-04-14T06:21:29Z",
+      "closedAt": "2026-04-23T07:32:10Z"
+    },
+    {
+      "number": 27,
+      "title": "[M1] Local dev server with hot-reload for skill authoring",
+      "state": "CLOSED",
+      "milestone": "M1 - Foundation",
+      "labels": [
+        "phase:1",
+        "dx"
+      ],
+      "createdAt": "2026-04-14T06:21:38Z",
+      "closedAt": "2026-04-22T04:46:59Z"
+    },
+    {
+      "number": 28,
+      "title": "[M1] MCP-native skill discovery",
+      "state": "CLOSED",
+      "milestone": "M1 - Foundation",
+      "labels": [
+        "phase:1",
+        "dx"
+      ],
+      "createdAt": "2026-04-14T06:21:47Z",
+      "closedAt": "2026-04-22T04:47:01Z"
+    },
+    {
+      "number": 29,
+      "title": "[Feature] Dual-mode skill build: local boundaries + remote generation",
+      "state": "CLOSED",
+      "milestone": "M2 - Build Experience",
+      "labels": [
+        "phase:2",
+        "api"
+      ],
+      "createdAt": "2026-04-14T06:22:05Z",
+      "closedAt": "2026-04-23T06:11:22Z"
+    },
+    {
+      "number": 30,
+      "title": "[Feature] REST API skill generation from OpenAPI specs / source code",
+      "state": "CLOSED",
+      "milestone": "M2 - Build Experience",
+      "labels": [
+        "phase:2",
+        "api"
+      ],
+      "createdAt": "2026-04-14T06:22:18Z",
+      "closedAt": "2026-04-23T06:11:41Z"
+    },
+    {
+      "number": 31,
+      "title": "[Feature] Ornn SDK: TypeScript + Python client libraries",
+      "state": "CLOSED",
+      "milestone": "M2 - Build Experience",
+      "labels": [
+        "phase:2",
+        "dx"
+      ],
+      "createdAt": "2026-04-14T06:22:30Z",
+      "closedAt": "2026-04-23T06:29:11Z"
+    },
+    {
+      "number": 32,
+      "title": "[Feature] LLM-based quality & security audit with multi-dimensional scoring",
+      "state": "CLOSED",
+      "milestone": "M3 - Trust & Quality",
+      "labels": [
+        "phase:3",
+        "security"
+      ],
+      "createdAt": "2026-04-14T06:22:52Z",
+      "closedAt": "2026-04-23T07:25:29Z"
+    },
+    {
+      "number": 33,
+      "title": "[Feature] Skill activation waiver system",
+      "state": "CLOSED",
+      "milestone": "M3 - Trust & Quality",
+      "labels": [
+        "phase:3",
+        "security"
+      ],
+      "createdAt": "2026-04-14T06:23:05Z",
+      "closedAt": "2026-04-23T05:30:59Z"
+    },
+    {
+      "number": 34,
+      "title": "[Feature] Skill analytics & observability dashboard",
+      "state": "CLOSED",
+      "milestone": "M3 - Trust & Quality",
+      "labels": [
+        "phase:3",
+        "dx"
+      ],
+      "createdAt": "2026-04-14T06:23:18Z",
+      "closedAt": "2026-04-23T07:37:20Z"
+    },
+    {
+      "number": 35,
+      "title": "[Feature] Skill composition & chaining",
+      "state": "OPEN",
+      "milestone": "M4 - Platform Power",
+      "labels": [
+        "phase:4",
+        "api"
+      ],
+      "createdAt": "2026-04-14T06:23:35Z",
+      "closedAt": null
+    },
+    {
+      "number": 36,
+      "title": "[Feature] Webhook & event system for skill lifecycle",
+      "state": "OPEN",
+      "milestone": "M4 - Platform Power",
+      "labels": [
+        "phase:4",
+        "api"
+      ],
+      "createdAt": "2026-04-14T06:23:44Z",
+      "closedAt": null
+    },
+    {
+      "number": 37,
+      "title": "[Feature] Skill templates & starter kits",
+      "state": "OPEN",
+      "milestone": "M4 - Platform Power",
+      "labels": [
+        "phase:4",
+        "dx"
+      ],
+      "createdAt": "2026-04-14T06:23:55Z",
+      "closedAt": null
+    },
+    {
+      "number": 38,
+      "title": "[Feature] Usage-based billing & author revenue share",
+      "state": "CLOSED",
+      "milestone": "M5 - Marketplace",
+      "labels": [
+        "phase:5"
+      ],
+      "createdAt": "2026-04-14T06:24:09Z",
+      "closedAt": "2026-05-12T05:50:45Z"
+    },
+    {
+      "number": 39,
+      "title": "[Feature] Featured & curated skill collections",
+      "state": "CLOSED",
+      "milestone": "M5 - Marketplace",
+      "labels": [
+        "phase:5",
+        "dx"
+      ],
+      "createdAt": "2026-04-14T06:24:20Z",
+      "closedAt": "2026-05-12T05:50:47Z"
+    },
+    {
+      "number": 40,
+      "title": "[Docs] Move docs to frontend static build, remove /api/docs backend routes",
+      "state": "CLOSED",
+      "milestone": "M1 - Foundation",
+      "labels": [
+        "phase:1",
+        "dx"
+      ],
+      "createdAt": "2026-04-14T07:45:23Z",
+      "closedAt": "2026-04-23T05:37:10Z"
+    },
+    {
+      "number": 41,
+      "title": "[M2] Generate skills from OpenAPI specs",
+      "state": "CLOSED",
+      "milestone": "M2 - Build Experience",
+      "labels": [
+        "phase:2",
+        "api"
+      ],
+      "createdAt": "2026-04-14T07:49:33Z",
+      "closedAt": "2026-04-20T03:28:49Z"
+    },
+    {
+      "number": 42,
+      "title": "[Feature] Generate skills from source code repos",
+      "state": "CLOSED",
+      "milestone": "M2 - Build Experience",
+      "labels": [
+        "phase:2",
+        "api"
+      ],
+      "createdAt": "2026-04-14T07:49:36Z",
+      "closedAt": "2026-04-23T06:36:51Z"
+    },
+    {
+      "number": 43,
+      "title": "[M1] System Skills: auto-generate skills from NyxID service catalog",
+      "state": "CLOSED",
+      "milestone": "M1 - Foundation",
+      "labels": [
+        "phase:1",
+        "dx",
+        "api"
+      ],
+      "createdAt": "2026-04-14T08:02:01Z",
+      "closedAt": "2026-04-20T03:28:49Z"
+    },
+    {
+      "number": 44,
+      "title": "[M1] NyxID Services pages: My Services + Admin Services with skill generation",
+      "state": "CLOSED",
+      "milestone": "M1 - Foundation",
+      "labels": [
+        "phase:1",
+        "dx"
+      ],
+      "createdAt": "2026-04-14T09:56:38Z",
+      "closedAt": "2026-04-20T03:28:49Z"
+    },
+    {
+      "number": 45,
+      "title": "[M2] Skill generation wizard with reference selection and progress UI",
+      "state": "CLOSED",
+      "milestone": "M2 - Build Experience",
+      "labels": [
+        "phase:2",
+        "dx",
+        "api"
+      ],
+      "createdAt": "2026-04-14T10:53:31Z",
+      "closedAt": "2026-04-20T03:28:49Z"
+    },
+    {
+      "number": 54,
+      "title": "[M2] Ship TypeScript and Python SDKs for skill operations",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "enhancement",
+        "phase:2",
+        "dx",
+        "api"
+      ],
+      "createdAt": "2026-04-20T03:34:14Z",
+      "closedAt": "2026-04-22T08:55:09Z"
+    },
+    {
+      "number": 56,
+      "title": "Skill Topics: group skills under named topics, with API CRUD",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "enhancement",
+        "api"
+      ],
+      "createdAt": "2026-04-20T06:01:11Z",
+      "closedAt": "2026-04-20T08:00:41Z"
+    },
+    {
+      "number": 57,
+      "title": "[Feature] Pull skills from GitHub: one-way sync from a GitHub repo/path into Ornn",
+      "state": "CLOSED",
+      "milestone": "M2 - Build Experience",
+      "labels": [
+        "enhancement",
+        "dx",
+        "api"
+      ],
+      "createdAt": "2026-04-20T06:03:04Z",
+      "closedAt": "2026-04-23T06:49:44Z"
+    },
+    {
+      "number": 64,
+      "title": "[Feature] API endpoint standardization & refactor (prep for Ornn Manual v1)",
+      "state": "CLOSED",
+      "milestone": "M1 - Foundation",
+      "labels": [
+        "phase:1",
+        "api"
+      ],
+      "createdAt": "2026-04-22T06:00:08Z",
+      "closedAt": "2026-04-23T05:55:23Z"
+    },
+    {
+      "number": 65,
+      "title": "Epic 0: Convention freeze (foundations)",
+      "state": "CLOSED",
+      "milestone": "M1 - Foundation",
+      "labels": [],
+      "createdAt": "2026-04-22T07:46:57Z",
+      "closedAt": "2026-04-22T07:58:12Z"
+    },
+    {
+      "number": 66,
+      "title": "Epic 1: Architecture refactor (no external API change)",
+      "state": "CLOSED",
+      "milestone": "M1 - Foundation",
+      "labels": [],
+      "createdAt": "2026-04-22T07:46:59Z",
+      "closedAt": "2026-04-22T08:46:00Z"
+    },
+    {
+      "number": 67,
+      "title": "Epic 1 [first step]: Topic domain teardown",
+      "state": "CLOSED",
+      "milestone": "M1 - Foundation",
+      "labels": [],
+      "createdAt": "2026-04-22T07:47:02Z",
+      "closedAt": "2026-04-22T08:11:57Z"
+    },
+    {
+      "number": 68,
+      "title": "[Feature] Epic 2: /api/v1/ cut (breaking external contract)",
+      "state": "CLOSED",
+      "milestone": "M1 - Foundation",
+      "labels": [
+        "phase:1",
+        "api"
+      ],
+      "createdAt": "2026-04-22T07:47:04Z",
+      "closedAt": "2026-04-23T05:54:37Z"
+    },
+    {
+      "number": 69,
+      "title": "[Feature] Epic 2 prep: Reserved-verb DB audit",
+      "state": "CLOSED",
+      "milestone": "M1 - Foundation",
+      "labels": [
+        "phase:1",
+        "api"
+      ],
+      "createdAt": "2026-04-22T07:47:06Z",
+      "closedAt": "2026-04-22T09:02:59Z"
+    },
+    {
+      "number": 70,
+      "title": "[Feature] Epic 2 prep: NyxID permission catalog rollout (cross-team)",
+      "state": "CLOSED",
+      "milestone": "M1 - Foundation",
+      "labels": [
+        "phase:1",
+        "security"
+      ],
+      "createdAt": "2026-04-22T07:47:08Z",
+      "closedAt": "2026-04-23T05:53:30Z"
+    },
+    {
+      "number": 71,
+      "title": "[Feature] Epic 3: Frontend modernization",
+      "state": "CLOSED",
+      "milestone": "M1 - Foundation",
+      "labels": [
+        "phase:1",
+        "dx"
+      ],
+      "createdAt": "2026-04-22T07:47:10Z",
+      "closedAt": "2026-04-23T05:53:50Z"
+    },
+    {
+      "number": 72,
+      "title": "[CI/CD] Epic 4: Ops, testing, observability",
+      "state": "CLOSED",
+      "milestone": "M1 - Foundation",
+      "labels": [
+        "phase:1",
+        "infra"
+      ],
+      "createdAt": "2026-04-22T07:47:12Z",
+      "closedAt": "2026-04-23T05:54:03Z"
+    },
+    {
+      "number": 79,
+      "title": "[Docs] Add GitHub issue management rules to CLAUDE.md",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "documentation"
+      ],
+      "createdAt": "2026-04-22T08:39:29Z",
+      "closedAt": "2026-04-22T08:48:24Z"
+    },
+    {
+      "number": 83,
+      "title": "[Docs] Require new work to branch from latest develop",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "documentation"
+      ],
+      "createdAt": "2026-04-22T08:45:32Z",
+      "closedAt": "2026-04-22T08:48:24Z"
+    },
+    {
+      "number": 94,
+      "title": "[Feature] Auditing-gated skill sharing: private skills skip audit; shared skills require green audit or reviewed justification",
+      "state": "CLOSED",
+      "milestone": "M3 - Trust & Quality",
+      "labels": [
+        "enhancement",
+        "phase:3",
+        "security"
+      ],
+      "createdAt": "2026-04-23T05:26:26Z",
+      "closedAt": "2026-04-23T07:24:30Z"
+    },
+    {
+      "number": 95,
+      "title": "[Feature] Move audit trigger from publish to share; private skills exempt",
+      "state": "CLOSED",
+      "milestone": "M3 - Trust & Quality",
+      "labels": [
+        "enhancement",
+        "phase:3",
+        "api",
+        "security"
+      ],
+      "createdAt": "2026-04-23T05:26:48Z",
+      "closedAt": "2026-04-23T07:17:33Z"
+    },
+    {
+      "number": 96,
+      "title": "[Feature] Owner justification flow on failed audit for share",
+      "state": "CLOSED",
+      "milestone": "M3 - Trust & Quality",
+      "labels": [
+        "enhancement",
+        "phase:3",
+        "dx",
+        "security"
+      ],
+      "createdAt": "2026-04-23T05:26:56Z",
+      "closedAt": "2026-04-23T07:24:55Z"
+    },
+    {
+      "number": 97,
+      "title": "[Feature] Target-based review routing for failed-audit shares (org admin / recipient / Ornn admin)",
+      "state": "CLOSED",
+      "milestone": "M3 - Trust & Quality",
+      "labels": [
+        "enhancement",
+        "phase:3",
+        "api",
+        "security"
+      ],
+      "createdAt": "2026-04-23T05:27:04Z",
+      "closedAt": "2026-04-23T07:25:11Z"
+    },
+    {
+      "number": 98,
+      "title": "[Feature] In-Ornn notification center for audit + share-review events",
+      "state": "CLOSED",
+      "milestone": "M3 - Trust & Quality",
+      "labels": [
+        "enhancement",
+        "phase:3",
+        "dx",
+        "api"
+      ],
+      "createdAt": "2026-04-23T05:27:08Z",
+      "closedAt": "2026-04-23T07:24:13Z"
+    },
+    {
+      "number": 102,
+      "title": "[CI/CD] Integration test layer with testcontainers-backed Mongo",
+      "state": "CLOSED",
+      "milestone": "M2 - Build Experience",
+      "labels": [
+        "phase:2",
+        "infra"
+      ],
+      "createdAt": "2026-04-23T05:52:21Z",
+      "closedAt": "2026-04-23T06:11:02Z"
+    },
+    {
+      "number": 103,
+      "title": "[Feature] RR7 data router migration",
+      "state": "CLOSED",
+      "milestone": "M3 - Trust & Quality",
+      "labels": [
+        "dx"
+      ],
+      "createdAt": "2026-04-23T05:52:32Z",
+      "closedAt": "2026-04-27T09:09:16Z"
+    },
+    {
+      "number": 104,
+      "title": "[Feature] Resource-grouped page layout",
+      "state": "CLOSED",
+      "milestone": "M3 - Trust & Quality",
+      "labels": [
+        "dx"
+      ],
+      "createdAt": "2026-04-23T05:52:43Z",
+      "closedAt": "2026-04-27T08:56:27Z"
+    },
+    {
+      "number": 105,
+      "title": "[CI/CD] CD to k8s cluster + rollback + deploy notifications",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "infra"
+      ],
+      "createdAt": "2026-04-23T05:52:57Z",
+      "closedAt": "2026-04-27T06:52:42Z"
+    },
+    {
+      "number": 106,
+      "title": "[Feature] NyxID permission catalog flip \u2014 post-NyxID-rename",
+      "state": "OPEN",
+      "milestone": "M3 - Trust & Quality",
+      "labels": [
+        "security"
+      ],
+      "createdAt": "2026-04-23T05:53:15Z",
+      "closedAt": null
+    },
+    {
+      "number": 110,
+      "title": "[Feature] Ornn Python SDK",
+      "state": "CLOSED",
+      "milestone": "M2 - Build Experience",
+      "labels": [
+        "phase:2",
+        "dx"
+      ],
+      "createdAt": "2026-04-23T06:20:18Z",
+      "closedAt": "2026-04-23T06:28:59Z"
+    },
+    {
+      "number": 112,
+      "title": "[Bug] ornn-web nginx fails to start with \"host not found in upstream 'minio'\" on clusters without MinIO",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "bug",
+        "infra"
+      ],
+      "createdAt": "2026-04-23T06:32:45Z",
+      "closedAt": "2026-04-23T06:34:59Z"
+    },
+    {
+      "number": 116,
+      "title": "[Feature] ornn-web: make config runtime-driven (nginx upstreams + Vite env via ConfigMap)",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "enhancement",
+        "dx",
+        "infra"
+      ],
+      "createdAt": "2026-04-23T06:46:26Z",
+      "closedAt": "2026-04-23T06:57:14Z"
+    },
+    {
+      "number": 119,
+      "title": "[Misc] ornn-web nginx.conf.template: drop dead /api/v1/openapi.json bypass",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "dx",
+        "infra"
+      ],
+      "createdAt": "2026-04-23T07:01:17Z",
+      "closedAt": "2026-04-23T07:04:38Z"
+    },
+    {
+      "number": 122,
+      "title": "[Bug] ornn-web ConfigMap reuses ornn-api's NYXID_TOKEN_URL / NYXID_CLIENT_ID (wrong values in browser)",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "bug",
+        "infra"
+      ],
+      "createdAt": "2026-04-23T07:09:44Z",
+      "closedAt": "2026-04-23T07:16:04Z"
+    },
+    {
+      "number": 154,
+      "title": "[Docs] Consolidate docs site: add Agent Manual, merge Tech References, drop Version Roadmap/FAQs",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "documentation",
+        "dx"
+      ],
+      "createdAt": "2026-04-24T04:46:09Z",
+      "closedAt": "2026-04-24T04:54:30Z"
+    },
+    {
+      "number": 156,
+      "title": "[Feature] Phase-3 frontend catch-up \u2014 audit / shares / notifications / analytics / github-sync UI",
+      "state": "CLOSED",
+      "milestone": "M3 - Trust & Quality",
+      "labels": [
+        "enhancement",
+        "phase:3",
+        "dx"
+      ],
+      "createdAt": "2026-04-24T05:17:03Z",
+      "closedAt": "2026-04-24T06:20:46Z"
+    },
+    {
+      "number": 157,
+      "title": "[Feature] Frontend UI for in-product notifications (bell + /notifications page + unread badge + mark-read)",
+      "state": "CLOSED",
+      "milestone": "M3 - Trust & Quality",
+      "labels": [
+        "enhancement",
+        "phase:3",
+        "dx"
+      ],
+      "createdAt": "2026-04-24T05:17:59Z",
+      "closedAt": "2026-04-24T05:25:33Z"
+    },
+    {
+      "number": 158,
+      "title": "[Feature] Frontend UI for skill audit findings (SkillDetailPage banner + admin rerun)",
+      "state": "CLOSED",
+      "milestone": "M3 - Trust & Quality",
+      "labels": [
+        "enhancement",
+        "phase:3",
+        "dx",
+        "security"
+      ],
+      "createdAt": "2026-04-24T05:18:02Z",
+      "closedAt": "2026-04-24T05:39:44Z"
+    },
+    {
+      "number": 159,
+      "title": "[Feature] Frontend UI for GitHub skill import + 'Refresh from GitHub' re-sync",
+      "state": "CLOSED",
+      "milestone": "M3 - Trust & Quality",
+      "labels": [
+        "enhancement",
+        "phase:3",
+        "dx"
+      ],
+      "createdAt": "2026-04-24T05:18:05Z",
+      "closedAt": "2026-04-24T05:48:08Z"
+    },
+    {
+      "number": 160,
+      "title": "[Feature] Frontend UI for audit-gated sharing workflow (share modal + justification + review queue + admin review)",
+      "state": "CLOSED",
+      "milestone": "M3 - Trust & Quality",
+      "labels": [
+        "enhancement",
+        "phase:3",
+        "dx",
+        "security"
+      ],
+      "createdAt": "2026-04-24T05:18:08Z",
+      "closedAt": "2026-04-24T06:19:46Z"
+    },
+    {
+      "number": 161,
+      "title": "[Feature] Frontend UI for skill analytics (per-skill card on SkillDetailPage)",
+      "state": "CLOSED",
+      "milestone": "M3 - Trust & Quality",
+      "labels": [
+        "enhancement",
+        "phase:3",
+        "dx"
+      ],
+      "createdAt": "2026-04-24T05:18:11Z",
+      "closedAt": "2026-04-24T05:51:42Z"
+    },
+    {
+      "number": 167,
+      "title": "[Infra] Local minio ingress + browser-reachable presigned URLs",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "bug",
+        "infra"
+      ],
+      "createdAt": "2026-04-24T06:07:20Z",
+      "closedAt": "2026-04-24T06:20:49Z"
+    },
+    {
+      "number": 172,
+      "title": "[Feature] Fold audit-gated share initiation into PermissionsModal (single entry point)",
+      "state": "CLOSED",
+      "milestone": "M3 - Trust & Quality",
+      "labels": [
+        "enhancement",
+        "phase:3",
+        "dx"
+      ],
+      "createdAt": "2026-04-24T06:28:10Z",
+      "closedAt": "2026-04-27T07:00:36Z"
+    },
+    {
+      "number": 181,
+      "title": "[Feature] Per-version audit history + analytics filter",
+      "state": "CLOSED",
+      "milestone": "M3 - Trust & Quality",
+      "labels": [
+        "phase:3",
+        "api"
+      ],
+      "createdAt": "2026-04-24T09:57:24Z",
+      "closedAt": "2026-04-27T07:34:32Z"
+    },
+    {
+      "number": 182,
+      "title": "[Feature] Skill JSON pull tracking + time-bucket aggregation",
+      "state": "CLOSED",
+      "milestone": "M3 - Trust & Quality",
+      "labels": [
+        "phase:3",
+        "api"
+      ],
+      "createdAt": "2026-04-24T09:57:53Z",
+      "closedAt": "2026-04-27T07:34:32Z"
+    },
+    {
+      "number": 183,
+      "title": "[Feature] Delete non-latest skill versions",
+      "state": "CLOSED",
+      "milestone": "M3 - Trust & Quality",
+      "labels": [
+        "phase:3",
+        "api"
+      ],
+      "createdAt": "2026-04-24T09:58:13Z",
+      "closedAt": "2026-04-27T07:42:20Z"
+    },
+    {
+      "number": 184,
+      "title": "[Bug] My sharing requests page missing top-left back nav",
+      "state": "CLOSED",
+      "milestone": "M3 - Trust & Quality",
+      "labels": [
+        "phase:3"
+      ],
+      "createdAt": "2026-04-24T09:58:48Z",
+      "closedAt": "2026-04-27T07:21:39Z"
+    },
+    {
+      "number": 185,
+      "title": "[Bug] Review queue page missing top-left back nav",
+      "state": "CLOSED",
+      "milestone": "M3 - Trust & Quality",
+      "labels": [
+        "phase:3"
+      ],
+      "createdAt": "2026-04-24T09:58:57Z",
+      "closedAt": "2026-04-27T07:21:40Z"
+    },
+    {
+      "number": 186,
+      "title": "[Bug] Reviewer cannot approve or reject a share request from the review page",
+      "state": "CLOSED",
+      "milestone": "M3 - Trust & Quality",
+      "labels": [
+        "bug",
+        "phase:3",
+        "api"
+      ],
+      "createdAt": "2026-04-24T09:59:20Z",
+      "closedAt": "2026-04-27T07:21:40Z"
+    },
+    {
+      "number": 187,
+      "title": "[Feature] SkillDetailPage layout rework + usage charts with time range",
+      "state": "CLOSED",
+      "milestone": "M3 - Trust & Quality",
+      "labels": [
+        "phase:3"
+      ],
+      "createdAt": "2026-04-24T09:59:50Z",
+      "closedAt": "2026-04-27T09:06:54Z"
+    },
+    {
+      "number": 188,
+      "title": "[Feature] Per-version audit badges + share semantics (scheme B)",
+      "state": "CLOSED",
+      "milestone": "M3 - Trust & Quality",
+      "labels": [
+        "phase:3",
+        "api"
+      ],
+      "createdAt": "2026-04-24T10:00:15Z",
+      "closedAt": "2026-04-27T09:03:33Z"
+    },
+    {
+      "number": 197,
+      "title": "[Feature] Pivot share/audit relationship \u2014 share is unconditional, audit is a label",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "api"
+      ],
+      "createdAt": "2026-04-27T09:56:08Z",
+      "closedAt": "2026-04-27T09:58:37Z"
+    },
+    {
+      "number": 199,
+      "title": "[Docs] Encode \"agent-API not marketplace\" positioning into CLAUDE.md + landing page + docs index",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "dx"
+      ],
+      "createdAt": "2026-04-28T05:36:38Z",
+      "closedAt": "2026-04-28T05:39:17Z"
+    },
+    {
+      "number": 201,
+      "title": "[Feature] Skill Detail Page redesign \u2014 Editorial Forge wireframe v1",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "dx"
+      ],
+      "createdAt": "2026-04-28T06:25:18Z",
+      "closedAt": "2026-04-28T06:40:40Z"
+    },
+    {
+      "number": 203,
+      "title": "[Feature] Editorial Forge migration \u2014 Phase A: shared UI primitives",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "dx"
+      ],
+      "createdAt": "2026-04-28T06:45:03Z",
+      "closedAt": "2026-04-28T06:46:35Z"
+    },
+    {
+      "number": 205,
+      "title": "[Feature] Editorial Forge migration \u2014 Phase B: global chrome + token remap",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "dx"
+      ],
+      "createdAt": "2026-04-28T06:52:01Z",
+      "closedAt": "2026-04-28T06:53:44Z"
+    },
+    {
+      "number": 207,
+      "title": "[Feature] Editorial Forge migration \u2014 Phase C: auth + 404 pages",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "dx"
+      ],
+      "createdAt": "2026-04-28T06:55:21Z",
+      "closedAt": "2026-04-28T06:56:24Z"
+    },
+    {
+      "number": 209,
+      "title": "[Feature] Editorial Forge migration \u2014 Phase D: Landing + Docs",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "dx"
+      ],
+      "createdAt": "2026-04-28T06:58:37Z",
+      "closedAt": "2026-04-28T07:00:15Z"
+    },
+    {
+      "number": 211,
+      "title": "[Feature] Editorial Forge migration \u2014 Phase E: registry / my-skills / audit history / edit",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "dx"
+      ],
+      "createdAt": "2026-04-28T07:02:06Z",
+      "closedAt": "2026-04-28T07:03:48Z"
+    },
+    {
+      "number": 213,
+      "title": "[Feature] Editorial Forge migration \u2014 Phase F: remaining pages sweep",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "dx"
+      ],
+      "createdAt": "2026-04-28T07:05:16Z",
+      "closedAt": "2026-04-28T07:06:46Z"
+    },
+    {
+      "number": 215,
+      "title": "[Docs] Restructure docs site (About / Quick Start / Technical References) + per-domain API reference + copy-as-skill agent manual",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "dx"
+      ],
+      "createdAt": "2026-04-28T07:49:45Z",
+      "closedAt": "2026-04-28T07:51:47Z"
+    },
+    {
+      "number": 217,
+      "title": "[Bug] /health, /livez, /readyz, /api/v1/openapi.json not routed correctly \u2014 nginx/proxy intercepts them",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "bug",
+        "api"
+      ],
+      "createdAt": "2026-04-28T08:07:02Z",
+      "closedAt": "2026-04-28T08:10:36Z"
+    },
+    {
+      "number": 218,
+      "title": "[Bug] Legacy share/audit-gated data leaks through /notifications and /admin/activities after PR #198",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "bug",
+        "api"
+      ],
+      "createdAt": "2026-04-28T08:07:26Z",
+      "closedAt": "2026-05-12T06:16:40Z"
+    },
+    {
+      "number": 219,
+      "title": "[Bug] /admin/stats response shape doesn't match docs/api.md",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "bug",
+        "api"
+      ],
+      "createdAt": "2026-04-28T08:07:54Z",
+      "closedAt": "2026-05-12T06:24:49Z"
+    },
+    {
+      "number": 220,
+      "title": "[Bug] NyxID service registry: 'ornn' slug had wrong upstream + identity-mode mismatch with 'ornn-api' slug",
+      "state": "OPEN",
+      "milestone": null,
+      "labels": [
+        "bug",
+        "infra",
+        "security"
+      ],
+      "createdAt": "2026-04-28T08:08:25Z",
+      "closedAt": null
+    },
+    {
+      "number": 221,
+      "title": "[Feature] Landing page redesign \u2014 editorial forge expression",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "dx"
+      ],
+      "createdAt": "2026-04-28T09:37:55Z",
+      "closedAt": "2026-04-30T04:02:13Z"
+    },
+    {
+      "number": 223,
+      "title": "[Feature] System skills + registry redesign + NyxID-service ties",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "dx",
+        "api"
+      ],
+      "createdAt": "2026-04-28T10:02:43Z",
+      "closedAt": "2026-04-28T10:07:33Z"
+    },
+    {
+      "number": 225,
+      "title": "[Feature] Frontend: surface skill version diff in the UI",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "dx"
+      ],
+      "createdAt": "2026-04-29T07:26:05Z",
+      "closedAt": "2026-04-29T10:04:33Z"
+    },
+    {
+      "number": 226,
+      "title": "[Feature] Frontend: surface delete-non-latest-version in the UI",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "dx"
+      ],
+      "createdAt": "2026-04-29T07:26:12Z",
+      "closedAt": "2026-04-29T10:04:54Z"
+    },
+    {
+      "number": 229,
+      "title": "[Bug] /me/nyxid-services returns binary-garbage id for chrono-sandbox service",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "bug",
+        "api"
+      ],
+      "createdAt": "2026-04-30T04:52:59Z",
+      "closedAt": "2026-04-30T04:58:38Z"
+    },
+    {
+      "number": 232,
+      "title": "[Feature] Forge Workshop v3 migration \u2014 app-shell visual alignment + landing-nav avatar dropdown",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "dx"
+      ],
+      "createdAt": "2026-04-30T06:00:35Z",
+      "closedAt": "2026-04-30T07:36:04Z"
+    },
+    {
+      "number": 237,
+      "title": "[CI/CD] changeset-release bot \u2014 replace default GITHUB_TOKEN with PAT/App token so bot-opened PRs trigger required workflows",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "dx"
+      ],
+      "createdAt": "2026-04-30T07:44:17Z",
+      "closedAt": "2026-05-12T07:37:22Z"
+    },
+    {
+      "number": 238,
+      "title": "[Bug] Admin user list + permissions-modal show empty email/displayName for users with non-empty activity history",
+      "state": "CLOSED",
+      "milestone": "Go Live Preparation",
+      "labels": [
+        "dx"
+      ],
+      "createdAt": "2026-04-30T09:06:37Z",
+      "closedAt": "2026-05-05T06:12:34Z"
+    },
+    {
+      "number": 240,
+      "title": "[Feature] Featured-skill tag pills, nav active highlighter wash, skill-detail layout flow",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "dx"
+      ],
+      "createdAt": "2026-04-30T09:26:00Z",
+      "closedAt": "2026-04-30T09:42:20Z"
+    },
+    {
+      "number": 242,
+      "title": "[Feature] Unified agent manual \u2014 fold NyxID + NyxID CLI into the Ornn agent manual as one skill",
+      "state": "CLOSED",
+      "milestone": "Go Live Preparation",
+      "labels": [
+        "dx"
+      ],
+      "createdAt": "2026-04-30T09:41:34Z",
+      "closedAt": "2026-05-05T06:14:23Z"
+    },
+    {
+      "number": 243,
+      "title": "[Feature] Service-binding agent prompt \u2014 encourage agents to promote repeated service operations into a reusable Ornn skill bound to that service",
+      "state": "OPEN",
+      "milestone": null,
+      "labels": [
+        "dx"
+      ],
+      "createdAt": "2026-04-30T09:58:50Z",
+      "closedAt": null
+    },
+    {
+      "number": 244,
+      "title": "[Feature] Skill auditing \u2014 Gen Agent Trust Hub integration",
+      "state": "CLOSED",
+      "milestone": "M3 - Trust & Quality",
+      "labels": [
+        "api",
+        "security"
+      ],
+      "createdAt": "2026-05-04T03:22:25Z",
+      "closedAt": "2026-05-05T05:21:47Z"
+    },
+    {
+      "number": 245,
+      "title": "[Feature] Universal API audit middleware \u2014 all-route capture with redaction, caller-type detect, MongoDB + MinIO storage",
+      "state": "CLOSED",
+      "milestone": "Go Live Preparation",
+      "labels": [
+        "api",
+        "security"
+      ],
+      "createdAt": "2026-05-04T03:56:48Z",
+      "closedAt": "2026-05-05T06:09:13Z"
+    },
+    {
+      "number": 246,
+      "title": "[Feature] Frontend pageview tracking + caller-type header \u2014 cookie-free analytics with consent",
+      "state": "CLOSED",
+      "milestone": "M3 - Trust & Quality",
+      "labels": [
+        "dx",
+        "api"
+      ],
+      "createdAt": "2026-05-04T03:57:33Z",
+      "closedAt": "2026-05-05T05:21:50Z"
+    },
+    {
+      "number": 247,
+      "title": "[Feature] Admin audit + analytics dashboard \u2014 pageviews, API audit, caller-type breakdown",
+      "state": "CLOSED",
+      "milestone": "M3 - Trust & Quality",
+      "labels": [
+        "dx",
+        "api"
+      ],
+      "createdAt": "2026-05-04T03:58:21Z",
+      "closedAt": "2026-05-05T05:21:52Z"
+    },
+    {
+      "number": 248,
+      "title": "[Feature] Auto-mirror public + system skills to ChronoAIProject/ornn-skills GitHub repo for npx skills compatibility",
+      "state": "CLOSED",
+      "milestone": "Go Live Preparation",
+      "labels": [
+        "dx"
+      ],
+      "createdAt": "2026-05-04T07:21:55Z",
+      "closedAt": "2026-05-05T06:01:49Z"
+    },
+    {
+      "number": 250,
+      "title": "[Feature] Per-user playground & skill-gen quota with admin-granted beta credits",
+      "state": "CLOSED",
+      "milestone": "Go Live Preparation",
+      "labels": [
+        "dx",
+        "api"
+      ],
+      "createdAt": "2026-05-05T04:59:51Z",
+      "closedAt": "2026-05-05T06:42:16Z"
+    },
+    {
+      "number": 251,
+      "title": "[Feature] Admin model selection (Chrono LLM catalog) + per-call user picker",
+      "state": "CLOSED",
+      "milestone": "Go Live Preparation",
+      "labels": [
+        "dx",
+        "api"
+      ],
+      "createdAt": "2026-05-05T05:00:08Z",
+      "closedAt": "2026-05-05T06:42:17Z"
+    },
+    {
+      "number": 252,
+      "title": "[Feature] PostHog integration \u2014 platform-wide product analytics",
+      "state": "CLOSED",
+      "milestone": "Go Live Preparation",
+      "labels": [
+        "dx",
+        "api"
+      ],
+      "createdAt": "2026-05-05T05:04:32Z",
+      "closedAt": "2026-05-05T06:23:22Z"
+    },
+    {
+      "number": 253,
+      "title": "[Feature] AgentSeal integration \u2014 security trust score on every published skill",
+      "state": "CLOSED",
+      "milestone": "Go Live Preparation",
+      "labels": [
+        "api",
+        "security"
+      ],
+      "createdAt": "2026-05-05T05:05:04Z",
+      "closedAt": "2026-05-05T06:23:23Z"
+    },
+    {
+      "number": 254,
+      "title": "[Bug] backfill-skill-author-display-names.ts uses $last for activity labels \u2014 same root cause as #238 runtime aggregator",
+      "state": "OPEN",
+      "milestone": null,
+      "labels": [
+        "bug",
+        "api"
+      ],
+      "createdAt": "2026-05-05T05:48:31Z",
+      "closedAt": null
+    },
+    {
+      "number": 264,
+      "title": "[Feature] Playground chat \u2014 message entrance animation + strengthen PR-issue linkage rule in CLAUDE.md",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "documentation",
+        "enhancement"
+      ],
+      "createdAt": "2026-05-06T07:11:03Z",
+      "closedAt": "2026-05-06T07:14:04Z"
+    },
+    {
+      "number": 266,
+      "title": "[Feature] Apply Playground UI/UX design principles to Generative Skill creation page",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "documentation",
+        "enhancement"
+      ],
+      "createdAt": "2026-05-06T07:19:44Z",
+      "closedAt": "2026-05-06T07:26:38Z"
+    },
+    {
+      "number": 268,
+      "title": "[Feature] Quota redesign + admin panel restructure + centralized settings",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "enhancement",
+        "dx",
+        "api"
+      ],
+      "createdAt": "2026-05-06T09:20:26Z",
+      "closedAt": "2026-05-07T05:09:18Z"
+    },
+    {
+      "number": 270,
+      "title": "[Feature] Fold model catalog into LLM Provider settings (per-provider model management)",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "dx"
+      ],
+      "createdAt": "2026-05-07T06:06:18Z",
+      "closedAt": "2026-05-07T06:38:10Z"
+    },
+    {
+      "number": 271,
+      "title": "[Feature] PostHog-only platform analytics \u2014 wire DB-driven telemetry, remove custom audit infrastructure",
+      "state": "CLOSED",
+      "milestone": "M3 - Trust & Quality",
+      "labels": [
+        "phase:3",
+        "dx",
+        "api",
+        "infra"
+      ],
+      "createdAt": "2026-05-07T06:29:34Z",
+      "closedAt": "2026-05-07T07:22:12Z"
+    },
+    {
+      "number": 273,
+      "title": "[Docs] CLAUDE.md \u2014 codify commit-size rule (small self-contained > one big)",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "dx"
+      ],
+      "createdAt": "2026-05-07T06:35:43Z",
+      "closedAt": "2026-05-07T06:40:25Z"
+    },
+    {
+      "number": 275,
+      "title": "[Feature] Move NyxID frontend link config from admin settings to ornn-web runtime config",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "dx"
+      ],
+      "createdAt": "2026-05-07T07:04:59Z",
+      "closedAt": "2026-05-07T07:14:29Z"
+    },
+    {
+      "number": 278,
+      "title": "[Feature] Embed contact page into the frontend",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "enhancement",
+        "dx"
+      ],
+      "createdAt": "2026-05-07T07:22:52Z",
+      "closedAt": "2026-05-07T08:25:31Z"
+    },
+    {
+      "number": 279,
+      "title": "[Bug] Extras section \u2014 baseUrl rejects empty string in admin form (frontend-only)",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "dx"
+      ],
+      "createdAt": "2026-05-07T07:23:28Z",
+      "closedAt": "2026-05-07T07:27:18Z"
+    },
+    {
+      "number": 281,
+      "title": "[Bug] Replace browser-native window.confirm in UnsavedChangesGuard with styled Modal",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "dx"
+      ],
+      "createdAt": "2026-05-07T07:28:45Z",
+      "closedAt": "2026-05-07T07:32:07Z"
+    },
+    {
+      "number": 283,
+      "title": "[Misc] Pre-production UI audit + fixes",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "enhancement",
+        "dx"
+      ],
+      "createdAt": "2026-05-07T07:36:50Z",
+      "closedAt": "2026-05-07T08:25:31Z"
+    },
+    {
+      "number": 284,
+      "title": "[Bug] Extras section name regex rejects uppercase \u2014 can't add 'NyxID'",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "dx"
+      ],
+      "createdAt": "2026-05-07T07:38:03Z",
+      "closedAt": "2026-05-07T07:42:33Z"
+    },
+    {
+      "number": 286,
+      "title": "[Misc] Migrate residual neon-input class to semantic input tokens",
+      "state": "OPEN",
+      "milestone": null,
+      "labels": [
+        "dx"
+      ],
+      "createdAt": "2026-05-07T07:47:58Z",
+      "closedAt": null
+    },
+    {
+      "number": 287,
+      "title": "[Chore] Audit + clean up env-var surface \u2014 drop stale config keys, align names",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "dx"
+      ],
+      "createdAt": "2026-05-07T07:52:18Z",
+      "closedAt": "2026-05-07T07:57:54Z"
+    },
+    {
+      "number": 290,
+      "title": "[Bug] /admin/users 500s with ZodError on sort param \u2014 frontend sends key:dir, backend wants two params",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "dx"
+      ],
+      "createdAt": "2026-05-07T08:00:59Z",
+      "closedAt": "2026-05-07T08:11:13Z"
+    },
+    {
+      "number": 292,
+      "title": "[Chore] Delete admin Categories / Tags / Auditing / Activities pages \u2014 fold redundant link into Dashboard",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "dx"
+      ],
+      "createdAt": "2026-05-07T08:20:16Z",
+      "closedAt": "2026-05-07T09:24:23Z"
+    },
+    {
+      "number": 294,
+      "title": "[Chore] Restructure .env.sample.ornn into sections; move NyxID SA creds to admin settings; consolidate ornn-web URLs to base+path",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "dx",
+        "infra"
+      ],
+      "createdAt": "2026-05-07T09:13:30Z",
+      "closedAt": "2026-05-07T09:18:14Z"
+    },
+    {
+      "number": 296,
+      "title": "[Bug] ornn-web crashloops on first deploy \u2014 15-derive-nyxid-api-host.envsh shipped non-executable",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "bug",
+        "infra"
+      ],
+      "createdAt": "2026-05-07T09:31:52Z",
+      "closedAt": "2026-05-07T09:36:51Z"
+    },
+    {
+      "number": 298,
+      "title": "[Bug] ornn-web /api/v1/* proxy_pass broken in dev \u2014 wrong architecture: SPA should hit NyxID proxy directly",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "bug",
+        "infra"
+      ],
+      "createdAt": "2026-05-07T09:44:30Z",
+      "closedAt": "2026-05-07T09:47:33Z"
+    },
+    {
+      "number": 300,
+      "title": "[Bug] Playground model dropdown clipped \u2014 open upward when bottom is tight",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "bug",
+        "dx"
+      ],
+      "createdAt": "2026-05-07T09:56:36Z",
+      "closedAt": "2026-05-07T10:00:19Z"
+    },
+    {
+      "number": 302,
+      "title": "[Chore] Admin settings reorganization \u2014 fold quota into surfaces, services into NyxID, rename telemetry/extras",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "dx"
+      ],
+      "createdAt": "2026-05-07T10:14:05Z",
+      "closedAt": "2026-05-07T10:16:42Z"
+    },
+    {
+      "number": 304,
+      "title": "[Chore] PostHog hardening \u2014 respect DNT + mask all session-replay text",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "dx"
+      ],
+      "createdAt": "2026-05-08T02:44:43Z",
+      "closedAt": "2026-05-08T02:47:27Z"
+    },
+    {
+      "number": 306,
+      "title": "[Feature] Admin-issued redeem codes for quota grants",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "enhancement",
+        "api"
+      ],
+      "createdAt": "2026-05-08T03:20:03Z",
+      "closedAt": "2026-05-08T04:54:19Z"
+    },
+    {
+      "number": 307,
+      "title": "[Feature] Landing-page announcement popup (admin-managed)",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "enhancement",
+        "api"
+      ],
+      "createdAt": "2026-05-08T03:21:08Z",
+      "closedAt": "2026-05-08T03:56:05Z"
+    },
+    {
+      "number": 310,
+      "title": "[Bug] Redeem code form unreachable \u2014 SettingsPage not mounted in router",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "bug"
+      ],
+      "createdAt": "2026-05-08T05:04:55Z",
+      "closedAt": "2026-05-08T05:07:59Z"
+    },
+    {
+      "number": 312,
+      "title": "[Feature] Restyle landing announcement popup as ember-stamp card",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "enhancement"
+      ],
+      "createdAt": "2026-05-08T05:38:45Z",
+      "closedAt": "2026-05-08T05:41:24Z"
+    },
+    {
+      "number": 314,
+      "title": "[Chore] api.request \u2014 capture userAgent / query keys / request+response bytes for richer observability",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "dx"
+      ],
+      "createdAt": "2026-05-08T06:02:31Z",
+      "closedAt": "2026-05-08T06:04:46Z"
+    },
+    {
+      "number": 316,
+      "title": "[Bug] Username sometimes shows as UUID after browser restart \u2014 id_token-light backfill never re-runs on rehydrate",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "bug"
+      ],
+      "createdAt": "2026-05-08T06:12:48Z",
+      "closedAt": "2026-05-08T06:15:45Z"
+    },
+    {
+      "number": 318,
+      "title": "[Feature] SPA stale-bundle self-recovery \u2014 auto-reload when a new ornn-web is deployed",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "dx",
+        "infra"
+      ],
+      "createdAt": "2026-05-08T06:13:56Z",
+      "closedAt": "2026-05-08T06:29:41Z"
+    },
+    {
+      "number": 320,
+      "title": "[Feature] Legal pages \u2014 Privacy / ToS / AUP for launch + contact-page trim",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "dx"
+      ],
+      "createdAt": "2026-05-08T07:17:08Z",
+      "closedAt": "2026-05-08T07:19:55Z"
+    },
+    {
+      "number": 322,
+      "title": "[Chore] Consolidate legal-page email contacts to support@chrono-ai.fun",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "dx"
+      ],
+      "createdAt": "2026-05-08T07:34:28Z",
+      "closedAt": "2026-05-08T07:36:54Z"
+    },
+    {
+      "number": 324,
+      "title": "[Feature] Landing \u2014 trim to hero + reposition copy as skill life-cycle manager",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "dx"
+      ],
+      "createdAt": "2026-05-08T07:40:00Z",
+      "closedAt": "2026-05-08T07:42:19Z"
+    },
+    {
+      "number": 326,
+      "title": "[Chore] Reposition Ornn as end-to-end skill life-cycle manager + drop redundant footer link columns",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "dx"
+      ],
+      "createdAt": "2026-05-08T07:49:48Z",
+      "closedAt": "2026-05-08T07:52:34Z"
+    },
+    {
+      "number": 328,
+      "title": "[Chore] Manually re-apply v0.5.0 sync onto develop after stale sync PR closed",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "dx",
+        "infra"
+      ],
+      "createdAt": "2026-05-08T08:03:16Z",
+      "closedAt": "2026-05-08T08:46:58Z"
+    },
+    {
+      "number": 330,
+      "title": "[Bug] Admin settings Export/Import broken \u2014 both directions",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "bug",
+        "api"
+      ],
+      "createdAt": "2026-05-08T08:09:57Z",
+      "closedAt": "2026-05-08T08:14:26Z"
+    },
+    {
+      "number": 333,
+      "title": "[Chore] Landing \u2014 remove the 'NOW FORGING \u00b7 v 0.9.3' stamp",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "dx"
+      ],
+      "createdAt": "2026-05-08T08:29:12Z",
+      "closedAt": "2026-05-08T08:49:29Z"
+    },
+    {
+      "number": 335,
+      "title": "[Bug] Settings export still includes provider 'models' array \u2014 drop entirely",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "bug",
+        "dx"
+      ],
+      "createdAt": "2026-05-08T08:31:47Z",
+      "closedAt": "2026-05-08T08:44:22Z"
+    },
+    {
+      "number": 339,
+      "title": "[Chore] i18n cleanup pre-v0.6.0 \u2014 drop workshop/forge framing + t()-ify ServiceDetailPage + AnnouncementsPage",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "dx"
+      ],
+      "createdAt": "2026-05-08T09:34:34Z",
+      "closedAt": "2026-05-08T09:46:01Z"
+    },
+    {
+      "number": 341,
+      "title": "[Bug] SkillDetailPage main grid grows infinitely with long content \u2014 fix to viewport-relative frame with per-column scroll",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "bug",
+        "dx"
+      ],
+      "createdAt": "2026-05-08T09:43:46Z",
+      "closedAt": "2026-05-08T09:50:00Z"
+    },
+    {
+      "number": 343,
+      "title": "[Feature] i18n coverage \u2014 pages/admin/* (P0)",
+      "state": "CLOSED",
+      "milestone": "Go Live Preparation",
+      "labels": [
+        "dx",
+        "i18n"
+      ],
+      "createdAt": "2026-05-11T03:37:31Z",
+      "closedAt": "2026-05-11T05:50:15Z"
+    },
+    {
+      "number": 344,
+      "title": "[Feature] i18n coverage \u2014 shared controls + drawer Close (P0)",
+      "state": "CLOSED",
+      "milestone": "Go Live Preparation",
+      "labels": [
+        "dx",
+        "i18n"
+      ],
+      "createdAt": "2026-05-11T03:37:34Z",
+      "closedAt": "2026-05-11T05:50:14Z"
+    },
+    {
+      "number": 345,
+      "title": "[Feature] i18n coverage \u2014 form, skill, settings, user, editor components (P1)",
+      "state": "CLOSED",
+      "milestone": "Go Live Preparation",
+      "labels": [
+        "dx",
+        "i18n"
+      ],
+      "createdAt": "2026-05-11T03:37:38Z",
+      "closedAt": "2026-05-11T05:50:15Z"
+    },
+    {
+      "number": 346,
+      "title": "[Feature] i18n coverage \u2014 aria-label sweep across landing, layout, admin (P1)",
+      "state": "CLOSED",
+      "milestone": "Go Live Preparation",
+      "labels": [
+        "dx",
+        "i18n"
+      ],
+      "createdAt": "2026-05-11T03:37:41Z",
+      "closedAt": "2026-05-11T05:50:14Z"
+    },
+    {
+      "number": 347,
+      "title": "[Feature] i18n coverage \u2014 services/utils error-code refactor (P2, structural)",
+      "state": "CLOSED",
+      "milestone": "Go Live Preparation",
+      "labels": [
+        "dx",
+        "api",
+        "i18n"
+      ],
+      "createdAt": "2026-05-11T03:37:44Z",
+      "closedAt": "2026-05-11T05:50:15Z"
+    },
+    {
+      "number": 348,
+      "title": "[Misc] i18n coverage \u2014 review 11 suspicious zh==en values (P2)",
+      "state": "CLOSED",
+      "milestone": "Go Live Preparation",
+      "labels": [
+        "dx",
+        "i18n"
+      ],
+      "createdAt": "2026-05-11T03:37:47Z",
+      "closedAt": "2026-05-11T05:50:15Z"
+    },
+    {
+      "number": 349,
+      "title": "[Docs] Align README with CLAUDE.md, drop .ornn-skills, reorganize markdown layout",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "documentation"
+      ],
+      "createdAt": "2026-05-11T04:02:01Z",
+      "closedAt": "2026-05-11T04:06:46Z"
+    },
+    {
+      "number": 352,
+      "title": "[Misc] Drop unused ornn-web/public/ assets + align README logo with frontend Logo.tsx",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "documentation"
+      ],
+      "createdAt": "2026-05-11T05:58:13Z",
+      "closedAt": "2026-05-11T06:21:53Z"
+    },
+    {
+      "number": 354,
+      "title": "[Misc] Repo organization: move SDKs into sdk/, ALL-CAPS docs/ filenames, CLAUDE.md doc index",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "documentation"
+      ],
+      "createdAt": "2026-05-11T06:15:42Z",
+      "closedAt": "2026-05-11T06:21:54Z"
+    },
+    {
+      "number": 355,
+      "title": "[Bug] Admin pages missing top Navbar (no theme/language switcher, no main nav)",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "bug"
+      ],
+      "createdAt": "2026-05-11T06:42:27Z",
+      "closedAt": "2026-05-11T06:59:56Z"
+    },
+    {
+      "number": 357,
+      "title": "[Feature] News page listing all released announcements",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "enhancement",
+        "api"
+      ],
+      "createdAt": "2026-05-11T06:47:37Z",
+      "closedAt": "2026-05-11T07:03:28Z"
+    },
+    {
+      "number": 359,
+      "title": "[Bug] Replace browser native alert/confirm dialogs with Ornn ConfirmDialog component",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "bug",
+        "enhancement",
+        "dx"
+      ],
+      "createdAt": "2026-05-11T07:15:52Z",
+      "closedAt": "2026-05-11T07:23:30Z"
+    },
+    {
+      "number": 361,
+      "title": "[Bug] i18n + nav coverage gaps: Redeem code, admin Dashboard, LandingNav News",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "bug",
+        "i18n"
+      ],
+      "createdAt": "2026-05-11T07:26:31Z",
+      "closedAt": "2026-05-11T07:32:28Z"
+    },
+    {
+      "number": 363,
+      "title": "[Bug] Extract shared UserMenuItems to stop Navbar/LandingNav dropdown drift",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "bug",
+        "enhancement",
+        "dx"
+      ],
+      "createdAt": "2026-05-11T08:23:50Z",
+      "closedAt": "2026-05-11T08:32:20Z"
+    },
+    {
+      "number": 365,
+      "title": "[Bug] README logo washes out on GitHub light mode \u2014 wordmark hardcoded to dark-theme parchment",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "bug",
+        "documentation"
+      ],
+      "createdAt": "2026-05-11T08:45:51Z",
+      "closedAt": "2026-05-11T08:49:58Z"
+    },
+    {
+      "number": 367,
+      "title": "[Misc] Replace favicon with the Forge gear (transparent background)",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "documentation",
+        "enhancement"
+      ],
+      "createdAt": "2026-05-11T08:51:40Z",
+      "closedAt": "2026-05-11T08:56:09Z"
+    },
+    {
+      "number": 369,
+      "title": "[Docs] Rewrite README: trim header, drop developer-internals sections, add agent-onboarding flow",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "documentation"
+      ],
+      "createdAt": "2026-05-11T09:03:47Z",
+      "closedAt": "2026-05-11T09:07:27Z"
+    },
+    {
+      "number": 371,
+      "title": "[Misc] PAT permission smoke test \u2014 safe to ignore",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "dx"
+      ],
+      "createdAt": "2026-05-11T09:54:51Z",
+      "closedAt": "2026-05-11T09:55:07Z"
+    },
+    {
+      "number": 373,
+      "title": "[Feature] i18n the PostHog cookie-consent banner",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "dx"
+      ],
+      "createdAt": "2026-05-11T10:38:09Z",
+      "closedAt": "2026-05-11T10:41:32Z"
+    },
+    {
+      "number": 375,
+      "title": "[Misc] Consolidate LandingNav into unified Navbar + reorder items",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "enhancement",
+        "dx"
+      ],
+      "createdAt": "2026-05-11T10:42:59Z",
+      "closedAt": "2026-05-12T03:58:54Z"
+    },
+    {
+      "number": 377,
+      "title": "[Misc] OSS repo-health setup: community files, issue/PR templates, discoverability metadata",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "documentation",
+        "dx"
+      ],
+      "createdAt": "2026-05-12T02:54:15Z",
+      "closedAt": "2026-05-12T03:56:52Z"
+    },
+    {
+      "number": 379,
+      "title": "[Bug] User menu \u2014 NyxID 'My Services' and 'Admin Services' links point to wrong URLs",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "bug",
+        "dx"
+      ],
+      "createdAt": "2026-05-12T04:58:31Z",
+      "closedAt": "2026-05-12T05:04:31Z"
+    },
+    {
+      "number": 381,
+      "title": "[Bug] UploadSkillPage (Build entry) is not responsive \u2014 content clipped on common laptop sizes",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "bug",
+        "dx",
+        "i18n"
+      ],
+      "createdAt": "2026-05-12T05:17:15Z",
+      "closedAt": "2026-05-12T05:20:30Z"
+    },
+    {
+      "number": 383,
+      "title": "[CI/CD] Add Dependabot config + bun audit CI gate for supply-chain baseline",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "infra",
+        "security"
+      ],
+      "createdAt": "2026-05-12T05:48:46Z",
+      "closedAt": "2026-05-12T06:07:46Z"
+    },
+    {
+      "number": 387,
+      "title": "[CI/CD] Wire bun audit gate to block high/critical advisories on PR",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "infra",
+        "security"
+      ],
+      "createdAt": "2026-05-12T06:08:06Z",
+      "closedAt": "2026-05-12T06:10:20Z"
+    },
+    {
+      "number": 399,
+      "title": "[Docs] Skill manuals reference removed endpoints \u2014 refresh `api-reference.md` against current API",
+      "state": "OPEN",
+      "milestone": null,
+      "labels": [
+        "documentation",
+        "dx",
+        "api"
+      ],
+      "createdAt": "2026-05-12T06:24:37Z",
+      "closedAt": null
+    },
+    {
+      "number": 400,
+      "title": "[CI/CD] Upgrade vite 6 \u2192 8 and @vitejs/plugin-react 4 \u2192 6",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "dx",
+        "infra"
+      ],
+      "createdAt": "2026-05-12T06:29:42Z",
+      "closedAt": "2026-05-12T06:31:40Z"
+    },
+    {
+      "number": 402,
+      "title": "[CI/CD] Whitelist Dependabot in require-review + exempt from changeset-check",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "dx",
+        "infra"
+      ],
+      "createdAt": "2026-05-12T06:33:13Z",
+      "closedAt": "2026-05-12T06:35:51Z"
+    },
+    {
+      "number": 411,
+      "title": "[Feature] Skill detail \u2014 fold install-to-agent prompt + npx into one tabbed Install card",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "dx",
+        "i18n"
+      ],
+      "createdAt": "2026-05-12T07:46:45Z",
+      "closedAt": "2026-05-12T07:53:20Z"
+    },
+    {
+      "number": 413,
+      "title": "[Bug] Install card hidden for unauthenticated viewers \u2014 should follow skill visibility",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "bug",
+        "dx"
+      ],
+      "createdAt": "2026-05-12T07:57:40Z",
+      "closedAt": "2026-05-12T08:02:41Z"
+    },
+    {
+      "number": 414,
+      "title": "[Bug] Install card \u2014 Via prompt is too tall, card height changes when switching tabs",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "bug",
+        "dx"
+      ],
+      "createdAt": "2026-05-12T07:58:54Z",
+      "closedAt": "2026-05-12T08:02:42Z"
+    },
+    {
+      "number": 416,
+      "title": "[Bug] Install card \u2014 Via npx has giant empty space, COPY button looks disconnected on Via prompt",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "bug",
+        "dx"
+      ],
+      "createdAt": "2026-05-12T08:06:52Z",
+      "closedAt": "2026-05-12T08:08:47Z"
+    },
+    {
+      "number": 418,
+      "title": "[Bug] Install card stretches too wide on desktop \u2014 cap its max-width",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "bug",
+        "dx"
+      ],
+      "createdAt": "2026-05-12T08:13:13Z",
+      "closedAt": "2026-05-12T08:23:40Z"
+    },
+    {
+      "number": 429,
+      "title": "[CI/CD] changeset-release: GitHub Release body exceeds 125 000-char limit on big releases (v0.6.0 hit it)",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "bug",
+        "infra"
+      ],
+      "createdAt": "2026-05-12T09:28:39Z",
+      "closedAt": "2026-05-12T09:31:01Z"
+    },
+    {
+      "number": 431,
+      "title": "[CI/CD] Release notes from in-repo file (Fixed / New Feature / Changed)",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "dx",
+        "infra"
+      ],
+      "createdAt": "2026-05-12T09:44:40Z",
+      "closedAt": "2026-05-12T09:48:13Z"
+    },
+    {
+      "number": 433,
+      "title": "[CI/CD] Gate develop \u2192 main PRs on a properly-filled release-notes-next.md",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "dx",
+        "infra"
+      ],
+      "createdAt": "2026-05-12T09:50:57Z",
+      "closedAt": "2026-05-12T09:53:39Z"
+    },
+    {
+      "number": 435,
+      "title": "[CI/CD] Restructure release notes \u2014 fixed template + per-release dated files",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "dx",
+        "infra"
+      ],
+      "createdAt": "2026-05-12T09:57:49Z",
+      "closedAt": "2026-05-12T10:02:53Z"
+    },
+    {
+      "number": 437,
+      "title": "[Feature] In-process mirror reconcile scheduler with admin-configurable schedule",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "dx",
+        "api",
+        "infra"
+      ],
+      "createdAt": "2026-05-13T03:41:19Z",
+      "closedAt": "2026-05-13T04:22:50Z"
+    },
+    {
+      "number": 438,
+      "title": "[Bug] Some routes bypass validateBody middleware \u2014 raw c.req.json() reads break RFC 7807 errors",
+      "state": "OPEN",
+      "milestone": "Review \u00b7 Security",
+      "labels": [
+        "bug",
+        "api",
+        "security",
+        "review:auto"
+      ],
+      "createdAt": "2026-05-13T04:09:15Z",
+      "closedAt": null
+    },
+    {
+      "number": 439,
+      "title": "[Feature] Rate limiting on /skill-search (semantic mode) + auth/upload endpoints",
+      "state": "OPEN",
+      "milestone": "Review \u00b7 Security",
+      "labels": [
+        "api",
+        "security",
+        "perf",
+        "review:auto"
+      ],
+      "createdAt": "2026-05-13T04:09:44Z",
+      "closedAt": null
+    },
+    {
+      "number": 440,
+      "title": "[Misc] Tighten Mermaid SVG rendering \u2014 replace dangerouslySetInnerHTML with iframe sandbox",
+      "state": "OPEN",
+      "milestone": "Review \u00b7 Security",
+      "labels": [
+        "security",
+        "web",
+        "review:auto"
+      ],
+      "createdAt": "2026-05-13T04:09:47Z",
+      "closedAt": null
+    },
+    {
+      "number": 441,
+      "title": "[Misc] Validate GitHub App private key shape on mirror config write",
+      "state": "OPEN",
+      "milestone": "Review \u00b7 Security",
+      "labels": [
+        "api",
+        "security",
+        "review:auto"
+      ],
+      "createdAt": "2026-05-13T04:09:50Z",
+      "closedAt": null
+    },
+    {
+      "number": 442,
+      "title": "[Bug] AgentSeal subprocess: validate python/script paths at boot + unref child after kill",
+      "state": "OPEN",
+      "milestone": "Review \u00b7 Security",
+      "labels": [
+        "bug",
+        "infra",
+        "security",
+        "review:auto"
+      ],
+      "createdAt": "2026-05-13T04:09:53Z",
+      "closedAt": null
+    },
+    {
+      "number": 443,
+      "title": "[Misc] ZIP validator \u2014 add total-uncompressed-size cap + explicit zip-slip check",
+      "state": "OPEN",
+      "milestone": "Review \u00b7 Vulnerability",
+      "labels": [
+        "security",
+        "web",
+        "review:auto"
+      ],
+      "createdAt": "2026-05-13T04:10:33Z",
+      "closedAt": null
+    },
+    {
+      "number": 444,
+      "title": "[Bug] LLM re-ranker output parsed without Zod schema (cast as Array)",
+      "state": "OPEN",
+      "milestone": "Review \u00b7 Vulnerability",
+      "labels": [
+        "bug",
+        "api",
+        "security",
+        "review:auto"
+      ],
+      "createdAt": "2026-05-13T04:10:36Z",
+      "closedAt": null
+    },
+    {
+      "number": 445,
+      "title": "[CI/CD] Lock + audit Python SDK dependencies (lockfile + pip-audit in CI)",
+      "state": "OPEN",
+      "milestone": "Review \u00b7 Vulnerability",
+      "labels": [
+        "infra",
+        "security",
+        "ci",
+        "sdk",
+        "review:auto"
+      ],
+      "createdAt": "2026-05-13T04:10:39Z",
+      "closedAt": null
+    },
+    {
+      "number": 446,
+      "title": "[Misc] Admin search MongoDB regex \u2014 add maxTimeMS + ensure name/description indexes",
+      "state": "OPEN",
+      "milestone": "Review \u00b7 Vulnerability",
+      "labels": [
+        "api",
+        "perf",
+        "review:auto"
+      ],
+      "createdAt": "2026-05-13T04:10:42Z",
+      "closedAt": null
+    },
+    {
+      "number": 447,
+      "title": "[Misc] Migration scripts \u2014 replace Number(env) with validated parseInt + fail-fast",
+      "state": "OPEN",
+      "milestone": "Review \u00b7 Vulnerability",
+      "labels": [
+        "dx",
+        "infra",
+        "review:auto"
+      ],
+      "createdAt": "2026-05-13T04:10:45Z",
+      "closedAt": null
+    },
+    {
+      "number": 448,
+      "title": "[Misc] Eliminate \"as any\" on MongoDB _id \u2014 introduce toObjectId(guid) helper",
+      "state": "OPEN",
+      "milestone": "Review \u00b7 Coding Standards",
+      "labels": [
+        "dx",
+        "api",
+        "review:auto"
+      ],
+      "createdAt": "2026-05-13T04:11:40Z",
+      "closedAt": null
+    },
+    {
+      "number": 449,
+      "title": "[Misc] Type playground chat events with Zod discriminated union (drop \"as any\")",
+      "state": "OPEN",
+      "milestone": "Review \u00b7 Coding Standards",
+      "labels": [
+        "dx",
+        "api",
+        "review:auto"
+      ],
+      "createdAt": "2026-05-13T04:11:43Z",
+      "closedAt": null
+    },
+    {
+      "number": 450,
+      "title": "[Misc] Enable stricter TS flags: noUncheckedIndexedAccess, noImplicitOverride, exactOptionalPropertyTypes",
+      "state": "OPEN",
+      "milestone": "Review \u00b7 Coding Standards",
+      "labels": [
+        "dx",
+        "review:auto"
+      ],
+      "createdAt": "2026-05-13T04:11:47Z",
+      "closedAt": null
+    },
+    {
+      "number": 451,
+      "title": "[Bug] Array index as React key in skeleton/grid components \u2014 list reorder bugs",
+      "state": "OPEN",
+      "milestone": "Review \u00b7 Coding Standards",
+      "labels": [
+        "bug",
+        "dx",
+        "web",
+        "review:auto"
+      ],
+      "createdAt": "2026-05-13T04:11:50Z",
+      "closedAt": null
+    },
+    {
+      "number": 452,
+      "title": "[Misc] Replace hardcoded hex colors in landing pages with design tokens",
+      "state": "OPEN",
+      "milestone": "Review \u00b7 Coding Standards",
+      "labels": [
+        "documentation",
+        "dx",
+        "web",
+        "review:auto"
+      ],
+      "createdAt": "2026-05-13T04:11:53Z",
+      "closedAt": null
+    },
+    {
+      "number": 453,
+      "title": "[Misc] Decompose god-files: SkillDetailPage (1133L), DocsPage (857L), PlaygroundPage (802L)",
+      "state": "OPEN",
+      "milestone": "Review \u00b7 Coding Standards",
+      "labels": [
+        "dx",
+        "web",
+        "review:auto"
+      ],
+      "createdAt": "2026-05-13T04:11:56Z",
+      "closedAt": null
+    },
+    {
+      "number": 454,
+      "title": "[Feature] Backfill unit tests for 7 untested domain services + 8 repositories",
+      "state": "OPEN",
+      "milestone": "Review \u00b7 Coding Standards",
+      "labels": [
+        "dx",
+        "api",
+        "review:auto"
+      ],
+      "createdAt": "2026-05-13T04:12:00Z",
+      "closedAt": null
+    },
+    {
+      "number": 456,
+      "title": "[Bug] Error responses violate RFC 7807 \u2014 implementation uses { data, error } envelope instead of problem+json",
+      "state": "OPEN",
+      "milestone": "Review \u00b7 Industry Standards",
+      "labels": [
+        "bug",
+        "api",
+        "review:auto"
+      ],
+      "createdAt": "2026-05-13T04:49:30Z",
+      "closedAt": null
+    },
+    {
+      "number": 457,
+      "title": "[Feature] Cursor-based pagination for list endpoints (drop offset page/pageSize/total)",
+      "state": "OPEN",
+      "milestone": "Review \u00b7 Industry Standards",
+      "labels": [
+        "api",
+        "review:auto"
+      ],
+      "createdAt": "2026-05-13T04:49:33Z",
+      "closedAt": null
+    },
+    {
+      "number": 458,
+      "title": "[Bug] POST create endpoints return 200 OK without Location header (should be 201 Created)",
+      "state": "OPEN",
+      "milestone": "Review \u00b7 Industry Standards",
+      "labels": [
+        "bug",
+        "api",
+        "review:auto"
+      ],
+      "createdAt": "2026-05-13T04:49:36Z",
+      "closedAt": null
+    },
+    {
+      "number": 459,
+      "title": "[Feature] Idempotency-Key middleware (24h cache) per CONVENTIONS.md \u00a73.4",
+      "state": "OPEN",
+      "milestone": "Review \u00b7 Industry Standards",
+      "labels": [
+        "api",
+        "review:auto"
+      ],
+      "createdAt": "2026-05-13T04:49:39Z",
+      "closedAt": null
+    },
+    {
+      "number": 460,
+      "title": "[Feature] RFC 9239 rate-limit response headers (RateLimit-Limit/Remaining/Retry-After)",
+      "state": "OPEN",
+      "milestone": "Review \u00b7 Industry Standards",
+      "labels": [
+        "api",
+        "review:auto"
+      ],
+      "createdAt": "2026-05-13T04:49:42Z",
+      "closedAt": null
+    },
+    {
+      "number": 461,
+      "title": "[Feature] Surface integrity hash (sha256-base64) on skill version manifest like npm",
+      "state": "OPEN",
+      "milestone": "Review \u00b7 Industry Standards",
+      "labels": [
+        "api",
+        "security",
+        "review:auto"
+      ],
+      "createdAt": "2026-05-13T04:50:23Z",
+      "closedAt": null
+    },
+    {
+      "number": 462,
+      "title": "[CI/CD] OpenAPI contract tests \u2014 assert every route appears in spec with declared errors",
+      "state": "OPEN",
+      "milestone": "Review \u00b7 Industry Standards",
+      "labels": [
+        "dx",
+        "api",
+        "ci",
+        "review:auto"
+      ],
+      "createdAt": "2026-05-13T04:50:26Z",
+      "closedAt": null
+    },
+    {
+      "number": 463,
+      "title": "[Feature] Dist-tags (latest / stable / next) for skill version resolution",
+      "state": "OPEN",
+      "milestone": "Review \u00b7 Industry Standards",
+      "labels": [
+        "api",
+        "review:auto"
+      ],
+      "createdAt": "2026-05-13T04:50:30Z",
+      "closedAt": null
+    },
+    {
+      "number": 464,
+      "title": "[Feature] Publish versioned JSON Schema for SKILL.md frontmatter",
+      "state": "OPEN",
+      "milestone": "Review \u00b7 Industry Standards",
+      "labels": [
+        "documentation",
+        "dx",
+        "api",
+        "review:auto"
+      ],
+      "createdAt": "2026-05-13T04:50:33Z",
+      "closedAt": null
+    },
+    {
+      "number": 465,
+      "title": "[Feature] SDK ergonomics \u2014 auto-pagination iterator + exponential-backoff retry wrapper",
+      "state": "OPEN",
+      "milestone": "Review \u00b7 Industry Standards",
+      "labels": [
+        "dx",
+        "sdk",
+        "review:auto"
+      ],
+      "createdAt": "2026-05-13T04:50:36Z",
+      "closedAt": null
+    },
+    {
+      "number": 466,
+      "title": "[Feature] docker-compose.yml for one-command local dev \u2014 replace K8s-only onboarding",
+      "state": "OPEN",
+      "milestone": "Review \u00b7 OSS Readiness",
+      "labels": [
+        "dx",
+        "infra",
+        "review:auto"
+      ],
+      "createdAt": "2026-05-13T04:51:21Z",
+      "closedAt": null
+    },
+    {
+      "number": 467,
+      "title": "[Feature] Public hosted demo / playground for try-before-install",
+      "state": "OPEN",
+      "milestone": "Review \u00b7 OSS Readiness",
+      "labels": [
+        "dx",
+        "infra",
+        "review:auto"
+      ],
+      "createdAt": "2026-05-13T04:51:25Z",
+      "closedAt": null
+    },
+    {
+      "number": 468,
+      "title": "[Misc] Add npm/PyPI keywords + GitHub repo topics for discoverability",
+      "state": "OPEN",
+      "milestone": "Review \u00b7 OSS Readiness",
+      "labels": [
+        "dx",
+        "sdk",
+        "review:auto"
+      ],
+      "createdAt": "2026-05-13T04:51:28Z",
+      "closedAt": null
+    },
+    {
+      "number": 469,
+      "title": "[Docs] examples/ directory with 2-3 minimal starter skills (TS + Python)",
+      "state": "OPEN",
+      "milestone": "Review \u00b7 OSS Readiness",
+      "labels": [
+        "documentation",
+        "dx",
+        "review:auto"
+      ],
+      "createdAt": "2026-05-13T04:51:32Z",
+      "closedAt": null
+    },
+    {
+      "number": 470,
+      "title": "[Docs] SDK quickstart (5-line copy-paste) in main README",
+      "state": "OPEN",
+      "milestone": "Review \u00b7 OSS Readiness",
+      "labels": [
+        "documentation",
+        "sdk",
+        "review:auto"
+      ],
+      "createdAt": "2026-05-13T04:51:35Z",
+      "closedAt": null
+    },
+    {
+      "number": 471,
+      "title": "[CI/CD] Codecov integration + coverage badge + stated coverage target",
+      "state": "OPEN",
+      "milestone": "Review \u00b7 OSS Readiness",
+      "labels": [
+        "dx",
+        "ci",
+        "review:auto"
+      ],
+      "createdAt": "2026-05-13T04:52:17Z",
+      "closedAt": null
+    },
+    {
+      "number": 472,
+      "title": "[Docs] Positioning / comparison table vs MCP servers + Smithery + npm in README",
+      "state": "OPEN",
+      "milestone": "Review \u00b7 OSS Readiness",
+      "labels": [
+        "documentation",
+        "review:auto"
+      ],
+      "createdAt": "2026-05-13T04:52:20Z",
+      "closedAt": null
+    },
+    {
+      "number": 473,
+      "title": "[Bug] SDK publish status \u2014 TS SDK has private:true, clarify npm/PyPI publication strategy",
+      "state": "OPEN",
+      "milestone": "Review \u00b7 OSS Readiness",
+      "labels": [
+        "bug",
+        "dx",
+        "sdk",
+        "review:auto"
+      ],
+      "createdAt": "2026-05-13T04:52:23Z",
+      "closedAt": null
+    },
+    {
+      "number": 474,
+      "title": "[Docs] API stability commitment + breaking-change & deprecation policy",
+      "state": "OPEN",
+      "milestone": "Review \u00b7 OSS Readiness",
+      "labels": [
+        "documentation",
+        "api",
+        "review:auto"
+      ],
+      "createdAt": "2026-05-13T04:52:26Z",
+      "closedAt": null
+    },
+    {
+      "number": 475,
+      "title": "[Feature] Surface last-run status of the scheduled mirror reconcile",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "dx",
+        "api"
+      ],
+      "createdAt": "2026-05-13T05:22:46Z",
+      "closedAt": "2026-05-13T05:33:53Z"
+    },
+    {
+      "number": 477,
+      "title": "[CI/CD] Curate release notes for 2026-05-13 cut",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "infra"
+      ],
+      "createdAt": "2026-05-13T05:48:09Z",
+      "closedAt": "2026-05-13T05:49:44Z"
+    },
+    {
+      "number": 482,
+      "title": "[Misc] Cookie consent banner \u2014 drop PostHog vendor name from body copy",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "dx"
+      ],
+      "createdAt": "2026-05-13T06:40:08Z",
+      "closedAt": "2026-05-13T06:42:50Z"
+    },
+    {
+      "number": 484,
+      "title": "[Misc] Contact page \u2014 route between Discussions, Issues/PRs, and support email",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "dx"
+      ],
+      "createdAt": "2026-05-13T07:14:32Z",
+      "closedAt": "2026-05-13T07:18:45Z"
+    },
+    {
+      "number": 486,
+      "title": "[CI/CD] Cut release v0.7.1 (web copy polish)",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "infra"
+      ],
+      "createdAt": "2026-05-13T07:31:30Z",
+      "closedAt": "2026-05-13T07:33:45Z"
+    },
+    {
+      "number": 491,
+      "title": "[Bug] Contact page \u2014 Discussion category cards inconsistent height in same row",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "dx"
+      ],
+      "createdAt": "2026-05-13T07:43:12Z",
+      "closedAt": "2026-05-13T07:45:26Z"
+    },
+    {
+      "number": 493,
+      "title": "[Feature] Bilingual announcements (EN + ZH)",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "dx",
+        "api"
+      ],
+      "createdAt": "2026-05-13T07:58:09Z",
+      "closedAt": "2026-05-13T08:03:11Z"
+    },
+    {
+      "number": 495,
+      "title": "[CI/CD] Cut release v0.7.2 (bilingual announcements + contact page polish)",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "infra"
+      ],
+      "createdAt": "2026-05-13T08:04:05Z",
+      "closedAt": "2026-05-13T08:06:18Z"
+    },
+    {
+      "number": 500,
+      "title": "[Feature] Admin broadcast notifications \u2014 author/edit/delete inbox messages for all users",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "enhancement",
+        "api",
+        "i18n",
+        "web"
+      ],
+      "createdAt": "2026-05-13T10:20:56Z",
+      "closedAt": "2026-05-14T04:09:53Z"
+    },
+    {
+      "number": 502,
+      "title": "[Feature] Targeted broadcasts + click-to-popup markdown viewer",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "enhancement",
+        "api",
+        "i18n",
+        "web"
+      ],
+      "createdAt": "2026-05-14T04:20:29Z",
+      "closedAt": "2026-05-14T05:07:12Z"
+    },
+    {
+      "number": 503,
+      "title": "[Bug] Playground + Generative skill builder \u2014 i18n gaps in hero, starters, drawer, quota chip, model picker",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "bug",
+        "i18n",
+        "web"
+      ],
+      "createdAt": "2026-05-14T04:26:58Z",
+      "closedAt": "2026-05-14T05:26:53Z"
+    },
+    {
+      "number": 505,
+      "title": "[Feature] Admin user-id-to-email lookup endpoint for picker resolution",
+      "state": "OPEN",
+      "milestone": null,
+      "labels": [
+        "enhancement",
+        "api",
+        "web"
+      ],
+      "createdAt": "2026-05-14T05:08:41Z",
+      "closedAt": null
+    },
+    {
+      "number": 506,
+      "title": "[Misc] Decide whether admins can be broadcast recipients (UserEmailPicker role scope)",
+      "state": "OPEN",
+      "milestone": null,
+      "labels": [
+        "question",
+        "web"
+      ],
+      "createdAt": "2026-05-14T05:08:51Z",
+      "closedAt": null
+    },
+    {
+      "number": 507,
+      "title": "[Bug] Recipients tooltip on BroadcastsPage unreadable for many recipients",
+      "state": "OPEN",
+      "milestone": null,
+      "labels": [
+        "bug",
+        "web"
+      ],
+      "createdAt": "2026-05-14T05:08:57Z",
+      "closedAt": null
+    },
+    {
+      "number": 509,
+      "title": "[Bug] Clicking broadcast notification triggers update-depth loop (React error #185)",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "bug",
+        "web"
+      ],
+      "createdAt": "2026-05-14T05:25:34Z",
+      "closedAt": "2026-05-14T05:31:13Z"
+    },
+    {
+      "number": 511,
+      "title": "[Feature] Landing-page launch-celebration popup (hardcoded, every-visit)",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "enhancement",
+        "web"
+      ],
+      "createdAt": "2026-05-14T06:04:15Z",
+      "closedAt": "2026-05-14T06:07:11Z"
+    },
+    {
+      "number": 513,
+      "title": "[Bug] LaunchCelebrationPopup \u2014 low contrast on ember surface, GitHub link invisible",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "bug",
+        "web"
+      ],
+      "createdAt": "2026-05-14T06:16:14Z",
+      "closedAt": "2026-05-14T06:18:45Z"
+    },
+    {
+      "number": 515,
+      "title": "[Bug] LaunchCelebrationPopup \u2014 light-theme broken, design not launch-worthy",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "bug",
+        "web"
+      ],
+      "createdAt": "2026-05-14T06:29:15Z",
+      "closedAt": "2026-05-14T06:32:11Z"
+    },
+    {
+      "number": 517,
+      "title": "[Bug] LaunchCelebrationPopup \u2014 letterpress plate paints OVER card surface, breaks light mode",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "bug",
+        "web"
+      ],
+      "createdAt": "2026-05-14T06:40:11Z",
+      "closedAt": "2026-05-14T06:42:50Z"
+    },
+    {
+      "number": 519,
+      "title": "[Misc] LaunchCelebrationPopup \u2014 explain the NyxID SSO flow next to the invite code",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "dx"
+      ],
+      "createdAt": "2026-05-14T06:52:54Z",
+      "closedAt": "2026-05-14T06:57:20Z"
+    },
+    {
+      "number": 522,
+      "title": "[Bug] Playground / skill-gen rail tab labels render upside-down for CJK",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "bug",
+        "web"
+      ],
+      "createdAt": "2026-05-14T07:06:30Z",
+      "closedAt": "2026-05-14T08:06:12Z"
+    },
+    {
+      "number": 524,
+      "title": "[Misc] LaunchCelebrationPopup \u2014 add fulfillment note (24h delivery, where to redeem, support link)",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "dx"
+      ],
+      "createdAt": "2026-05-14T07:21:45Z",
+      "closedAt": "2026-05-14T07:24:09Z"
+    },
+    {
+      "number": 526,
+      "title": "[Misc] LaunchCelebrationPopup \u2014 polish (offer-tile flow + caption consistency)",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "dx"
+      ],
+      "createdAt": "2026-05-14T08:23:56Z",
+      "closedAt": "2026-05-14T08:26:34Z"
+    },
+    {
+      "number": 528,
+      "title": "[Bug] [Skill Creation] Saving AI-generated or guided skills fails with CORS error",
+      "state": "OPEN",
+      "milestone": null,
+      "labels": [
+        "bug"
+      ],
+      "createdAt": "2026-05-14T08:25:49Z",
+      "closedAt": null
+    },
+    {
+      "number": 529,
+      "title": "[Bug] [GitHub Import] Skip validation still fails on Ornn frontmatter validation",
+      "state": "OPEN",
+      "milestone": null,
+      "labels": [
+        "bug"
+      ],
+      "createdAt": "2026-05-14T08:27:10Z",
+      "closedAt": null
+    },
+    {
+      "number": 530,
+      "title": "[Bug] [Playground Sandbox] nyxid skill tool execution returns 500 internal_error",
+      "state": "OPEN",
+      "milestone": null,
+      "labels": [
+        "bug"
+      ],
+      "createdAt": "2026-05-14T08:27:12Z",
+      "closedAt": null
+    },
+    {
+      "number": 531,
+      "title": "[Bug] [Playground Sandbox] Installed CLI state is not preserved across tool calls",
+      "state": "OPEN",
+      "milestone": null,
+      "labels": [
+        "bug"
+      ],
+      "createdAt": "2026-05-14T08:27:18Z",
+      "closedAt": null
+    },
+    {
+      "number": 532,
+      "title": "[Bug] Quota credit notifications can't be opened \u2014 dead clicks on /notifications and bell",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "bug",
+        "web"
+      ],
+      "createdAt": "2026-05-14T09:02:09Z",
+      "closedAt": "2026-05-14T09:11:48Z"
+    },
+    {
+      "number": 534,
+      "title": "[QA] Ornn \u529f\u80fd\u6d4b\u8bd5\u8fdb\u5ea6\u8ddf\u8e2a",
+      "state": "OPEN",
+      "milestone": null,
+      "labels": [],
+      "createdAt": "2026-05-14T09:24:17Z",
+      "closedAt": null
+    },
+    {
+      "number": 535,
+      "title": "[QA] \u767b\u5f55\u4e0e\u6743\u9650\u63a7\u5236\u529f\u80fd\u6d4b\u8bd5",
+      "state": "OPEN",
+      "milestone": "M4 - Platform Power",
+      "labels": [],
+      "createdAt": "2026-05-14T09:24:20Z",
+      "closedAt": null
+    },
+    {
+      "number": 536,
+      "title": "[QA] \u9759\u6001\u9875\u9762\u4e0e\u516c\u5f00\u5bfc\u822a\u529f\u80fd\u6d4b\u8bd5",
+      "state": "OPEN",
+      "milestone": null,
+      "labels": [],
+      "createdAt": "2026-05-14T09:24:24Z",
+      "closedAt": null
+    },
+    {
+      "number": 537,
+      "title": "[QA] Skill Registry \u4e0e\u8be6\u60c5\u9875\u529f\u80fd\u6d4b\u8bd5",
+      "state": "OPEN",
+      "milestone": null,
+      "labels": [],
+      "createdAt": "2026-05-14T09:24:27Z",
+      "closedAt": null
+    },
+    {
+      "number": 538,
+      "title": "[QA] Skill \u521b\u5efa\u4e0e GitHub \u5bfc\u5165\u529f\u80fd\u6d4b\u8bd5",
+      "state": "OPEN",
+      "milestone": "M4 - Platform Power",
+      "labels": [],
+      "createdAt": "2026-05-14T09:24:31Z",
+      "closedAt": null
+    },
+    {
+      "number": 539,
+      "title": "[QA] Skill \u5305\u7c7b\u578b\u4e0e\u683c\u5f0f\u6821\u9a8c\u529f\u80fd\u6d4b\u8bd5",
+      "state": "OPEN",
+      "milestone": "M4 - Platform Power",
+      "labels": [],
+      "createdAt": "2026-05-14T09:24:35Z",
+      "closedAt": null
+    },
+    {
+      "number": 540,
+      "title": "[QA] Playground \u4e0e sandbox \u529f\u80fd\u6d4b\u8bd5",
+      "state": "OPEN",
+      "milestone": "M4 - Platform Power",
+      "labels": [],
+      "createdAt": "2026-05-14T09:24:39Z",
+      "closedAt": null
+    },
+    {
+      "number": 541,
+      "title": "[QA] \u901a\u77e5\u4e2d\u5fc3\u529f\u80fd\u6d4b\u8bd5",
+      "state": "OPEN",
+      "milestone": null,
+      "labels": [],
+      "createdAt": "2026-05-14T09:24:42Z",
+      "closedAt": null
+    },
+    {
+      "number": 542,
+      "title": "[QA] \u7528\u6237\u4fa7 skill \u7ba1\u7406\u3001\u7248\u672c\u3001\u6743\u9650\u3001\u5ba1\u8ba1\u4e0e GitHub \u540c\u6b65\u529f\u80fd\u6d4b\u8bd5",
+      "state": "OPEN",
+      "milestone": null,
+      "labels": [],
+      "createdAt": "2026-05-14T09:24:45Z",
+      "closedAt": null
+    },
+    {
+      "number": 543,
+      "title": "[QA] \u7ba1\u7406\u5458 Dashboard\u3001\u7528\u6237\u3001\u914d\u989d\u4e0e\u5151\u6362\u7801\u529f\u80fd\u6d4b\u8bd5",
+      "state": "OPEN",
+      "milestone": null,
+      "labels": [],
+      "createdAt": "2026-05-14T09:24:49Z",
+      "closedAt": null
+    },
+    {
+      "number": 544,
+      "title": "[QA] \u7ba1\u7406\u5458 skill \u7ba1\u7406\u3001\u516c\u544a\u4e0e\u5e73\u53f0\u914d\u7f6e\u529f\u80fd\u6d4b\u8bd5",
+      "state": "OPEN",
+      "milestone": null,
+      "labels": [],
+      "createdAt": "2026-05-14T09:24:52Z",
+      "closedAt": null
+    },
+    {
+      "number": 545,
+      "title": "[QA] CLI\u3001Agent \u4e0e NyxID proxy \u529f\u80fd\u6d4b\u8bd5",
+      "state": "OPEN",
+      "milestone": null,
+      "labels": [],
+      "createdAt": "2026-05-14T09:24:55Z",
+      "closedAt": null
+    },
+    {
+      "number": 546,
+      "title": "[QA] \u5b89\u5168\u3001\u6743\u9650\u4e0e\u654f\u611f\u4fe1\u606f\u5904\u7406\u6d4b\u8bd5",
+      "state": "OPEN",
+      "milestone": "M4 - Platform Power",
+      "labels": [],
+      "createdAt": "2026-05-14T09:24:58Z",
+      "closedAt": null
+    },
+    {
+      "number": 547,
+      "title": "[Misc] Skill package preview + chat drawers \u2014 flatten layout, pin actions, fix navbar overlap",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "web"
+      ],
+      "createdAt": "2026-05-14T09:40:49Z",
+      "closedAt": "2026-05-14T09:51:53Z"
+    },
+    {
+      "number": 549,
+      "title": "[Misc] Redemption-code note masking \u2014 replace ambiguous ellipsis with **** so users don't think text is truncated",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "dx",
+        "api"
+      ],
+      "createdAt": "2026-05-14T10:04:28Z",
+      "closedAt": "2026-05-14T10:10:18Z"
+    },
+    {
+      "number": 551,
+      "title": "[Misc] Playground Package drawer absorbs Skill drawer; gen-page pulses on new iterations; drawer-width / scroll polish",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "web"
+      ],
+      "createdAt": "2026-05-14T10:14:36Z",
+      "closedAt": "2026-05-14T10:26:23Z"
+    },
+    {
+      "number": 553,
+      "title": "[Feature] Pin launch-celebration content to top of /news page",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "web"
+      ],
+      "createdAt": "2026-05-14T10:27:08Z",
+      "closedAt": "2026-05-14T10:31:37Z"
+    },
+    {
+      "number": 555,
+      "title": "[CI/CD] Cut release v0.8.0 (admin broadcasts + launch-celebration popup + drawer polish)",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "infra"
+      ],
+      "createdAt": "2026-05-14T14:28:41Z",
+      "closedAt": "2026-05-14T14:33:29Z"
+    },
+    {
+      "number": 560,
+      "title": "[Docs] Refresh ornn-agent-manual-cli skill to v1.2 against develop API",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "documentation",
+        "dx",
+        "api"
+      ],
+      "createdAt": "2026-05-14T15:24:35Z",
+      "closedAt": "2026-05-14T15:27:05Z"
+    },
+    {
+      "number": 562,
+      "title": "[Bug] [Playground] nyxid LIST CAPABILITIES response is delayed and follow-up command is not executed",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "bug"
+      ],
+      "createdAt": "2026-05-15T02:28:40Z",
+      "closedAt": "2026-05-15T03:05:25Z"
+    },
+    {
+      "number": 563,
+      "title": "[Bug] [Permissions] Non-owner account can access and run another account's private skill through Playground URL",
+      "state": "OPEN",
+      "milestone": null,
+      "labels": [
+        "bug"
+      ],
+      "createdAt": "2026-05-15T02:28:40Z",
+      "closedAt": null
+    },
+    {
+      "number": 564,
+      "title": "[Bug] [Playground] Missing skill still opens an interactive Playground page after API returns 404",
+      "state": "OPEN",
+      "milestone": null,
+      "labels": [
+        "bug"
+      ],
+      "createdAt": "2026-05-15T06:39:37Z",
+      "closedAt": null
+    },
+    {
+      "number": 565,
+      "title": "[Bug] [Skill Edit] Owner updating an existing skill package is blocked by CORS",
+      "state": "OPEN",
+      "milestone": null,
+      "labels": [
+        "bug"
+      ],
+      "createdAt": "2026-05-15T08:00:48Z",
+      "closedAt": null
+    },
+    {
+      "number": 566,
+      "title": "[Bug] [Registry] Anonymous users cannot load public and system skills because public Registry APIs return 401",
+      "state": "OPEN",
+      "milestone": null,
+      "labels": [
+        "bug"
+      ],
+      "createdAt": "2026-05-15T08:24:11Z",
+      "closedAt": null
+    },
+    {
+      "number": 567,
+      "title": "Enforce skill visibility checks on JSON package endpoint",
+      "state": "OPEN",
+      "milestone": null,
+      "labels": [],
+      "createdAt": "2026-05-15T09:03:39Z",
+      "closedAt": null
+    },
+    {
+      "number": 572,
+      "title": "[Docs] Surface Ornn official website link in README",
+      "state": "CLOSED",
+      "milestone": null,
+      "labels": [
+        "documentation"
+      ],
+      "createdAt": "2026-05-18T04:33:10Z",
+      "closedAt": "2026-05-18T04:41:00Z"
+    }
+  ]
+}

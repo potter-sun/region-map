@@ -1,0 +1,38 @@
+{
+  "M0": {
+    "number": 14,
+    "title": "M0 \u2014 Engineering Foundation & Infra"
+  },
+  "M1": {
+    "number": 15,
+    "title": "M1 \u2014 Skill Lifecycle Core"
+  },
+  "M2": {
+    "number": 16,
+    "title": "M2 \u2014 Build Experience"
+  },
+  "M3": {
+    "number": 17,
+    "title": "M3 \u2014 Trust & Quality"
+  },
+  "M4": {
+    "number": 18,
+    "title": "M4 \u2014 Go Live Prep"
+  },
+  "M5": {
+    "number": 19,
+    "title": "M5 \u2014 QA Pre-Launch Gate"
+  },
+  "M6": {
+    "number": 20,
+    "title": "M6 \u2014 Code Review Hardening"
+  },
+  "M7": {
+    "number": 21,
+    "title": "M7 \u2014 Platform Power"
+  },
+  "M8": {
+    "number": 22,
+    "title": "M8 \u2014 Community Engagement"
+  }
+}
