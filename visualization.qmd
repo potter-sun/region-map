@@ -162,9 +162,9 @@ format:
   #detail .term-blocked a { color: #c0392b; text-decoration: underline; }
   #detail .term-builton { color: #27ae60; opacity: 0.85; }
   #detail .term-builton strong { color: #27ae60; }
-  #detail .term-blocking { color: #2980b9; }
-  #detail .term-blocking strong { color: #2980b9; }
-  #detail .term-blocking a { color: #2980b9; text-decoration: underline; }
+  #detail .term-blocking { color: #c0392b; }
+  #detail .term-blocking strong { color: #c0392b; }
+  #detail .term-blocking a { color: #c0392b; text-decoration: underline; }
   #detail .term-shipped-on-top { color: #7f8c8d; opacity: 0.75; }
   #detail .term-shipped-on-top strong { color: #7f8c8d; }
   #detail .region-ref { color: #2c3e50; text-decoration: underline dotted; cursor: pointer; }
