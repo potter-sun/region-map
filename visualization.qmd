@@ -1159,10 +1159,29 @@ function showNodeDetail(id) {
   // Symmetric split for downstream: IS-BLOCKING (downstream not yet shipped — they
   // need this region done) vs ALREADY-SHIPPED-ON-TOP (downstream past public —
   // this region's state no longer gates them).
-  // Closure rank: shipped means >= public (release) for downstream consumption.
+  //
+  // "Shipped" is the OR of two signals:
+  //   1) closure stage >= public (manual judgment — primary source of truth)
+  //   2) region has a milestone_ref AND every tracked issue is CLOSED
+  //      (pragmatic auto-detection — closure is manually maintained and can lag
+  //      actual work completion; without this, a region that finished its work
+  //      stays falsely "blocking" in the panel until someone bumps the closure)
   const CLOSURE_RANK = {seed:0, obligation:1, scoped:2, public:3, bridged:4, mature:5};
   const SHIPPED_THRESHOLD = CLOSURE_RANK.public;
-  const isShipped = (k) => (CLOSURE_RANK[REGIONS_DOC.regions[k]?.closure] ?? 0) >= SHIPPED_THRESHOLD;
+  const isShipped = (k) => {
+    const rr = REGIONS_DOC.regions[k];
+    if (!rr) return false;
+    if ((CLOSURE_RANK[rr.closure] ?? 0) >= SHIPPED_THRESHOLD) return true;
+    // Auto-detect: milestone tracked + had real work + all closed
+    if (rr.milestone_ref) {
+      const issuesData = ORNN_ISSUES && ORNN_ISSUES.regions && ORNN_ISSUES.regions[k];
+      if (issuesData && issuesData.issues) {
+        const all = Object.values(issuesData.issues);
+        if (all.length > 0 && all.every(i => i.state !== "OPEN")) return true;
+      }
+    }
+    return false;
+  };
   const blockedBy = upstream.filter(k => !isShipped(k));
   const builtOn  = upstream.filter(k =>  isShipped(k));
   const isBlocking      = downstream.filter(k => !isShipped(k));
