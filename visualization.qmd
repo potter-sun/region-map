@@ -119,9 +119,72 @@ format:
     font-family: ui-monospace, monospace; font-size: 0.84rem;
   }
   #detail .term-stats span { display: inline-block; margin-right: 0.6rem; padding: 0.1rem 0.45rem; background: #f4f4f4; border-radius: 3px; }
+  #detail .term-status { margin-top: 0.55rem; display: flex; gap: 0.4rem; flex-wrap: wrap; }
+  #detail .status-chip { display: inline-block; padding: 0.2rem 0.55rem; border-radius: 11px; font-size: 0.8rem; font-weight: 500; }
+  #detail .status-chip.status-todo { background: #e8f5ee; color: #1e7a3c; }
+  #detail .status-chip.status-blocked { background: #fdecec; color: #c0392b; }
+  #detail .status-chip.status-done { background: #eef2f5; color: #6b7c8c; }
   #detail .term-deps { margin-top: 0.7rem; font-size: 0.86rem; color: #555; }
-  #detail .term-deps a { color: #2c3e50; cursor: pointer; text-decoration: underline dotted; margin-right: 0.4rem; }
+  #detail .term-deps strong { display: block; margin-bottom: 0.2rem; }
+  #detail .term-deps a {
+    display: block;
+    padding: 0.15rem 0 0.15rem 1.2rem;
+    color: #2c3e50;
+    cursor: pointer;
+    text-decoration: underline dotted;
+    position: relative;
+    line-height: 1.35;
+  }
+  #detail .term-deps a::before {
+    content: "·";
+    position: absolute;
+    left: 0.45rem;
+    color: #bbb;
+    font-weight: 600;
+  }
   #detail .term-deps a:hover { color: #c0392b; }
+
+  #detail .term-issues { margin-top: 0.8rem; font-size: 0.82rem; color: #555; }
+  #detail .term-issues strong { display: block; margin-bottom: 0.35rem; color: #444; }
+  #detail .iss-list { display: flex; flex-direction: column; gap: 0.25rem; }
+  #detail .iss-chip {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    padding: 0.3rem 0.5rem;
+    border-radius: 4px;
+    background: #fafafa;
+    border-left: 3px solid #ccc;
+    text-decoration: none;
+    color: #333;
+    line-height: 1.3;
+    transition: background 0.12s;
+  }
+  #detail .iss-row { display: grid; grid-template-columns: auto 1fr auto; gap: 0.4rem; align-items: center; }
+  #detail .iss-blocked { font-size: 0.74rem; color: #c0392b; padding-left: 0.2rem; }
+  #detail .iss-blocked a { color: #c0392b; text-decoration: underline; margin-right: 0.25rem; }
+  #detail .iss-blockref-internal { font-weight: 600; }
+  #detail .iss-blockref-external { font-style: italic; }
+  #detail .iss-chip:hover { background: #f0f0f0; text-decoration: none; }
+  #detail .iss-chip.iss-open { border-left-color: #3498db; }
+  #detail .iss-chip.iss-closed { border-left-color: #27ae60; opacity: 0.55; }
+  #detail .iss-num { font-family: ui-monospace, SFMono-Regular, monospace; color: #888; font-size: 0.78rem; align-self: center; }
+  #detail .iss-title { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  #detail .iss-assignee { font-size: 0.72rem; color: #2c3e50; background: #eef2f5; padding: 0.05rem 0.35rem; border-radius: 8px; align-self: center; }
+  #detail .iss-unassigned { font-size: 0.72rem; color: #c0392b; background: #fdecec; padding: 0.05rem 0.35rem; border-radius: 8px; align-self: center; font-style: italic; }
+
+  #detail .term-blocked { color: #c0392b; }
+  #detail .term-blocked strong { color: #c0392b; }
+  #detail .term-blocked a { color: #c0392b; text-decoration: underline; }
+  #detail .term-builton { color: #27ae60; opacity: 0.85; }
+  #detail .term-builton strong { color: #27ae60; }
+  #detail .term-blocking { color: #c0392b; }
+  #detail .term-blocking strong { color: #c0392b; }
+  #detail .term-blocking a { color: #c0392b; text-decoration: underline; }
+  #detail .term-shipped-on-top { color: #7f8c8d; opacity: 0.75; }
+  #detail .term-shipped-on-top strong { color: #7f8c8d; }
+  #detail .region-ref { color: #2c3e50; text-decoration: underline dotted; cursor: pointer; }
+  #detail .region-ref:hover { color: #c0392b; }
   #detail .term-namecerts {
     margin-top: 0.9rem; padding-top: 0.7rem; border-top: 1px dashed #ddd;
     font-size: 0.83rem;
@@ -802,15 +865,11 @@ function renderCy() {
   });
   CY.on("tap", evt => {
     if (evt.target === CY) {
-      const el = document.getElementById("detail-content");
-      if (el) el.innerHTML = `<div class="hint">${t("hint")}</div>`;
-      CY.elements().removeClass("highlight").removeClass("faded");
+      renderDefaultPanel();
       CY.nodes().unselect();
-      // Restore the global fit when the user taps an empty area.
-      CY.animate(
-        { fit: { eles: CY.elements(":visible"), padding: 16 } },
-        { duration: 350, easing: "ease-out" }
-      );
+      // Restore focus filter (not full visibility) — empty-tap returns to the
+      // "what we're attacking now" view, matching the side panel.
+      applyFocusFilter();
     }
   });
   // Global view: fit all nodes in the viewport. With the bigger font and
@@ -921,6 +980,46 @@ function setupZoomControls() {
   });
 }
 
+// Initial-load filter: keep only focus=true regions and the edges between them.
+// Cuts the map's 82-region density down to just the "currently attacking"
+// subgraph (matching the side panel). Re-runs dagre on the visible subset so
+// nodes don't sit scattered across the original full-graph layout coordinates.
+// Restored on empty-area tap so the view doesn't get permanently "unfocused"
+// after exploring.
+function applyFocusFilter() {
+  if (!CY || !REGIONS_DOC) return;
+  CY.elements().removeClass("highlight").removeClass("faded");
+
+  const keep = new Set();
+  for (const [rid, r] of Object.entries(REGIONS_DOC.regions)) {
+    if (r.focus === true) keep.add(rid);
+  }
+  // Safety: if no focus defined, don't fade anything
+  if (keep.size === 0) return;
+
+  CY.nodes().forEach(n => { if (!keep.has(n.id())) n.addClass("faded"); });
+  CY.edges().forEach(e => {
+    if (!keep.has(e.data("source")) || !keep.has(e.data("target"))) {
+      e.addClass("faded");
+    }
+  });
+  // Re-layout visible subset with dagre so the focus subgraph is tightly
+  // arranged (instead of scattered across the original 82-region coordinates).
+  const visible = CY.elements().not(".faded");
+  if (visible.length > 0) {
+    visible.layout({
+      name: "dagre",
+      rankDir: "LR",
+      nodeSep: 30,
+      rankSep: 80,
+      animate: true,
+      animationDuration: 350,
+      fit: true,
+      padding: 30,
+    }).run();
+  }
+}
+
 function highlightSubgraph(id) {
   if (!CY || !REGIONS_DOC) return;
   CY.elements().removeClass("highlight").removeClass("faded");
@@ -984,6 +1083,95 @@ function highlightSubgraph(id) {
   );
 }
 
+// Default panel content: surface "what we're attacking now" — current focus regions
+// grouped by product, with closure status icons. Replaces the generic "click a node" hint.
+function renderDefaultPanel() {
+  if (!REGIONS_DOC) return;
+  const detailEl = document.getElementById("detail-content");
+  if (!detailEl) return;
+  const lang = LANG;
+
+  const RANK = {seed:0, obligation:1, scoped:2, public:3, bridged:4, mature:5};
+  const stageIcon = (closure) => {
+    const r = RANK[closure] ?? 0;
+    if (r >= RANK.bridged) return "✅";
+    if (r >= RANK.public) return "🟢";
+    if (r >= RANK.scoped) return "🟡";
+    if (r >= RANK.obligation) return "🟠";
+    return "⛔";
+  };
+
+  // Group focus regions by product
+  const byProduct = {};
+  for (const [id, r] of Object.entries(REGIONS_DOC.regions)) {
+    if (!r.focus) continue;
+    if (!byProduct[r.product]) byProduct[r.product] = [];
+    byProduct[r.product].push({id, r});
+  }
+
+  // Sort regions within product: less-mature first (more attention-needed)
+  for (const p of Object.keys(byProduct)) {
+    byProduct[p].sort((a, b) => (RANK[a.r.closure] ?? 0) - (RANK[b.r.closure] ?? 0));
+  }
+
+  const productOrder = ["nyxid", "aevatar", "ornn", "automath", "sisyphus", "symphony", "vibe-apps", "godgpt"];
+  const sortedProducts = Object.keys(byProduct).sort((a, b) => productOrder.indexOf(a) - productOrder.indexOf(b));
+
+  const header = lang === "zh"
+    ? `<div style="font-size:1.05rem;font-weight:600;color:#222;margin-bottom:0.3rem">🎯 当前正在攻坚的</div>
+       <div style="font-size:0.82rem;color:#888;margin-bottom:1rem">点击下方任何节点查看详情, 或在图上点击节点。</div>`
+    : `<div style="font-size:1.05rem;font-weight:600;color:#222;margin-bottom:0.3rem">🎯 What we're attacking now</div>
+       <div style="font-size:0.82rem;color:#888;margin-bottom:1rem">Click any region below for detail, or tap a node on the graph.</div>`;
+
+  const productLabel = (p) => (PRODUCT_BY_KEY[p] && PRODUCT_BY_KEY[p].label[lang]) || p;
+
+  const sections = sortedProducts.map(p => {
+    const items = byProduct[p].map(({id, r}) => {
+      const lbl = (r.label && r.label[lang]) || (r.label && r.label.en) || id;
+      const closureLbl = (CLOSURE_BY_KEY[r.closure] && CLOSURE_BY_KEY[r.closure].label[lang]) || r.closure;
+      const issueCount = r.issue_count || 0;
+      const milestone = r.milestone ? ` <span style="color:#aaa">· ${escapeHtml(r.milestone)}</span>` : "";
+      return `<li style="margin-bottom:0.35rem">
+        <a class="region-ref" onclick='showNodeDetail(${JSON.stringify(id)})' style="font-weight:500">${stageIcon(r.closure)} ${escapeHtml(lbl)}</a>
+        <span style="color:#888;font-size:0.78rem">— ${escapeHtml(closureLbl)} · ${issueCount} ${lang === "zh" ? "未修" : "open"}${milestone}</span>
+      </li>`;
+    }).join("");
+    return `<div style="margin-bottom:1.1rem">
+      <div style="font-size:0.78rem;font-weight:600;color:#666;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:0.4rem">${escapeHtml(productLabel(p))}</div>
+      <ul style="list-style:none;padding-left:0;margin:0;line-height:1.4">${items}</ul>
+    </div>`;
+  }).join("");
+
+  const legend = lang === "zh"
+    ? `<div style="font-size:0.74rem;color:#aaa;margin-top:1rem;padding-top:0.7rem;border-top:1px dashed #eee">
+        ⛔ 提出 (seed) · 🟠 接手 (obligation) · 🟡 设计完 (scoped) · 🟢 已承诺 / 已集成 (public/bridged) · ✅ 运行中 (mature)
+      </div>`
+    : `<div style="font-size:0.74rem;color:#aaa;margin-top:1rem;padding-top:0.7rem;border-top:1px dashed #eee">
+        ⛔ Seed · 🟠 Obligation · 🟡 Scoped · 🟢 Public/Bridged · ✅ Mature
+      </div>`;
+
+  detailEl.innerHTML = header + sections + legend;
+}
+
+// Compute per-region status breakdown from resolved issues
+// Returns {todo, in_progress, done, blocked, total} counts based on issue states + dep chain
+function computeRegionStatus(regionId, regionData) {
+  const issuesData = ORNN_ISSUES && ORNN_ISSUES.regions && ORNN_ISSUES.regions[regionId];
+  if (!issuesData || !issuesData.issues) return null;
+  const issues = Object.values(issuesData.issues);
+  const open = issues.filter(i => i.state === "OPEN");
+  const closed = issues.filter(i => i.state === "CLOSED");
+  // "Blocked" = open issue whose blocked_by includes an OPEN issue in this region
+  const openNums = new Set(open.map(i => i.number));
+  const blocked = open.filter(i => {
+    const bb = (i.deps && i.deps.blocked_by) || [];
+    return bb.some(n => openNums.has(n));
+  });
+  // "Ready to work on" = open and NOT blocked
+  const ready = open.length - blocked.length;
+  return {todo: ready, blocked: blocked.length, done: closed.length, total: issues.length};
+}
+
 function showNodeDetail(id) {
   if (!REGIONS_DOC) return;
   const r = REGIONS_DOC.regions[id];
@@ -1020,6 +1208,47 @@ function showNodeDetail(id) {
     .map(d => typeof d === "string" ? d : d.key)
     .filter(k => REGIONS_DOC.regions[k]);
 
+  // Split upstream into BLOCKED-BY (not yet shipped) vs BUILT-ON (ready).
+  // Symmetric split for downstream: IS-BLOCKING (downstream not yet shipped — they
+  // need this region done) vs ALREADY-SHIPPED-ON-TOP (downstream past public —
+  // this region's state no longer gates them).
+  //
+  // "Shipped" — for the purpose of deciding whether this upstream still
+  // blocks its downstream. Per the README's closure semantics:
+  //   - public  = release / changelog announced (released to the world)
+  //   - bridged = upstream/downstream issues closed + smoke passed (integration verified)
+  //
+  // bridged is the level where downstream can RELY on this region. A
+  // public region with open bugs is announced but its integration smoke
+  // hasn't passed — so it still blocks downstream from a clean integration.
+  //
+  // Logic:
+  //   1) closure >= bridged → shipped (integration verified)
+  //   2) closure == public AND zero open issues → shipped (released cleanly)
+  //   3) milestone_ref + every tracked issue closed → shipped (pragmatic
+  //      auto-detect for when closure stage hasn't been manually bumped)
+  // Everything else: still blocking.
+  const CLOSURE_RANK = {seed:0, obligation:1, scoped:2, public:3, bridged:4, mature:5};
+  const isShipped = (k) => {
+    const rr = REGIONS_DOC.regions[k];
+    if (!rr) return false;
+    const rank = CLOSURE_RANK[rr.closure] ?? 0;
+    if (rank >= CLOSURE_RANK.bridged) return true;
+    if (rank >= CLOSURE_RANK.public && (rr.issue_count || 0) === 0) return true;
+    if (rr.milestone_ref) {
+      const issuesData = ORNN_ISSUES && ORNN_ISSUES.regions && ORNN_ISSUES.regions[k];
+      if (issuesData && issuesData.issues) {
+        const all = Object.values(issuesData.issues);
+        if (all.length > 0 && all.every(i => i.state !== "OPEN")) return true;
+      }
+    }
+    return false;
+  };
+  const blockedBy = upstream.filter(k => !isShipped(k));
+  const builtOn  = upstream.filter(k =>  isShipped(k));
+  const isBlocking      = downstream.filter(k => !isShipped(k));
+  const shippedOnTopOf  = downstream.filter(k =>  isShipped(k));
+
   const otherLang = lang === "en" ? "zh" : "en";
   const primaryLabel = (r.label && r.label[lang]) || (r.label && r.label.en) || id;
   const otherLabel = (r.label && r.label[otherLang]) || "";
@@ -1032,8 +1261,57 @@ function showNodeDetail(id) {
   const linkRegion = k => {
     const rr = REGIONS_DOC.regions[k];
     const lbl = (rr && rr.label && rr.label[lang]) || (rr && rr.label && rr.label.en) || k;
-    return `<a onclick="showNodeDetail(${JSON.stringify(k)})">${escapeHtml(lbl)}</a>`;
+    // Use single quotes for the attribute so JSON.stringify's double quotes don't break HTML parsing
+    return `<a onclick='showNodeDetail(${JSON.stringify(k)})'>${escapeHtml(lbl)}</a>`;
   };
+
+  // Repo inference: parse `repo:OWNER/NAME` from gh_query string, fallback to product default
+  const PRODUCT_REPO_DEFAULTS = {
+    nyxid: "ChronoAIProject/NyxID",
+    aevatar: "aevatarAI/aevatar",
+    ornn: "ChronoAIProject/Ornn",
+    automath: "the-omega-institute/automath",
+    sisyphus: "aevatarAI/aevatar",
+    symphony: "ChronoAIProject/chronoai-symphony",
+    godgpt: "aevatarAI/godgpt",
+  };
+  const ghQueryStr = typeof r.gh_query === "string" ? r.gh_query : "";
+  const repoMatch = ghQueryStr.match(/repo:([\w.-]+\/[\w.-]+)/);
+  const repo = repoMatch ? repoMatch[1] : (PRODUCT_REPO_DEFAULTS[r.product] || null);
+
+  // Build a set of all region keys for in-desc auto-linking
+  const ALL_REGION_KEYS = Object.keys(REGIONS_DOC.regions);
+  // Sort longest-first so e.g. "NyxID-CLI-Wizard" matches before "NyxID-CLI"
+  const SORTED_REGION_KEYS = [...ALL_REGION_KEYS].sort((a, b) => b.length - a.length);
+  // Escape regex special chars in keys for safe pattern building
+  const escRegex = s => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const REGION_KEY_PATTERN = new RegExp(
+    "\\b(" + SORTED_REGION_KEYS.map(escRegex).join("|") + ")\\b",
+    "g"
+  );
+
+  // Escape HTML, then link #NNN refs to GitHub issues + region-key refs to in-map jumps
+  const escapeAndLinkIssues = (text) => {
+    let escaped = escapeHtml(text);
+    // GitHub issue refs
+    if (repo) {
+      escaped = escaped.replace(/#(\d+)\b/g, (_, n) =>
+        `<a href="https://github.com/${repo}/issues/${n}" target="_blank" rel="noopener">#${n}</a>`
+      );
+    }
+    // In-map region refs (e.g., "NyxID-CLI-Wizard" → click to jump)
+    escaped = escaped.replace(REGION_KEY_PATTERN, (match) => {
+      // Don't re-link the region we're currently viewing
+      if (match === id) return match;
+      // Single-quote outer to avoid breaking HTML when JSON.stringify emits inner double quotes
+      return `<a class="region-ref" onclick='showNodeDetail(${JSON.stringify(match)})'>${match}</a>`;
+    });
+    return escaped;
+  };
+
+  const ghSearchUrl = ghQueryStr
+    ? `https://github.com/search?q=${encodeURIComponent(ghQueryStr)}&type=issues`
+    : null;
 
   // Issue list pulled from ORNN_ISSUES for regions with milestone_ref
   const issuesData = ORNN_ISSUES && ORNN_ISSUES.regions && ORNN_ISSUES.regions[id];
@@ -1072,7 +1350,7 @@ function showNodeDetail(id) {
         ? `<span class="term-other">${escapeHtml(otherLabel)}</span>`
         : ""
     }</div>
-    ${primaryDesc ? `<div class="term-desc">${escapeHtml(primaryDesc)}</div>` : ""}
+    ${primaryDesc ? `<div class="term-desc">${escapeAndLinkIssues(primaryDesc)}</div>` : ""}
     <div class="term-stats">
       <span>${escapeHtml(closure.label?.[lang] || r.closure || "")}</span>
       <span>${escapeHtml(formal.label?.[lang] || r.formal || "")}</span>
@@ -1083,9 +1361,24 @@ function showNodeDetail(id) {
       ${r.focus ? '<span style="color:#c0392b">★ focus</span>' : ""}
       ${r.archived ? '<span style="opacity:0.6">archived</span>' : ""}
     </div>
+    ${(() => {
+      const s = computeRegionStatus(id, r);
+      if (!s) return "";
+      const todoLbl = lang === "zh" ? "待办" : "Todo";
+      const blockedLbl = lang === "zh" ? "被阻塞" : "Blocked";
+      const doneLbl = lang === "zh" ? "已完成" : "Done";
+      return `<div class="term-status">
+        <span class="status-chip status-todo" title="${lang === 'zh' ? '可立即着手 (无依赖)' : 'Ready to work on (no blocking deps)'}">🟢 ${s.todo} ${todoLbl}</span>
+        ${s.blocked > 0 ? `<span class="status-chip status-blocked" title="${lang === 'zh' ? '被其他未完成 issue 阻塞' : 'Blocked by other open issues'}">⛔ ${s.blocked} ${blockedLbl}</span>` : ""}
+        <span class="status-chip status-done" title="${lang === 'zh' ? '已关闭' : 'Closed'}">✅ ${s.done} ${doneLbl}</span>
+      </div>`;
+    })()}
+    ${ghSearchUrl ? `<div class="term-deps"><strong>GitHub:</strong> <a href="${ghSearchUrl}" target="_blank" rel="noopener">${lang === "zh" ? "查看全部 issue ↗" : "view all issues ↗"}</a></div>` : ""}
     ${timeline ? `<div class="term-timeline"><strong>${t("detail_timeline")}</strong> ${escapeHtml(timeline)}</div>` : ""}
-    ${upstream.length ? `<div class="term-deps"><strong>${t("detail_upstream")}</strong> ${upstream.map(linkRegion).join(" ")}</div>` : ""}
-    ${downstream.length ? `<div class="term-deps"><strong>${t("detail_downstream")}</strong> ${downstream.map(linkRegion).join(" ")}</div>` : ""}
+    ${blockedBy.length ? `<div class="term-deps term-blocked"><strong>${lang === "zh" ? "⛔ 被阻塞于:" : "⛔ Blocked by:"}</strong> ${blockedBy.map(linkRegion).join(" ")}</div>` : ""}
+    ${builtOn.length ? `<div class="term-deps term-builton"><strong>${lang === "zh" ? "✅ 基于:" : "✅ Built on:"}</strong> ${builtOn.map(linkRegion).join(" ")}</div>` : ""}
+    ${isBlocking.length ? `<div class="term-deps term-blocking"><strong>${lang === "zh" ? "🚀 正在阻塞:" : "🚀 Is blocking:"}</strong> ${isBlocking.map(linkRegion).join(" ")}</div>` : ""}
+    ${shippedOnTopOf.length ? `<div class="term-deps term-shipped-on-top"><strong>${lang === "zh" ? "↓ 上层已上线:" : "↓ Already shipped on top:"}</strong> ${shippedOnTopOf.map(linkRegion).join(" ")}</div>` : ""}
     ${issuesSection}
   `;
 }
@@ -1124,8 +1417,11 @@ function renderAll() {
   if (CY && CY.nodes(":selected").length) {
     showNodeDetail(CY.nodes(":selected")[0].id());
   } else {
-    const detailEl = document.getElementById("detail-content");
-    if (detailEl) detailEl.innerHTML = `<div class="hint">${t("hint")}</div>`;
+    renderDefaultPanel();
+    // On initial load (and when language toggles), apply the focus filter so
+    // the graph echoes the side panel — only "currently attacking" subgraph
+    // stays prominent; the rest fades.
+    applyFocusFilter();
   }
 }
 

@@ -1,5 +1,5 @@
 {
-  "synced_at": "2026-05-18T07:09:35.872296Z",
+  "synced_at": "2026-05-22T05:38:30.970073Z",
   "regions": {
     "Ornn-M0-Engineering-Foundation": {
       "milestone": {
@@ -534,36 +534,6 @@
         "repo": "ChronoAIProject/Ornn"
       },
       "issues": {
-        "565": {
-          "number": 565,
-          "title": "[Bug] [Skill Edit] Owner updating an existing skill package is blocked by CORS",
-          "state": "OPEN",
-          "url": "https://github.com/ChronoAIProject/Ornn/issues/565",
-          "labels": [
-            "bug"
-          ],
-          "deps": {
-            "blocked_by": [],
-            "blocks": [],
-            "tracks": [],
-            "tracked_by": []
-          }
-        },
-        "564": {
-          "number": 564,
-          "title": "[Bug] [Playground] Missing skill still opens an interactive Playground page after API returns 404",
-          "state": "OPEN",
-          "url": "https://github.com/ChronoAIProject/Ornn/issues/564",
-          "labels": [
-            "bug"
-          ],
-          "deps": {
-            "blocked_by": [],
-            "blocks": [],
-            "tracks": [],
-            "tracked_by": []
-          }
-        },
         "531": {
           "number": 531,
           "title": "[Bug] [Playground Sandbox] Installed CLI state is not preserved across tool calls",
@@ -594,36 +564,6 @@
             "tracked_by": []
           }
         },
-        "529": {
-          "number": 529,
-          "title": "[Bug] [GitHub Import] Skip validation still fails on Ornn frontmatter validation",
-          "state": "OPEN",
-          "url": "https://github.com/ChronoAIProject/Ornn/issues/529",
-          "labels": [
-            "bug"
-          ],
-          "deps": {
-            "blocked_by": [],
-            "blocks": [],
-            "tracks": [],
-            "tracked_by": []
-          }
-        },
-        "528": {
-          "number": 528,
-          "title": "[Bug] [Skill Creation] Saving AI-generated or guided skills fails with CORS error",
-          "state": "OPEN",
-          "url": "https://github.com/ChronoAIProject/Ornn/issues/528",
-          "labels": [
-            "bug"
-          ],
-          "deps": {
-            "blocked_by": [],
-            "blocks": [],
-            "tracks": [],
-            "tracked_by": []
-          }
-        },
         "243": {
           "number": 243,
           "title": "[Feature] Service-binding agent prompt — encourage agents to promote repeated service operations into a reusable Ornn skill bound to that service",
@@ -641,11 +581,71 @@
             "tracked_by": []
           }
         },
+        "565": {
+          "number": 565,
+          "title": "[Bug] [Skill Edit] Owner updating an existing skill package is blocked by CORS",
+          "state": "CLOSED",
+          "url": "https://github.com/ChronoAIProject/Ornn/issues/565",
+          "labels": [
+            "bug"
+          ],
+          "deps": {
+            "blocked_by": [],
+            "blocks": [],
+            "tracks": [],
+            "tracked_by": []
+          }
+        },
+        "564": {
+          "number": 564,
+          "title": "[Bug] [Playground] Missing skill still opens an interactive Playground page after API returns 404",
+          "state": "CLOSED",
+          "url": "https://github.com/ChronoAIProject/Ornn/issues/564",
+          "labels": [
+            "bug"
+          ],
+          "deps": {
+            "blocked_by": [],
+            "blocks": [],
+            "tracks": [],
+            "tracked_by": []
+          }
+        },
         "562": {
           "number": 562,
           "title": "[Bug] [Playground] nyxid LIST CAPABILITIES response is delayed and follow-up command is not executed",
           "state": "CLOSED",
           "url": "https://github.com/ChronoAIProject/Ornn/issues/562",
+          "labels": [
+            "bug"
+          ],
+          "deps": {
+            "blocked_by": [],
+            "blocks": [],
+            "tracks": [],
+            "tracked_by": []
+          }
+        },
+        "529": {
+          "number": 529,
+          "title": "[Bug] [GitHub Import] Skip validation still fails on Ornn frontmatter validation",
+          "state": "CLOSED",
+          "url": "https://github.com/ChronoAIProject/Ornn/issues/529",
+          "labels": [
+            "bug"
+          ],
+          "deps": {
+            "blocked_by": [],
+            "blocks": [],
+            "tracks": [],
+            "tracked_by": []
+          }
+        },
+        "528": {
+          "number": 528,
+          "title": "[Bug] [Skill Creation] Saving AI-generated or guided skills fails with CORS error",
+          "state": "CLOSED",
+          "url": "https://github.com/ChronoAIProject/Ornn/issues/528",
           "labels": [
             "bug"
           ],
@@ -1286,41 +1286,10 @@
         "566": {
           "number": 566,
           "title": "[Bug] [Registry] Anonymous users cannot load public and system skills because public Registry APIs return 401",
-          "state": "OPEN",
+          "state": "CLOSED",
           "url": "https://github.com/ChronoAIProject/Ornn/issues/566",
           "labels": [
             "bug"
-          ],
-          "deps": {
-            "blocked_by": [],
-            "blocks": [],
-            "tracks": [],
-            "tracked_by": []
-          }
-        },
-        "254": {
-          "number": 254,
-          "title": "[Bug] backfill-skill-author-display-names.ts uses $last for activity labels — same root cause as #238 runtime aggregator",
-          "state": "OPEN",
-          "url": "https://github.com/ChronoAIProject/Ornn/issues/254",
-          "labels": [
-            "bug",
-            "api"
-          ],
-          "deps": {
-            "blocked_by": [],
-            "blocks": [],
-            "tracks": [],
-            "tracked_by": []
-          }
-        },
-        "106": {
-          "number": 106,
-          "title": "[Feature] NyxID permission catalog flip — post-NyxID-rename",
-          "state": "OPEN",
-          "url": "https://github.com/ChronoAIProject/Ornn/issues/106",
-          "labels": [
-            "security"
           ],
           "deps": {
             "blocked_by": [],
@@ -1339,6 +1308,22 @@
             "dx",
             "api",
             "infra"
+          ],
+          "deps": {
+            "blocked_by": [],
+            "blocks": [],
+            "tracks": [],
+            "tracked_by": []
+          }
+        },
+        "254": {
+          "number": 254,
+          "title": "[Bug] backfill-skill-author-display-names.ts uses $last for activity labels — same root cause as #238 runtime aggregator",
+          "state": "CLOSED",
+          "url": "https://github.com/ChronoAIProject/Ornn/issues/254",
+          "labels": [
+            "bug",
+            "api"
           ],
           "deps": {
             "blocked_by": [],
@@ -1927,22 +1912,6 @@
         "repo": "ChronoAIProject/Ornn"
       },
       "issues": {
-        "507": {
-          "number": 507,
-          "title": "[Bug] Recipients tooltip on BroadcastsPage unreadable for many recipients",
-          "state": "OPEN",
-          "url": "https://github.com/ChronoAIProject/Ornn/issues/507",
-          "labels": [
-            "bug",
-            "web"
-          ],
-          "deps": {
-            "blocked_by": [],
-            "blocks": [],
-            "tracks": [],
-            "tracked_by": []
-          }
-        },
         "506": {
           "number": 506,
           "title": "[Misc] Decide whether admins can be broadcast recipients (UserEmailPicker role scope)",
@@ -1983,23 +1952,6 @@
           "url": "https://github.com/ChronoAIProject/Ornn/issues/286",
           "labels": [
             "dx"
-          ],
-          "deps": {
-            "blocked_by": [],
-            "blocks": [],
-            "tracks": [],
-            "tracked_by": []
-          }
-        },
-        "220": {
-          "number": 220,
-          "title": "[Bug] NyxID service registry: 'ornn' slug had wrong upstream + identity-mode mismatch with 'ornn-api' slug",
-          "state": "OPEN",
-          "url": "https://github.com/ChronoAIProject/Ornn/issues/220",
-          "labels": [
-            "bug",
-            "infra",
-            "security"
           ],
           "deps": {
             "blocked_by": [],
@@ -2248,6 +2200,22 @@
           "title": "[Bug] Clicking broadcast notification triggers update-depth loop (React error #185)",
           "state": "CLOSED",
           "url": "https://github.com/ChronoAIProject/Ornn/issues/509",
+          "labels": [
+            "bug",
+            "web"
+          ],
+          "deps": {
+            "blocked_by": [],
+            "blocks": [],
+            "tracks": [],
+            "tracked_by": []
+          }
+        },
+        "507": {
+          "number": 507,
+          "title": "[Bug] Recipients tooltip on BroadcastsPage unreadable for many recipients",
+          "state": "CLOSED",
+          "url": "https://github.com/ChronoAIProject/Ornn/issues/507",
           "labels": [
             "bug",
             "web"
@@ -3538,6 +3506,23 @@
             "tracked_by": []
           }
         },
+        "220": {
+          "number": 220,
+          "title": "[Bug] NyxID service registry: 'ornn' slug had wrong upstream + identity-mode mismatch with 'ornn-api' slug",
+          "state": "CLOSED",
+          "url": "https://github.com/ChronoAIProject/Ornn/issues/220",
+          "labels": [
+            "bug",
+            "infra",
+            "security"
+          ],
+          "deps": {
+            "blocked_by": [],
+            "blocks": [],
+            "tracks": [],
+            "tracked_by": []
+          }
+        },
         "219": {
           "number": 219,
           "title": "[Bug] /admin/stats response shape doesn't match docs/api.md",
@@ -3892,10 +3877,257 @@
         "repo": "ChronoAIProject/Ornn"
       },
       "issues": {
+        "661": {
+          "number": 661,
+          "title": "[Infra] Enable anonymous proxy passthrough on NyxID for public-read Ornn endpoints",
+          "state": "CLOSED",
+          "url": "https://github.com/ChronoAIProject/Ornn/issues/661",
+          "labels": [
+            "infra"
+          ],
+          "deps": {
+            "blocked_by": [],
+            "blocks": [
+              467
+            ],
+            "tracks": [],
+            "tracked_by": []
+          }
+        },
+        "657": {
+          "number": 657,
+          "title": "[Misc] Enable exactOptionalPropertyTypes on ornn-api + ornn-web (follow-up to #450)",
+          "state": "CLOSED",
+          "url": "https://github.com/ChronoAIProject/Ornn/issues/657",
+          "labels": [
+            "dx"
+          ],
+          "deps": {
+            "blocked_by": [],
+            "blocks": [],
+            "tracks": [],
+            "tracked_by": []
+          }
+        },
+        "633": {
+          "number": 633,
+          "title": "[Bug] Backend /skills upload accepts large uncompressed ZIPs — mirror #443 cap server-side",
+          "state": "CLOSED",
+          "url": "https://github.com/ChronoAIProject/Ornn/issues/633",
+          "labels": [
+            "bug",
+            "api",
+            "security"
+          ],
+          "deps": {
+            "blocked_by": [],
+            "blocks": [],
+            "tracks": [],
+            "tracked_by": []
+          }
+        },
+        "586": {
+          "number": 586,
+          "title": "[Bug] API URL and header patterns violate CONVENTIONS.md §2–7 (:idOrName on writes, query vs q param, /json suffix, X- custom headers)",
+          "state": "CLOSED",
+          "url": "https://github.com/ChronoAIProject/Ornn/issues/586",
+          "labels": [
+            "bug",
+            "dx",
+            "api"
+          ],
+          "deps": {
+            "blocked_by": [],
+            "blocks": [],
+            "tracks": [],
+            "tracked_by": []
+          }
+        },
+        "585": {
+          "number": 585,
+          "title": "[Bug] Error codes use SCREAMING_SNAKE_CASE — CONVENTIONS.md §1.4 mandates lowercase_snake_case",
+          "state": "CLOSED",
+          "url": "https://github.com/ChronoAIProject/Ornn/issues/585",
+          "labels": [
+            "bug",
+            "dx",
+            "api"
+          ],
+          "deps": {
+            "blocked_by": [],
+            "blocks": [],
+            "tracks": [],
+            "tracked_by": []
+          }
+        },
+        "584": {
+          "number": 584,
+          "title": "[Bug] Auth store console.log leaks token metadata to browser devtools in production",
+          "state": "CLOSED",
+          "url": "https://github.com/ChronoAIProject/Ornn/issues/584",
+          "labels": [
+            "bug",
+            "security",
+            "web"
+          ],
+          "deps": {
+            "blocked_by": [],
+            "blocks": [],
+            "tracks": [],
+            "tracked_by": []
+          }
+        },
+        "583": {
+          "number": 583,
+          "title": "[CI/CD] Add ruff + mypy to Python SDK CI pipeline",
+          "state": "CLOSED",
+          "url": "https://github.com/ChronoAIProject/Ornn/issues/583",
+          "labels": [
+            "ci",
+            "sdk"
+          ],
+          "deps": {
+            "blocked_by": [],
+            "blocks": [],
+            "tracks": [],
+            "tracked_by": []
+          }
+        },
+        "582": {
+          "number": 582,
+          "title": "[CI/CD] Run integration tests in CI with MongoDB service container",
+          "state": "CLOSED",
+          "url": "https://github.com/ChronoAIProject/Ornn/issues/582",
+          "labels": [
+            "dx",
+            "ci"
+          ],
+          "deps": {
+            "blocked_by": [],
+            "blocks": [],
+            "tracks": [],
+            "tracked_by": []
+          }
+        },
+        "581": {
+          "number": 581,
+          "title": "[Misc] Remove legacy ownerId field, unused createErrorHandler and INTERNAL_AUTH_HEADER",
+          "state": "CLOSED",
+          "url": "https://github.com/ChronoAIProject/Ornn/issues/581",
+          "labels": [
+            "dx",
+            "api"
+          ],
+          "deps": {
+            "blocked_by": [],
+            "blocks": [],
+            "tracks": [],
+            "tracked_by": []
+          }
+        },
+        "580": {
+          "number": 580,
+          "title": "[Misc] Decompose bootstrap.ts (1061 lines) into per-domain bootstrappers",
+          "state": "CLOSED",
+          "url": "https://github.com/ChronoAIProject/Ornn/issues/580",
+          "labels": [
+            "dx",
+            "api"
+          ],
+          "deps": {
+            "blocked_by": [],
+            "blocks": [],
+            "tracks": [],
+            "tracked_by": []
+          }
+        },
+        "579": {
+          "number": 579,
+          "title": "[Misc] 31 bare catch {} blocks silently swallow errors across backend",
+          "state": "CLOSED",
+          "url": "https://github.com/ChronoAIProject/Ornn/issues/579",
+          "labels": [
+            "dx",
+            "api"
+          ],
+          "deps": {
+            "blocked_by": [],
+            "blocks": [],
+            "tracks": [],
+            "tracked_by": []
+          }
+        },
+        "578": {
+          "number": 578,
+          "title": "[Bug] ornn-web apiDelete duplicates fetchWithRetry token-refresh logic",
+          "state": "CLOSED",
+          "url": "https://github.com/ChronoAIProject/Ornn/issues/578",
+          "labels": [
+            "bug",
+            "dx",
+            "web"
+          ],
+          "deps": {
+            "blocked_by": [],
+            "blocks": [],
+            "tracks": [],
+            "tracked_by": []
+          }
+        },
+        "577": {
+          "number": 577,
+          "title": "[Misc] Delete dead skill repository — domains/skills/crud/repositories/ is unused",
+          "state": "CLOSED",
+          "url": "https://github.com/ChronoAIProject/Ornn/issues/577",
+          "labels": [
+            "dx",
+            "api"
+          ],
+          "deps": {
+            "blocked_by": [],
+            "blocks": [],
+            "tracks": [],
+            "tracked_by": []
+          }
+        },
+        "576": {
+          "number": 576,
+          "title": "[Docs] Create docs/ERRORS.md and docs/DEPRECATIONS.md required by CONVENTIONS.md",
+          "state": "CLOSED",
+          "url": "https://github.com/ChronoAIProject/Ornn/issues/576",
+          "labels": [
+            "documentation",
+            "api"
+          ],
+          "deps": {
+            "blocked_by": [
+              456
+            ],
+            "blocks": [],
+            "tracks": [],
+            "tracked_by": []
+          }
+        },
+        "575": {
+          "number": 575,
+          "title": "[Misc] 62 standalone pino loggers bypass redaction rules and LOG_LEVEL config",
+          "state": "CLOSED",
+          "url": "https://github.com/ChronoAIProject/Ornn/issues/575",
+          "labels": [
+            "dx",
+            "api"
+          ],
+          "deps": {
+            "blocked_by": [],
+            "blocks": [],
+            "tracks": [],
+            "tracked_by": []
+          }
+        },
         "567": {
           "number": 567,
           "title": "Enforce skill visibility checks on JSON package endpoint",
-          "state": "OPEN",
+          "state": "CLOSED",
           "url": "https://github.com/ChronoAIProject/Ornn/issues/567",
           "labels": [],
           "deps": {
@@ -3908,7 +4140,7 @@
         "563": {
           "number": 563,
           "title": "[Bug] [Permissions] Non-owner account can access and run another account's private skill through Playground URL",
-          "state": "OPEN",
+          "state": "CLOSED",
           "url": "https://github.com/ChronoAIProject/Ornn/issues/563",
           "labels": [
             "bug"
@@ -3923,7 +4155,7 @@
         "474": {
           "number": 474,
           "title": "[Docs] API stability commitment + breaking-change & deprecation policy",
-          "state": "OPEN",
+          "state": "CLOSED",
           "url": "https://github.com/ChronoAIProject/Ornn/issues/474",
           "labels": [
             "documentation",
@@ -3940,7 +4172,7 @@
         "473": {
           "number": 473,
           "title": "[Bug] SDK publish status — TS SDK has private:true, clarify npm/PyPI publication strategy",
-          "state": "OPEN",
+          "state": "CLOSED",
           "url": "https://github.com/ChronoAIProject/Ornn/issues/473",
           "labels": [
             "bug",
@@ -3958,7 +4190,7 @@
         "472": {
           "number": 472,
           "title": "[Docs] Positioning / comparison table vs MCP servers + Smithery + npm in README",
-          "state": "OPEN",
+          "state": "CLOSED",
           "url": "https://github.com/ChronoAIProject/Ornn/issues/472",
           "labels": [
             "documentation",
@@ -3974,7 +4206,7 @@
         "471": {
           "number": 471,
           "title": "[CI/CD] Codecov integration + coverage badge + stated coverage target",
-          "state": "OPEN",
+          "state": "CLOSED",
           "url": "https://github.com/ChronoAIProject/Ornn/issues/471",
           "labels": [
             "dx",
@@ -3991,7 +4223,7 @@
         "470": {
           "number": 470,
           "title": "[Docs] SDK quickstart (5-line copy-paste) in main README",
-          "state": "OPEN",
+          "state": "CLOSED",
           "url": "https://github.com/ChronoAIProject/Ornn/issues/470",
           "labels": [
             "documentation",
@@ -4008,7 +4240,7 @@
         "469": {
           "number": 469,
           "title": "[Docs] examples/ directory with 2-3 minimal starter skills (TS + Python)",
-          "state": "OPEN",
+          "state": "CLOSED",
           "url": "https://github.com/ChronoAIProject/Ornn/issues/469",
           "labels": [
             "documentation",
@@ -4025,7 +4257,7 @@
         "468": {
           "number": 468,
           "title": "[Misc] Add npm/PyPI keywords + GitHub repo topics for discoverability",
-          "state": "OPEN",
+          "state": "CLOSED",
           "url": "https://github.com/ChronoAIProject/Ornn/issues/468",
           "labels": [
             "dx",
@@ -4039,27 +4271,10 @@
             "tracked_by": []
           }
         },
-        "467": {
-          "number": 467,
-          "title": "[Feature] Public hosted demo / playground for try-before-install",
-          "state": "OPEN",
-          "url": "https://github.com/ChronoAIProject/Ornn/issues/467",
-          "labels": [
-            "dx",
-            "infra",
-            "review:auto"
-          ],
-          "deps": {
-            "blocked_by": [],
-            "blocks": [],
-            "tracks": [],
-            "tracked_by": []
-          }
-        },
         "466": {
           "number": 466,
           "title": "[Feature] docker-compose.yml for one-command local dev — replace K8s-only onboarding",
-          "state": "OPEN",
+          "state": "CLOSED",
           "url": "https://github.com/ChronoAIProject/Ornn/issues/466",
           "labels": [
             "dx",
@@ -4076,7 +4291,7 @@
         "465": {
           "number": 465,
           "title": "[Feature] SDK ergonomics — auto-pagination iterator + exponential-backoff retry wrapper",
-          "state": "OPEN",
+          "state": "CLOSED",
           "url": "https://github.com/ChronoAIProject/Ornn/issues/465",
           "labels": [
             "dx",
@@ -4093,7 +4308,7 @@
         "464": {
           "number": 464,
           "title": "[Feature] Publish versioned JSON Schema for SKILL.md frontmatter",
-          "state": "OPEN",
+          "state": "CLOSED",
           "url": "https://github.com/ChronoAIProject/Ornn/issues/464",
           "labels": [
             "documentation",
@@ -4111,7 +4326,7 @@
         "463": {
           "number": 463,
           "title": "[Feature] Dist-tags (latest / stable / next) for skill version resolution",
-          "state": "OPEN",
+          "state": "CLOSED",
           "url": "https://github.com/ChronoAIProject/Ornn/issues/463",
           "labels": [
             "api",
@@ -4127,7 +4342,7 @@
         "462": {
           "number": 462,
           "title": "[CI/CD] OpenAPI contract tests — assert every route appears in spec with declared errors",
-          "state": "OPEN",
+          "state": "CLOSED",
           "url": "https://github.com/ChronoAIProject/Ornn/issues/462",
           "labels": [
             "dx",
@@ -4145,7 +4360,7 @@
         "461": {
           "number": 461,
           "title": "[Feature] Surface integrity hash (sha256-base64) on skill version manifest like npm",
-          "state": "OPEN",
+          "state": "CLOSED",
           "url": "https://github.com/ChronoAIProject/Ornn/issues/461",
           "labels": [
             "api",
@@ -4162,7 +4377,7 @@
         "460": {
           "number": 460,
           "title": "[Feature] RFC 9239 rate-limit response headers (RateLimit-Limit/Remaining/Retry-After)",
-          "state": "OPEN",
+          "state": "CLOSED",
           "url": "https://github.com/ChronoAIProject/Ornn/issues/460",
           "labels": [
             "api",
@@ -4178,7 +4393,7 @@
         "459": {
           "number": 459,
           "title": "[Feature] Idempotency-Key middleware (24h cache) per CONVENTIONS.md §3.4",
-          "state": "OPEN",
+          "state": "CLOSED",
           "url": "https://github.com/ChronoAIProject/Ornn/issues/459",
           "labels": [
             "api",
@@ -4194,7 +4409,7 @@
         "458": {
           "number": 458,
           "title": "[Bug] POST create endpoints return 200 OK without Location header (should be 201 Created)",
-          "state": "OPEN",
+          "state": "CLOSED",
           "url": "https://github.com/ChronoAIProject/Ornn/issues/458",
           "labels": [
             "bug",
@@ -4211,7 +4426,7 @@
         "457": {
           "number": 457,
           "title": "[Feature] Cursor-based pagination for list endpoints (drop offset page/pageSize/total)",
-          "state": "OPEN",
+          "state": "CLOSED",
           "url": "https://github.com/ChronoAIProject/Ornn/issues/457",
           "labels": [
             "api",
@@ -4227,7 +4442,7 @@
         "456": {
           "number": 456,
           "title": "[Bug] Error responses violate RFC 7807 — implementation uses { data, error } envelope instead of problem+json",
-          "state": "OPEN",
+          "state": "CLOSED",
           "url": "https://github.com/ChronoAIProject/Ornn/issues/456",
           "labels": [
             "bug",
@@ -4244,7 +4459,7 @@
         "454": {
           "number": 454,
           "title": "[Feature] Backfill unit tests for 7 untested domain services + 8 repositories",
-          "state": "OPEN",
+          "state": "CLOSED",
           "url": "https://github.com/ChronoAIProject/Ornn/issues/454",
           "labels": [
             "dx",
@@ -4261,7 +4476,7 @@
         "453": {
           "number": 453,
           "title": "[Misc] Decompose god-files: SkillDetailPage (1133L), DocsPage (857L), PlaygroundPage (802L)",
-          "state": "OPEN",
+          "state": "CLOSED",
           "url": "https://github.com/ChronoAIProject/Ornn/issues/453",
           "labels": [
             "dx",
@@ -4278,7 +4493,7 @@
         "452": {
           "number": 452,
           "title": "[Misc] Replace hardcoded hex colors in landing pages with design tokens",
-          "state": "OPEN",
+          "state": "CLOSED",
           "url": "https://github.com/ChronoAIProject/Ornn/issues/452",
           "labels": [
             "documentation",
@@ -4296,7 +4511,7 @@
         "451": {
           "number": 451,
           "title": "[Bug] Array index as React key in skeleton/grid components — list reorder bugs",
-          "state": "OPEN",
+          "state": "CLOSED",
           "url": "https://github.com/ChronoAIProject/Ornn/issues/451",
           "labels": [
             "bug",
@@ -4314,7 +4529,7 @@
         "450": {
           "number": 450,
           "title": "[Misc] Enable stricter TS flags: noUncheckedIndexedAccess, noImplicitOverride, exactOptionalPropertyTypes",
-          "state": "OPEN",
+          "state": "CLOSED",
           "url": "https://github.com/ChronoAIProject/Ornn/issues/450",
           "labels": [
             "dx",
@@ -4330,7 +4545,7 @@
         "449": {
           "number": 449,
           "title": "[Misc] Type playground chat events with Zod discriminated union (drop \"as any\")",
-          "state": "OPEN",
+          "state": "CLOSED",
           "url": "https://github.com/ChronoAIProject/Ornn/issues/449",
           "labels": [
             "dx",
@@ -4347,7 +4562,7 @@
         "448": {
           "number": 448,
           "title": "[Misc] Eliminate \"as any\" on MongoDB _id — introduce toObjectId(guid) helper",
-          "state": "OPEN",
+          "state": "CLOSED",
           "url": "https://github.com/ChronoAIProject/Ornn/issues/448",
           "labels": [
             "dx",
@@ -4364,7 +4579,7 @@
         "447": {
           "number": 447,
           "title": "[Misc] Migration scripts — replace Number(env) with validated parseInt + fail-fast",
-          "state": "OPEN",
+          "state": "CLOSED",
           "url": "https://github.com/ChronoAIProject/Ornn/issues/447",
           "labels": [
             "dx",
@@ -4381,7 +4596,7 @@
         "446": {
           "number": 446,
           "title": "[Misc] Admin search MongoDB regex — add maxTimeMS + ensure name/description indexes",
-          "state": "OPEN",
+          "state": "CLOSED",
           "url": "https://github.com/ChronoAIProject/Ornn/issues/446",
           "labels": [
             "api",
@@ -4398,7 +4613,7 @@
         "445": {
           "number": 445,
           "title": "[CI/CD] Lock + audit Python SDK dependencies (lockfile + pip-audit in CI)",
-          "state": "OPEN",
+          "state": "CLOSED",
           "url": "https://github.com/ChronoAIProject/Ornn/issues/445",
           "labels": [
             "infra",
@@ -4417,7 +4632,7 @@
         "444": {
           "number": 444,
           "title": "[Bug] LLM re-ranker output parsed without Zod schema (cast as Array)",
-          "state": "OPEN",
+          "state": "CLOSED",
           "url": "https://github.com/ChronoAIProject/Ornn/issues/444",
           "labels": [
             "bug",
@@ -4435,7 +4650,7 @@
         "443": {
           "number": 443,
           "title": "[Misc] ZIP validator — add total-uncompressed-size cap + explicit zip-slip check",
-          "state": "OPEN",
+          "state": "CLOSED",
           "url": "https://github.com/ChronoAIProject/Ornn/issues/443",
           "labels": [
             "security",
@@ -4452,7 +4667,7 @@
         "442": {
           "number": 442,
           "title": "[Bug] AgentSeal subprocess: validate python/script paths at boot + unref child after kill",
-          "state": "OPEN",
+          "state": "CLOSED",
           "url": "https://github.com/ChronoAIProject/Ornn/issues/442",
           "labels": [
             "bug",
@@ -4470,7 +4685,7 @@
         "441": {
           "number": 441,
           "title": "[Misc] Validate GitHub App private key shape on mirror config write",
-          "state": "OPEN",
+          "state": "CLOSED",
           "url": "https://github.com/ChronoAIProject/Ornn/issues/441",
           "labels": [
             "api",
@@ -4487,7 +4702,7 @@
         "440": {
           "number": 440,
           "title": "[Misc] Tighten Mermaid SVG rendering — replace dangerouslySetInnerHTML with iframe sandbox",
-          "state": "OPEN",
+          "state": "CLOSED",
           "url": "https://github.com/ChronoAIProject/Ornn/issues/440",
           "labels": [
             "security",
@@ -4504,7 +4719,7 @@
         "439": {
           "number": 439,
           "title": "[Feature] Rate limiting on /skill-search (semantic mode) + auth/upload endpoints",
-          "state": "OPEN",
+          "state": "CLOSED",
           "url": "https://github.com/ChronoAIProject/Ornn/issues/439",
           "labels": [
             "api",
@@ -4522,7 +4737,7 @@
         "438": {
           "number": 438,
           "title": "[Bug] Some routes bypass validateBody middleware — raw c.req.json() reads break RFC 7807 errors",
-          "state": "OPEN",
+          "state": "CLOSED",
           "url": "https://github.com/ChronoAIProject/Ornn/issues/438",
           "labels": [
             "bug",
@@ -4547,6 +4762,39 @@
         "repo": "ChronoAIProject/Ornn"
       },
       "issues": {
+        "467": {
+          "number": 467,
+          "title": "[Feature] Public hosted demo / playground for try-before-install",
+          "state": "OPEN",
+          "url": "https://github.com/ChronoAIProject/Ornn/issues/467",
+          "labels": [
+            "blocker",
+            "dx",
+            "infra",
+            "review:auto"
+          ],
+          "deps": {
+            "blocked_by": [],
+            "blocks": [],
+            "tracks": [],
+            "tracked_by": []
+          }
+        },
+        "106": {
+          "number": 106,
+          "title": "[Feature] NyxID permission catalog flip — post-NyxID-rename",
+          "state": "OPEN",
+          "url": "https://github.com/ChronoAIProject/Ornn/issues/106",
+          "labels": [
+            "security"
+          ],
+          "deps": {
+            "blocked_by": [],
+            "blocks": [],
+            "tracks": [],
+            "tracked_by": []
+          }
+        },
         "37": {
           "number": 37,
           "title": "[Feature] Skill templates & starter kits",
@@ -4984,6 +5232,836 @@
           "state": "OPEN",
           "url": "https://github.com/ChronoAIProject/Ornn-Marketing/issues/31",
           "labels": [],
+          "deps": {
+            "blocked_by": [],
+            "blocks": [],
+            "tracks": [],
+            "tracked_by": []
+          }
+        }
+      }
+    },
+    "NyxID-CLI-Wizard": {
+      "milestone": {
+        "title": "CLI Wizard hardening",
+        "number": 9,
+        "url": "https://github.com/ChronoAIProject/NyxID/milestone/9",
+        "repo": "ChronoAIProject/NyxID"
+      },
+      "issues": {
+        "713": {
+          "number": 713,
+          "title": "[Test] CLI Wizard — Service Add / OAuth / Device Code / Windows WSL Regression",
+          "state": "OPEN",
+          "url": "https://github.com/ChronoAIProject/NyxID/issues/713",
+          "labels": [],
+          "deps": {
+            "blocked_by": [],
+            "blocks": [],
+            "tracks": [],
+            "tracked_by": []
+          }
+        },
+        "694": {
+          "number": 694,
+          "title": "[Bug] [Lark OAuth] Same-account CLI Wizard authorization can fail with generic `An internal error occurred` after provider approval",
+          "state": "OPEN",
+          "url": "https://github.com/ChronoAIProject/NyxID/issues/694",
+          "labels": [
+            "bug"
+          ],
+          "deps": {
+            "blocked_by": [],
+            "blocks": [],
+            "tracks": [],
+            "tracked_by": []
+          }
+        },
+        "711": {
+          "number": 711,
+          "title": "[Bug] [CLI Wizard] Service creation timeout restores the form without showing an actionable error",
+          "state": "CLOSED",
+          "url": "https://github.com/ChronoAIProject/NyxID/issues/711",
+          "labels": [
+            "bug"
+          ],
+          "deps": {
+            "blocked_by": [],
+            "blocks": [],
+            "tracks": [],
+            "tracked_by": []
+          }
+        },
+        "706": {
+          "number": 706,
+          "title": "[Bug] [CLI Wizard Device Code] Expired device-code flow times out in CLI but leaves a `pending_auth` service",
+          "state": "CLOSED",
+          "url": "https://github.com/ChronoAIProject/NyxID/issues/706",
+          "labels": [
+            "bug"
+          ],
+          "deps": {
+            "blocked_by": [],
+            "blocks": [],
+            "tracks": [],
+            "tracked_by": []
+          }
+        },
+        "695": {
+          "number": 695,
+          "title": "[Bug] [CLI Wizard OAuth] Account-mismatch callback redirects to the browser account's AI Services page instead of showing the mismatch error immediately",
+          "state": "CLOSED",
+          "url": "https://github.com/ChronoAIProject/NyxID/issues/695",
+          "labels": [
+            "bug"
+          ],
+          "deps": {
+            "blocked_by": [],
+            "blocks": [],
+            "tracks": [],
+            "tracked_by": []
+          }
+        }
+      }
+    },
+    "NyxID-UX-Redesign": {
+      "milestone": {
+        "title": "UX Redesign",
+        "number": 10,
+        "url": "https://github.com/ChronoAIProject/NyxID/milestone/10",
+        "repo": "ChronoAIProject/NyxID"
+      },
+      "issues": {
+        "686": {
+          "number": 686,
+          "title": "[UX] Agent isolation setup lacks a guided flow from key creation to service binding and scope verification",
+          "state": "OPEN",
+          "url": "https://github.com/ChronoAIProject/NyxID/issues/686",
+          "labels": [],
+          "deps": {
+            "blocked_by": [],
+            "blocks": [],
+            "tracks": [],
+            "tracked_by": []
+          }
+        },
+        "685": {
+          "number": 685,
+          "title": "[UX] Key detail page is overloaded and needs progressive information architecture",
+          "state": "OPEN",
+          "url": "https://github.com/ChronoAIProject/NyxID/issues/685",
+          "labels": [],
+          "deps": {
+            "blocked_by": [],
+            "blocks": [],
+            "tracks": [],
+            "tracked_by": []
+          }
+        },
+        "684": {
+          "number": 684,
+          "title": "[UX] First-time AI service setup flow is fragmented and does not clearly lead users to first proxy success",
+          "state": "OPEN",
+          "url": "https://github.com/ChronoAIProject/NyxID/issues/684",
+          "labels": [],
+          "deps": {
+            "blocked_by": [],
+            "blocks": [],
+            "tracks": [],
+            "tracked_by": []
+          }
+        },
+        "772": {
+          "number": 772,
+          "title": "[UX] Explain credential_type=node_managed inline in service show / list",
+          "state": "CLOSED",
+          "url": "https://github.com/ChronoAIProject/NyxID/issues/772",
+          "labels": [],
+          "deps": {
+            "blocked_by": [],
+            "blocks": [],
+            "tracks": [],
+            "tracked_by": []
+          }
+        }
+      }
+    },
+    "NyxID-Channel-Phase4": {
+      "milestone": {
+        "title": "Channel Phase 4 (bidirectional)",
+        "number": 13,
+        "url": "https://github.com/ChronoAIProject/NyxID/milestone/13",
+        "repo": "ChronoAIProject/NyxID"
+      },
+      "issues": {
+        "712": {
+          "number": 712,
+          "title": "Register aevatar as DownstreamService for Codex/Cursor/channel inbound routing",
+          "state": "OPEN",
+          "url": "https://github.com/ChronoAIProject/NyxID/issues/712",
+          "labels": [],
+          "deps": {
+            "blocked_by": [],
+            "blocks": [],
+            "tracks": [],
+            "tracked_by": []
+          }
+        },
+        "411": {
+          "number": 411,
+          "title": "feat(channel): Phase 4 — bidirectional device channels (DeviceAdapter + outbound transport)",
+          "state": "OPEN",
+          "url": "https://github.com/ChronoAIProject/NyxID/issues/411",
+          "labels": [
+            "enhancement",
+            "todo",
+            "backend"
+          ],
+          "deps": {
+            "blocked_by": [],
+            "blocks": [],
+            "tracks": [],
+            "tracked_by": []
+          }
+        }
+      }
+    },
+    "NyxID-Device-Code-Grant": {
+      "milestone": {
+        "title": "Device Code Grant (RFC 8628)",
+        "number": 8,
+        "url": "https://github.com/ChronoAIProject/NyxID/milestone/8",
+        "repo": "ChronoAIProject/NyxID"
+      },
+      "issues": {
+        "747": {
+          "number": 747,
+          "title": "[Feature] Web QR provisioning page for headless device onboarding (1-tap)",
+          "state": "OPEN",
+          "url": "https://github.com/ChronoAIProject/NyxID/issues/747",
+          "labels": [
+            "enhancement",
+            "device-code-grant"
+          ],
+          "deps": {
+            "blocked_by": [
+              741
+            ],
+            "blocks": [],
+            "tracks": [],
+            "tracked_by": []
+          }
+        },
+        "746": {
+          "number": 746,
+          "title": "[Feature] Device Code: factory Ed25519 provisioning tool",
+          "state": "OPEN",
+          "url": "https://github.com/ChronoAIProject/NyxID/issues/746",
+          "labels": [
+            "enhancement",
+            "backend",
+            "device-code-grant"
+          ],
+          "deps": {
+            "blocked_by": [],
+            "blocks": [],
+            "tracks": [],
+            "tracked_by": []
+          }
+        },
+        "745": {
+          "number": 745,
+          "title": "[Feature] Device Code: docs/device-code-binding.md",
+          "state": "OPEN",
+          "url": "https://github.com/ChronoAIProject/NyxID/issues/745",
+          "labels": [
+            "documentation",
+            "enhancement",
+            "device-code-grant"
+          ],
+          "deps": {
+            "blocked_by": [
+              741,
+              742
+            ],
+            "blocks": [],
+            "tracks": [],
+            "tracked_by": []
+          }
+        },
+        "744": {
+          "number": 744,
+          "title": "[Feature] Device Code: notification templates",
+          "state": "OPEN",
+          "url": "https://github.com/ChronoAIProject/NyxID/issues/744",
+          "labels": [
+            "enhancement",
+            "backend",
+            "device-code-grant"
+          ],
+          "deps": {
+            "blocked_by": [
+              740
+            ],
+            "blocks": [],
+            "tracks": [],
+            "tracked_by": []
+          }
+        },
+        "743": {
+          "number": 743,
+          "title": "[Feature] Device Code: rate limit middleware",
+          "state": "OPEN",
+          "url": "https://github.com/ChronoAIProject/NyxID/issues/743",
+          "labels": [
+            "enhancement",
+            "backend",
+            "device-code-grant"
+          ],
+          "deps": {
+            "blocked_by": [
+              738,
+              739,
+              740
+            ],
+            "blocks": [],
+            "tracks": [],
+            "tracked_by": []
+          }
+        },
+        "742": {
+          "number": 742,
+          "title": "[Feature] Device Code: nyxid device approve CLI command",
+          "state": "OPEN",
+          "url": "https://github.com/ChronoAIProject/NyxID/issues/742",
+          "labels": [
+            "enhancement",
+            "device-code-grant"
+          ],
+          "deps": {
+            "blocked_by": [
+              740
+            ],
+            "blocks": [],
+            "tracks": [],
+            "tracked_by": []
+          }
+        },
+        "741": {
+          "number": 741,
+          "title": "[Feature] Device Code: web bind page",
+          "state": "OPEN",
+          "url": "https://github.com/ChronoAIProject/NyxID/issues/741",
+          "labels": [
+            "enhancement",
+            "frontend",
+            "device-code-grant"
+          ],
+          "deps": {
+            "blocked_by": [
+              740
+            ],
+            "blocks": [],
+            "tracks": [],
+            "tracked_by": []
+          }
+        },
+        "740": {
+          "number": 740,
+          "title": "[Feature] Device Code: /devices/code/approve endpoint",
+          "state": "OPEN",
+          "url": "https://github.com/ChronoAIProject/NyxID/issues/740",
+          "labels": [
+            "enhancement",
+            "backend",
+            "device-code-grant"
+          ],
+          "deps": {
+            "blocked_by": [
+              737
+            ],
+            "blocks": [],
+            "tracks": [],
+            "tracked_by": []
+          }
+        },
+        "739": {
+          "number": 739,
+          "title": "[Feature] Device Code: /devices/code/poll endpoint",
+          "state": "OPEN",
+          "url": "https://github.com/ChronoAIProject/NyxID/issues/739",
+          "labels": [
+            "enhancement",
+            "backend",
+            "device-code-grant"
+          ],
+          "deps": {
+            "blocked_by": [
+              737
+            ],
+            "blocks": [],
+            "tracks": [],
+            "tracked_by": []
+          }
+        },
+        "738": {
+          "number": 738,
+          "title": "[Feature] Device Code: /devices/code/request endpoint",
+          "state": "OPEN",
+          "url": "https://github.com/ChronoAIProject/NyxID/issues/738",
+          "labels": [
+            "enhancement",
+            "backend",
+            "device-code-grant"
+          ],
+          "deps": {
+            "blocked_by": [
+              737
+            ],
+            "blocks": [],
+            "tracks": [],
+            "tracked_by": []
+          }
+        },
+        "737": {
+          "number": 737,
+          "title": "[Feature] Device Code: device_codes DB schema",
+          "state": "OPEN",
+          "url": "https://github.com/ChronoAIProject/NyxID/issues/737",
+          "labels": [
+            "enhancement",
+            "backend",
+            "device-code-grant"
+          ],
+          "deps": {
+            "blocked_by": [],
+            "blocks": [],
+            "tracks": [],
+            "tracked_by": []
+          }
+        },
+        "736": {
+          "number": 736,
+          "title": "[Feature] Device Code grant for headless device provisioning (RFC 8628)",
+          "state": "OPEN",
+          "url": "https://github.com/ChronoAIProject/NyxID/issues/736",
+          "labels": [
+            "enhancement",
+            "backend",
+            "device-code-grant"
+          ],
+          "deps": {
+            "blocked_by": [],
+            "blocks": [],
+            "tracks": [
+              737,
+              738,
+              739,
+              740,
+              741,
+              742,
+              743,
+              744,
+              745,
+              746,
+              747
+            ],
+            "tracked_by": []
+          }
+        }
+      }
+    },
+    "NyxID-Skill-Install-CLI": {
+      "milestone": {
+        "title": "Skill Install via NyxID CLI",
+        "number": 15,
+        "url": "https://github.com/ChronoAIProject/NyxID/milestone/15",
+        "repo": "ChronoAIProject/NyxID"
+      },
+      "issues": {
+        "613": {
+          "number": 613,
+          "title": "[Feature] nyxid skill install — local install for limited-access Ornn skills via NyxID CLI",
+          "state": "OPEN",
+          "url": "https://github.com/ChronoAIProject/NyxID/issues/613",
+          "labels": [],
+          "deps": {
+            "blocked_by": [],
+            "blocks": [],
+            "tracks": [],
+            "tracked_by": []
+          }
+        }
+      }
+    },
+    "NyxID-Internal-Datasources": {
+      "milestone": {
+        "title": "Internal Datasources",
+        "number": 12,
+        "url": "https://github.com/ChronoAIProject/NyxID/milestone/12",
+        "repo": "ChronoAIProject/NyxID"
+      },
+      "issues": {
+        "780": {
+          "number": 780,
+          "title": "feat(catalog): integrate chronoai-platform k8s metrics (Prometheus / k8s API)",
+          "state": "OPEN",
+          "url": "https://github.com/ChronoAIProject/NyxID/issues/780",
+          "labels": [
+            "enhancement",
+            "todo",
+            "backend"
+          ],
+          "deps": {
+            "blocked_by": [],
+            "blocks": [],
+            "tracks": [],
+            "tracked_by": []
+          }
+        },
+        "779": {
+          "number": 779,
+          "title": "feat(catalog): integrate Chrono LLM Gateway admin API (llm.aelf.dev)",
+          "state": "OPEN",
+          "url": "https://github.com/ChronoAIProject/NyxID/issues/779",
+          "labels": [
+            "enhancement",
+            "todo",
+            "backend"
+          ],
+          "deps": {
+            "blocked_by": [],
+            "blocks": [],
+            "tracks": [],
+            "tracked_by": []
+          }
+        },
+        "716": {
+          "number": 716,
+          "title": "feat(catalog): 接入云账单 / Chrono LLM / k8s metrics — 基础设施成本可见性",
+          "state": "OPEN",
+          "url": "https://github.com/ChronoAIProject/NyxID/issues/716",
+          "labels": [
+            "enhancement",
+            "todo",
+            "backend"
+          ],
+          "deps": {
+            "blocked_by": [],
+            "blocks": [],
+            "tracks": [
+              778,
+              779,
+              780
+            ],
+            "tracked_by": []
+          }
+        },
+        "352": {
+          "number": 352,
+          "title": "feat: 接入公司全部数据源到 NyxID scope — 全员可通过 NyxID 访问公司数据",
+          "state": "OPEN",
+          "url": "https://github.com/ChronoAIProject/NyxID/issues/352",
+          "labels": [],
+          "deps": {
+            "blocked_by": [],
+            "blocks": [],
+            "tracks": [],
+            "tracked_by": []
+          }
+        },
+        "778": {
+          "number": 778,
+          "title": "feat(catalog): replace gcp_service_account with OAuth user-account flow",
+          "state": "CLOSED",
+          "url": "https://github.com/ChronoAIProject/NyxID/issues/778",
+          "labels": [
+            "enhancement",
+            "todo",
+            "backend"
+          ],
+          "deps": {
+            "blocked_by": [],
+            "blocks": [],
+            "tracks": [],
+            "tracked_by": []
+          }
+        }
+      }
+    },
+    "NyxID-Anonymous-Endpoints": {
+      "milestone": {
+        "title": "Anonymous Endpoints (admin services)",
+        "number": 14,
+        "url": "https://github.com/ChronoAIProject/NyxID/milestone/14",
+        "repo": "ChronoAIProject/NyxID"
+      },
+      "issues": {
+        "610": {
+          "number": 610,
+          "title": "feat: Anonymous endpoints for admin services",
+          "state": "OPEN",
+          "url": "https://github.com/ChronoAIProject/NyxID/issues/610",
+          "labels": [
+            "enhancement",
+            "todo",
+            "backend",
+            "frontend"
+          ],
+          "deps": {
+            "blocked_by": [],
+            "blocks": [],
+            "tracks": [],
+            "tracked_by": []
+          }
+        }
+      }
+    },
+    "NyxID-Org-Managed-Nodes": {
+      "milestone": {
+        "title": "Org-Managed Nodes",
+        "number": 11,
+        "url": "https://github.com/ChronoAIProject/NyxID/milestone/11",
+        "repo": "ChronoAIProject/NyxID"
+      },
+      "issues": {
+        "773": {
+          "number": 773,
+          "title": "[Feature] Remote credential injection path for org admins (no SSH-to-node required)",
+          "state": "OPEN",
+          "url": "https://github.com/ChronoAIProject/NyxID/issues/773",
+          "labels": [],
+          "deps": {
+            "blocked_by": [],
+            "blocks": [],
+            "tracks": [],
+            "tracked_by": []
+          }
+        },
+        "769": {
+          "number": 769,
+          "title": "[Feature] Org-admin onboarding for shared-node services — friction tracking",
+          "state": "OPEN",
+          "url": "https://github.com/ChronoAIProject/NyxID/issues/769",
+          "labels": [],
+          "deps": {
+            "blocked_by": [],
+            "blocks": [],
+            "tracks": [
+              770,
+              771,
+              772,
+              773,
+              774,
+              775
+            ],
+            "tracked_by": []
+          }
+        },
+        "775": {
+          "number": 775,
+          "title": "[Doc] CLI surface split: `nyxid node credentials` exists on addon-side runtime, not user-side CLI",
+          "state": "CLOSED",
+          "url": "https://github.com/ChronoAIProject/NyxID/issues/775",
+          "labels": [],
+          "deps": {
+            "blocked_by": [],
+            "blocks": [],
+            "tracks": [],
+            "tracked_by": []
+          }
+        },
+        "774": {
+          "number": 774,
+          "title": "[Feature] node show should expose connection source IP / last-seen-from for admin debugging",
+          "state": "CLOSED",
+          "url": "https://github.com/ChronoAIProject/NyxID/issues/774",
+          "labels": [],
+          "deps": {
+            "blocked_by": [],
+            "blocks": [],
+            "tracks": [],
+            "tracked_by": []
+          }
+        },
+        "771": {
+          "number": 771,
+          "title": "[Feature] Surface stale-node binding when proxy returns node_offline",
+          "state": "CLOSED",
+          "url": "https://github.com/ChronoAIProject/NyxID/issues/771",
+          "labels": [],
+          "deps": {
+            "blocked_by": [],
+            "blocks": [],
+            "tracks": [],
+            "tracked_by": []
+          }
+        },
+        "770": {
+          "number": 770,
+          "title": "[Feature] node-credential push: allow internal target_url for node-side reachability",
+          "state": "CLOSED",
+          "url": "https://github.com/ChronoAIProject/NyxID/issues/770",
+          "labels": [],
+          "deps": {
+            "blocked_by": [],
+            "blocks": [],
+            "tracks": [],
+            "tracked_by": []
+          }
+        }
+      }
+    },
+    "NyxID-Marketing-Prelaunch": {
+      "milestone": {
+        "title": "Marketing — Prelaunch warmup",
+        "number": 16,
+        "url": "https://github.com/ChronoAIProject/NyxID/milestone/16",
+        "repo": "ChronoAIProject/NyxID"
+      },
+      "issues": {
+        "657": {
+          "number": 657,
+          "title": "README v2 redesign proposal — would love input from the dev side",
+          "state": "OPEN",
+          "url": "https://github.com/ChronoAIProject/NyxID/issues/657",
+          "labels": [],
+          "deps": {
+            "blocked_by": [],
+            "blocks": [],
+            "tracks": [],
+            "tracked_by": []
+          }
+        },
+        "619": {
+          "number": 619,
+          "title": "Reference · NyxID Cool Demo Brainstorm v3 (Marketing strategy doc)",
+          "state": "OPEN",
+          "url": "https://github.com/ChronoAIProject/NyxID/issues/619",
+          "labels": [],
+          "deps": {
+            "blocked_by": [],
+            "blocks": [],
+            "tracks": [],
+            "tracked_by": []
+          }
+        },
+        "183": {
+          "number": 183,
+          "title": "市场素材：NyxID 相比 lark-cli 直连模式的核心价值",
+          "state": "OPEN",
+          "url": "https://github.com/ChronoAIProject/NyxID/issues/183",
+          "labels": [],
+          "deps": {
+            "blocked_by": [],
+            "blocks": [],
+            "tracks": [],
+            "tracked_by": []
+          }
+        },
+        "766": {
+          "number": 766,
+          "title": "竞品观察 · ArmorerLabs/Armorer code-level 对比分析",
+          "state": "CLOSED",
+          "url": "https://github.com/ChronoAIProject/NyxID/issues/766",
+          "labels": [],
+          "deps": {
+            "blocked_by": [],
+            "blocks": [],
+            "tracks": [],
+            "tracked_by": []
+          }
+        }
+      }
+    },
+    "NyxID-Marketing-Show-HN": {
+      "milestone": {
+        "title": "Marketing — Show HN launch",
+        "number": 17,
+        "url": "https://github.com/ChronoAIProject/NyxID/milestone/17",
+        "repo": "ChronoAIProject/NyxID"
+      },
+      "issues": {
+        "794": {
+          "number": 794,
+          "title": "[Show HN] Pre-launch outreach list — early supporters",
+          "state": "OPEN",
+          "url": "https://github.com/ChronoAIProject/NyxID/issues/794",
+          "labels": [],
+          "deps": {
+            "blocked_by": [],
+            "blocks": [],
+            "tracks": [],
+            "tracked_by": []
+          }
+        },
+        "793": {
+          "number": 793,
+          "title": "[Show HN] Day-of triage plan + on-call rotation",
+          "state": "OPEN",
+          "url": "https://github.com/ChronoAIProject/NyxID/issues/793",
+          "labels": [],
+          "deps": {
+            "blocked_by": [],
+            "blocks": [],
+            "tracks": [],
+            "tracked_by": []
+          }
+        },
+        "792": {
+          "number": 792,
+          "title": "[Show HN] Record demo video / GIF for HN front",
+          "state": "OPEN",
+          "url": "https://github.com/ChronoAIProject/NyxID/issues/792",
+          "labels": [
+            "enhancement"
+          ],
+          "deps": {
+            "blocked_by": [
+              619
+            ],
+            "blocks": [],
+            "tracks": [
+              525
+            ],
+            "tracked_by": []
+          }
+        },
+        "791": {
+          "number": 791,
+          "title": "[Show HN] Write submission copy — title + first comment",
+          "state": "OPEN",
+          "url": "https://github.com/ChronoAIProject/NyxID/issues/791",
+          "labels": [
+            "enhancement"
+          ],
+          "deps": {
+            "blocked_by": [
+              619
+            ],
+            "blocks": [],
+            "tracks": [],
+            "tracked_by": []
+          }
+        }
+      }
+    },
+    "NyxID-Marketing-Postlaunch": {
+      "milestone": {
+        "title": "Marketing — Postlaunch capture",
+        "number": 18,
+        "url": "https://github.com/ChronoAIProject/NyxID/milestone/18",
+        "repo": "ChronoAIProject/NyxID"
+      },
+      "issues": {
+        "795": {
+          "number": 795,
+          "title": "[Postlaunch] Funnel analytics dashboard — HN inbound → signup → first 2xx proxy",
+          "state": "OPEN",
+          "url": "https://github.com/ChronoAIProject/NyxID/issues/795",
+          "labels": [
+            "enhancement"
+          ],
           "deps": {
             "blocked_by": [],
             "blocks": [],

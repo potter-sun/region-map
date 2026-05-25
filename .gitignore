@@ -12,3 +12,8 @@ visualization_files/
 
 # claude code session config (not for sharing)
 .claude/
+.gstack/
+
+# local preview + resolver build artifacts (these are generated, not source)
+preview.html
+regions-resolved.json
