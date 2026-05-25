@@ -25,6 +25,7 @@
       "deps": [
         "Aevatar-Testnet-Stability",
         "Aevatar-Workflow-YAML",
+        "Aevatar-Console-Web-Member-Flows",
         "Aevatar-Virtual-Actors",
         "Aevatar-Agent-Framework",
         "Aevatar-NyxID-Integration",
@@ -33,6 +34,33 @@
         "Aevatar-EventSourcing-Hardening"
       ],
       "gh_query": "is:issue is:open repo:aevatarAI/aevatar A0 in:title"
+    },
+    "Aevatar-Console-Web-Member-Flows": {
+      "label": {
+        "en": "Console Web Member Flows",
+        "zh": "Console Web 成员态流程"
+      },
+      "desc": {
+        "en": "Studio member identity cleanup, member-scoped Bind / Invoke / Observe, and chat-like current run console. Tracks open aevatar #654 and #655; related cleanup #652 closed on 2026-05-18.",
+        "zh": "Studio 成员身份清理、Bind / Invoke / Observe 严格成员域化，以及 chat-like 当前运行控制台。跟踪未关闭的 aevatar #654/#655；相关清理 #652 已于 2026-05-18 closed。"
+      },
+      "closure": "obligation",
+      "formal": "none",
+      "product": "aevatar",
+      "milestone": "A0",
+      "owner": "potter-sun",
+      "issue_count": 2,
+      "focus": true,
+      "archived": false,
+      "promoted_at": {
+        "seed": "2026-05-14",
+        "obligation": "2026-05-14"
+      },
+      "deps": [
+        "Aevatar-Workflow-YAML",
+        "Aevatar-Agent-Framework"
+      ],
+      "gh_query": "is:issue is:open repo:aevatarAI/aevatar console-web Invoke in:title"
     },
     "Aevatar-A1-Milestone": {
       "label": {
